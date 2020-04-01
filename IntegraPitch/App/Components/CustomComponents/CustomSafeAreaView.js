@@ -6,7 +6,7 @@ class CustomSafeAreaView extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <StatusBar backgroundColor={colorWhite} barStyle={'dark-content'} />
+                {/* <StatusBar backgroundColor={colorWhite} barStyle={'dark-content'} /> */}
                 <View style={styles.container}>
                     {this.props.children}
                 </View>

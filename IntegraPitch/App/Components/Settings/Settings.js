@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite } from '../../Globals/colors';
+import { colorWhite, colorGrey } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { } from 'react-native-gesture-handler';
 export default class Settings extends Component {
@@ -20,14 +20,23 @@ export default class Settings extends Component {
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
         <View style={styles.container}>
+          <View style={styles.header}>
+            <TouchableOpacity style={styles.headericon} onPress={() =>{}}>
+              <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+            </TouchableOpacity>
+            <View style={styles.headertextView}>
+              <Text style={styles.headertext}>Settings</Text>
+            </View>
+          </View>
           <View style={styles.MainContainer}>
             <View style={styles.titleContainer}>
               <Text style={styles.titleTextStyle}>
                 {'Settings'}
               </Text>
             </View>
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? listBgColor : colorWhite }]} activeOpacity={0}onPress={() => this.setState({flag1:true,flag2:false,flag3:false})}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? listBgColor : colorWhite }]} activeOpacity={0} onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('Profile'))}>
 
               <Text style={styles.titleTextStyle2}>
                 {'Profile'}
@@ -35,15 +44,14 @@ export default class Settings extends Component {
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ? listBgColor : colorWhite }]} activeOpacity={0} onPress={() => this.setState({flag1:false,flag2:true,flag3:false})}
-            >
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ? listBgColor : colorWhite }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false }, () => this.props.navigation.navigate('CreateAccount'))}>
               <Text style={styles.titleTextStyle2}>
                 {'Documents'}
               </Text>
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag3 ? listBgColor : colorWhite }]} activeOpacity={0}  onPress={() => this.setState({flag1:false,flag2:false,flag3:true})}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag3 ? listBgColor : colorWhite }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: false, flag3: true })}>
               <Text style={styles.titleTextStyle2}>
                 {'Preferences'}
               </Text>
@@ -56,15 +64,45 @@ export default class Settings extends Component {
     );
   }
 }
-const listBgColor='#ececec'
+const listBgColor = '#ececec'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colorWhite
   },
+  header: {
+    backgroundColor: colorGrey,
+
+    flexDirection: 'row',
+    width: responsiveWidth(100),
+    height: responsiveHeight(13)
+  },
+  headericon:
+  {
+    width: responsiveWidth(15),
+    // backgroundColor: 'red',
+    justifyContent: 'center',
+    // alignItems: 'center',
+    paddingLeft:responsiveWidth(5),
+    marginTop: responsiveWidth(10)
+  },
+  headertextView:
+  {
+    width: responsiveWidth(70),
+    // backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: responsiveWidth(10)
+  },
+  headertext:
+  {
+    fontWeight: 'bold',
+    fontSize: responsiveFontSize(2.2),
+    color: colorWhite,
+  },
   MainContainer: {
     width: responsiveWidth(92),
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   titleContainer: {
     height: responsiveHeight(10),
