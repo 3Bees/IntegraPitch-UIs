@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image } from 'react-native';
-import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions';
+import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, CheckBox } from 'react-native';
+import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite } from '../../Globals/colors';
 import { colorGrey } from '../../Globals/colors';
 import { colorBlack } from '../../Globals/colors';
-import ModalDropdown from 'react-native-modal-dropdown';
+import DropdownMenu from 'react-native-dropdown-menu';
+//import ModalDropdown from 'react-native-modal-dropdown';
+//import { Dropdown } from 'react-native-material-dropdown';
 import Ionicons from "react-native-vector-icons/Ionicons";
 export default class CreateAccount extends Component {
   state = {
@@ -18,7 +20,7 @@ export default class CreateAccount extends Component {
     portfolio: '',
     interests: '',
     category: '',
-    setSelectedValue: ''
+    setSelectedValue: '',
   }
   componentDidMount = async () => {
     setTimeout(() => {
@@ -26,6 +28,13 @@ export default class CreateAccount extends Component {
     }, 3000);
   };
   render() {
+  // const  data = [{
+  //     value: 'Banana',
+  //   }, {
+  //     value: 'Mango',
+  //   }, {
+  //     value: 'Pear',
+  //   }];
     return (
       <CustomSafeAreaView>
         <View style={styles.container}>
@@ -161,7 +170,11 @@ export default class CreateAccount extends Component {
               }}
             />
             <View style={styles.dropdown}>
-              <ModalDropdown
+              {/* <Dropdown
+                label='Favorite Fruit'
+                data={data}
+              /> */}
+              {/* <ModalDropdown
                 showsVerticalScrollIndicator={false}
                 textStyle={styles.text1}
                 defaultValue="I'm a..."
@@ -176,7 +189,8 @@ export default class CreateAccount extends Component {
 
                 options={['Singer', 'Musician', 'Athlete', 'Footballer', 'Blogger', 'Influencer']}>
 
-              </ModalDropdown>
+              </ModalDropdown> */}
+
             </View>
             <View style={{ flexDirection: 'row' }}>
               <CheckBox style={styles.checkbox}
