@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, CheckBox } from 'react-native';
-import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
+import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image } from 'react-native';
+import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite } from '../../Globals/colors';
 import { colorGrey } from '../../Globals/colors';
 import { colorBlack } from '../../Globals/colors';
-<<<<<<< HEAD
-import DropdownMenu from 'react-native-dropdown-menu';
 //import ModalDropdown from 'react-native-modal-dropdown';
-//import { Dropdown } from 'react-native-material-dropdown';
-=======
-//import ModalDropdown from 'react-native-modal-dropdown';
->>>>>>> 7af6f253f46bee1a72812c7451ed93c57ccbe0bb
 import Ionicons from "react-native-vector-icons/Ionicons";
 export default class CreateAccount extends Component {
   state = {
@@ -24,7 +18,7 @@ export default class CreateAccount extends Component {
     portfolio: '',
     interests: '',
     category: '',
-    setSelectedValue: '',
+    setSelectedValue: ''
   }
   componentDidMount = async () => {
     setTimeout(() => {
@@ -32,19 +26,12 @@ export default class CreateAccount extends Component {
     }, 3000);
   };
   render() {
-  // const  data = [{
-  //     value: 'Banana',
-  //   }, {
-  //     value: 'Mango',
-  //   }, {
-  //     value: 'Pear',
-  //   }];
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey}/>
         <View style={styles.container}>
+          <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
           <View style={styles.header}>
-            <TouchableOpacity style={styles.headericon}  onPress={()=>this.props.navigation.goBack()}>
+            <TouchableOpacity style={styles.headericon}>
               <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
@@ -54,7 +41,7 @@ export default class CreateAccount extends Component {
           <View style={styles.body}>
             <Text style={styles.text}>Internal profile</Text>
             <TextInput style={styles.textinput}
-              label='Full Name'
+              // label='Email'
               placeholder={'Full Name'}
               mode={'outlined'}
               selectionColor={colorBlack}
@@ -174,13 +161,6 @@ export default class CreateAccount extends Component {
               }}
             />
             <View style={styles.dropdown}>
-<<<<<<< HEAD
-              {/* <Dropdown
-                label='Favorite Fruit'
-                data={data}
-              /> */}
-=======
->>>>>>> 7af6f253f46bee1a72812c7451ed93c57ccbe0bb
               {/* <ModalDropdown
                 showsVerticalScrollIndicator={false}
                 textStyle={styles.text1}
@@ -197,10 +177,6 @@ export default class CreateAccount extends Component {
                 options={['Singer', 'Musician', 'Athlete', 'Footballer', 'Blogger', 'Influencer']}>
 
               </ModalDropdown> */}
-<<<<<<< HEAD
-
-=======
->>>>>>> 7af6f253f46bee1a72812c7451ed93c57ccbe0bb
             </View>
             <View style={{ flexDirection: 'row' }}>
               <CheckBox style={styles.checkbox}
@@ -234,10 +210,9 @@ const styles = StyleSheet.create({
   headericon:
   {
     width: responsiveWidth(15),
-    // backgroundColor: 'red',
+    //backgroundColor: 'red',
     justifyContent: 'center',
-    // alignItems: 'center',
-    paddingLeft:responsiveWidth(5),
+    alignItems: 'center',
     marginTop: responsiveWidth(10)
   },
   headertextView:
@@ -250,7 +225,7 @@ const styles = StyleSheet.create({
   },
   headertext:
   {
-    fontWeight: 'bold',
+    fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.2),
     color: colorWhite,
   },
@@ -262,7 +237,7 @@ const styles = StyleSheet.create({
   },
   text:
   {
-    fontWeight: 'bold',
+    fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.7),
     color: colorBlack,
     marginTop: responsiveWidth(5)
@@ -270,7 +245,7 @@ const styles = StyleSheet.create({
   },
   textinput:
   {
-    height: responsiveHeight(6),
+    height: responsiveHeight(5),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(1),
     margin: 0,
@@ -326,3 +301,4 @@ const styles = StyleSheet.create({
 
   }
 })
+
