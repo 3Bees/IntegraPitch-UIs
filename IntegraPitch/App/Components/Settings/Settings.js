@@ -17,7 +17,7 @@ export default class AuthLoading extends Component {
       <CustomSafeAreaView>
         <View style={styles.container}>
           <Text>
-            {'Create Account'}
+            {'Settings'}
           </Text>
         </View>
       </CustomSafeAreaView>

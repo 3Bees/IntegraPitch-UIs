@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView,ActivityIndicator, StatusBar, Image } from 'react-native';
 import { responsiveWidth ,responsiveHeight,responsiveFontSize} from 'react-native-responsive-dimensions';
-import CustomActivityIndicator from '../CustomComponents/CustomActivityIndicator';
+import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite } from '../../Globals/colors';
 
 
