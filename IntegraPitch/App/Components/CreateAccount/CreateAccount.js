@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image } from 'react-native';
-import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions';
+import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, CheckBox } from 'react-native';
+import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite } from '../../Globals/colors';
 import { colorGrey } from '../../Globals/colors';
 import { colorBlack } from '../../Globals/colors';
+import PropTypes from 'prop-types';
+//import { Dropdown } from 'react-native-material-dropdown';
 //import ModalDropdown from 'react-native-modal-dropdown';
+import DropdownMenu from 'react-native-dropdown-menu';
 import Ionicons from "react-native-vector-icons/Ionicons";
 export default class CreateAccount extends Component {
   state = {
@@ -18,7 +21,8 @@ export default class CreateAccount extends Component {
     portfolio: '',
     interests: '',
     category: '',
-    setSelectedValue: ''
+    setSelectedValue: '',
+    text: ''
   }
   componentDidMount = async () => {
     setTimeout(() => {
@@ -26,6 +30,14 @@ export default class CreateAccount extends Component {
     }, 3000);
   };
   render() {
+    const data = [["C", 'd', 'e']];
+    // let data = [{
+    //   value: 'Banana',
+    // }, {
+    //   value: 'Mango',
+    // }, {
+    //   value: 'Pear',
+    // }];
     return (
       <CustomSafeAreaView>
         <View style={styles.container}>
@@ -151,6 +163,7 @@ export default class CreateAccount extends Component {
               onChangeText={interests => this.setState({ interests })}
               value={this.state.interests}
               underlineColorAndroid='transparent'
+              multiline={true}
               theme={{
                 colors: {
                   placeholder: colorGrey,
@@ -160,8 +173,24 @@ export default class CreateAccount extends Component {
                 }
               }}
             />
-            <View style={styles.dropdown}>
-              {/* <ModalDropdown
+            {/* <View style={styles.dropdown}>
+              <DropdownMenu
+                style={{ flex: 1 }}
+                bgColor={'red'}
+                tintColor={'#666666'}
+                activityTintColor={'green'}
+                // arrowImg={}      
+                // checkImage={}   
+                // optionTextStyle={{color: '#333333'}}
+                // titleStyle={{color: '#333333'}} 
+                maxHeight={responsiveHeight(100)}
+                handler={(selection, row) => this.setState({ text: data[selection][row] })}
+                data={data}
+              >
+              </DropdownMenu>
+
+            </View> */}
+            {/* <ModalDropdown
                 showsVerticalScrollIndicator={false}
                 textStyle={styles.text1}
                 defaultValue="I'm a..."
@@ -177,13 +206,23 @@ export default class CreateAccount extends Component {
                 options={['Singer', 'Musician', 'Athlete', 'Footballer', 'Blogger', 'Influencer']}>
 
               </ModalDropdown> */}
-            </View>
+            {/* <Dropdown
+                label='Favorite Fruit'
+                data={[{
+                  value: 'Banana',
+                }, {
+                  value: 'Mango',
+                }, {
+                  value: 'Pear',
+                }]}
+              /> */}
+
             <View style={{ flexDirection: 'row' }}>
               <CheckBox style={styles.checkbox}
                 value={this.state.checked}
                 onValueChange={() => this.setState({ checked: !this.state.checked })}
               />
-              <Text style={styles.checkboxtext}> Subscribe tp our newsletter</Text>
+              <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
             </View>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttontext}>Sign Up</Text>
@@ -240,16 +279,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.7),
     color: colorBlack,
-    marginTop: responsiveWidth(5)
+    marginTop: responsiveWidth(5),
+    fontWeight:'bold'
 
   },
   textinput:
   {
+    margin: 0,
+    padding: 0,
     height: responsiveHeight(5),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(1),
-    margin: 0,
-    padding: 0
+    fontSize:responsiveFontSize(1.5)
     //borderColor:'black'
   },
   checkboxtext:
