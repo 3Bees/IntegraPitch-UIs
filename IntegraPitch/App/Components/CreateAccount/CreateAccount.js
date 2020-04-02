@@ -80,8 +80,11 @@ export default class CreateAccount extends Component {
                   cancelBtnText="Cancel"
                   minuteInterval={10}
                   customStyles={{
+                     placeholderText:{
+                      color:colorGrey,
+                      fontSize: responsiveFontSize(1.6),
+                    },
                     dateInput: {
-
                       height: '100%',
                       width: '100%',
                       borderWidth: 0,
@@ -285,11 +288,11 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    height: responsiveHeight(6),
+    height: responsiveHeight(7),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(1),
-    fontSize:responsiveFontSize(1.5)
-    //borderColor:'black'
+    fontSize:responsiveFontSize(1.5),
+    // backgroundColor:'red',
   },
   checkboxtext:
   {
@@ -326,7 +329,7 @@ const styles = StyleSheet.create({
     borderWidth: responsiveWidth(.3),
     borderRadius: responsiveWidth(1),
     borderColor: colorGrey,
-    height: responsiveHeight(5.5),
+    height: responsiveHeight(7),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(2.5),
     justifyContent: 'center'

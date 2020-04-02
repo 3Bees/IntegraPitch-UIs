@@ -1,21 +1,44 @@
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList, ImagePickerIOS } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { TextInput, Title } from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
 export default class Marketplace extends Component {
 
   state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4] }
-  componentDidMount = async () => {
+  image = () => {
+    const options = {
+        title: 'Select Image',
 
-    setTimeout(() => {
-      // this.props.navigation.navigate('Auth');
-    }, 3000);
-  };
+        storageOptions: {
+            skipBackup: true,
+            path: 'images',
+        },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+        console.log('Response = ', response);
+
+        if (response.didCancel) {
+            console.log('User cancelled image picker');
+        } else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+        } else {
+            const source = { uri: response.uri };
+
+
+            this.setState({
+                avatarSource: source,
+            });
+        }
+    });
+}
   render() {
     const { flag1, flag2, flag3 } = this.state
     return (
@@ -92,13 +115,19 @@ export default class Marketplace extends Component {
                   theme={{
                     colors: {
                       placeholder: colorGrey,
-                      
-                      color:colorBlack,
-                      underlineColor: 'transparent',}}}/>
+                      primary: colorGrey,
+                      color: colorBlack,
+                      underlineColor: 'transparent',
+                    }
+                  }} />
               </View>
             </View>
             <View style={{ width: '100%', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
               <Text style={styles.TextInputTitleStyle}>Images</Text>
+              <TouchableOpacity onPress={() => this.image()} style={styles.documentimage}>
+                <Image source={require('../../Assets/girl.jpg')} style={styles.documentimage} >
+                </Image>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -172,6 +201,24 @@ const styles = StyleSheet.create({
     marginTop: responsiveHeight(1),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(.5)
+  },
+  button:
+  {
+      width: responsiveWidth(70),
+      alignSelf: 'center',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: colorGrey,
+      height: responsiveHeight(7),
+      marginVertical: responsiveWidth(5),
+      borderRadius: responsiveWidth(1)
+  },
+  buttontext:
+  {
+      fontFamily: Muli,
+      color: colorWhite,
+      fontSize: responsiveFontSize(2.5)
+
   },
 
 });

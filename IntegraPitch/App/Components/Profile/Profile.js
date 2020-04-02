@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox,ScrollView } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite, colorGrey, colorBlack, Muli, MuliBold } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { ScrollView } from 'react-native-gesture-handler';
+
 import { Button, TextInput } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import DatePicker from 'react-native-datepicker'
@@ -134,14 +134,16 @@ export default class Profile extends Component {
                   mode="date"
                   androidMode='spinner'
                   placeholder="DD-MM-YYYY"
-                  placeholderTextColor={"grey"}
                   format='DD-MM-YYYY'
                   confirmBtnText="Confirm"
                   cancelBtnText="Cancel"
                   minuteInterval={10}
                   customStyles={{
+                    placeholderText:{
+                      color:colorGrey,
+                      fontSize: responsiveFontSize(1.6),
+                    },
                     dateInput: {
-
                       height: '100%',
                       width: '100%',
                       borderWidth: 0,
@@ -174,7 +176,7 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    // text: 'grey',
+                  
                     underlineColor: 'transparent',
                   }
                 }}
@@ -300,7 +302,11 @@ export default class Profile extends Component {
                 />
                 <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
               </View>
+
             </View>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttontext}>Save</Text>
+            </TouchableOpacity>
           </ScrollView>
         </View>
       </CustomSafeAreaView>
@@ -375,7 +381,8 @@ const styles = StyleSheet.create({
     backgroundColor: colorWhite,
     // marginTop: responsiveWidth(1),
     width: responsiveWidth(30),
-    fontSize: responsiveFontSize(1.5)
+    fontSize: responsiveFontSize(1.5),
+    justifyContent:'center',
     //borderColor:'black'
   },
   emailwrapper: {
@@ -387,7 +394,8 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    height: responsiveHeight(5),
+    
+    height: responsiveHeight(7),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(1),
     fontSize: responsiveFontSize(1.5)
@@ -413,6 +421,25 @@ const styles = StyleSheet.create({
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(2.5),
     justifyContent: 'center'
+  },
+  button:
+  {
+    width: responsiveWidth(70),
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colorGrey,
+    height: responsiveHeight(7),
+    marginTop: responsiveWidth(2),
+    marginBottom: responsiveWidth(2),
+    borderRadius: responsiveWidth(1)
+  },
+  buttontext:
+  {
+    fontFamily: Muli,
+    color: colorWhite,
+    fontSize: responsiveFontSize(2.5)
+
   },
 
 });
