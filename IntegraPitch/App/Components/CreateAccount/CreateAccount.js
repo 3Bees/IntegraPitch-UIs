@@ -3,9 +3,9 @@ import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, Touch
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite,colorGrey,colorBlack,Muli,MuliBold } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold } from '../../Globals/colors';
 //import { Dropdown } from 'react-native-material-dropdown';
-//import ModalDropdown from 'react-native-modal-dropdown';
+// import ModalDropdown from 'react-native-modal-dropdown';
 import DropdownMenu from 'react-native-dropdown-menu';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DatePicker from 'react-native-datepicker'
@@ -29,13 +29,7 @@ export default class CreateAccount extends Component {
   };
   render() {
     const data = [["C", 'd', 'e']];
-    // let data = [{
-    //   value: 'Banana',
-    // }, {
-    //   value: 'Mango',
-    // }, {
-    //   value: 'Pear',
-    // }];
+
     return (
       <CustomSafeAreaView>
         <View style={styles.container}>
@@ -67,43 +61,49 @@ export default class CreateAccount extends Component {
                 }
               }}
             />
-             <View style={styles.dropdown}>
-                <DatePicker
-                  style={{ width: '40%', marginLeft: responsiveWidth(-3) }}
-                  date={this.state.date}
-                  mode="date"
-                  androidMode='spinner'
-                  placeholder="DD-MM-YYYY"
-                  placeholderTextColor={"grey"}
-                  format='DD-MM-YYYY'
-                  confirmBtnText="Confirm"
-                  cancelBtnText="Cancel"
-                  minuteInterval={10}
-                  customStyles={{
-                     placeholderText:{
-                      color:colorGrey,
-                      fontSize: responsiveFontSize(1.6),
-                    },
-                    dateInput: {
-                      height: '100%',
-                      width: '100%',
-                      borderWidth: 0,
-                    },
-                    dateText: {
-                      color: 'black',
-                      fontSize: responsiveFontSize(1.8),
-                      fontFamily: 'Muli-Bold',
-                      numberOfLines: 1
-                    },
-                  }}
-                  showIcon={false}
-                  // showIcon={true}    
-                  onDateChange={(date) => {
-                    console.log(date)
-                    this.setState({ date: date })
-                  }}
-                />
-              </View>
+            <View style={[styles.dropdown,{alignItems:'center',justifyContent:'flex-start'}]}>
+              <DatePicker
+                
+                date={this.state.date}
+                mode="date"
+                androidMode='spinner'
+                placeholder="DD-MM-YYYY"
+                placeholderTextColor={"grey"}
+                format='DD-MM-YYYY'
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                minuteInterval={10}
+                customStyles={{
+                
+                  placeholderText: {
+                    color: colorGrey,
+                    fontSize: responsiveFontSize(1.6),
+                  },
+                  dateInput: {
+                    marginStart:15,
+                    // backgroundColor:'red',
+                    width:'100%',
+                    alignItems:'flex-start',
+                    height: '100%',
+                    borderWidth: 0,
+                  },
+                  
+                  dateText: {
+                    color: 'black',
+                    fontSize: responsiveFontSize(1.8),
+                    fontFamily: 'Muli-Bold',
+                    textAlign:'center',
+                    numberOfLines: 1
+                  },
+                }}
+                showIcon={false}
+                // showIcon={true}    
+                onDateChange={(date) => {
+                  console.log(date)
+                  this.setState({ date: date })
+                }}
+              />
+            </View>
             <TextInput style={styles.textinput}
               // label='Email'
               placeholder={'Upload ID'}
@@ -174,28 +174,39 @@ export default class CreateAccount extends Component {
                 }
               }}
             />
-            {/* <View style={styles.dropdown}>
+            <View style={styles.dropdown}>
+              {/* <View style={{ flex: .5 }}>
+                <Text>
+                  {this.state.text} is the best language in the world
+            </Text>
+              </View>
               <DropdownMenu
                 style={{ flex: 1 }}
-                bgColor={'red'}
+                bgColor={'white'}
                 tintColor={'#666666'}
                 activityTintColor={'green'}
                 // arrowImg={}      
                 // checkImage={}   
                 // optionTextStyle={{color: '#333333'}}
                 // titleStyle={{color: '#333333'}} 
-                maxHeight={responsiveHeight(100)}
+                // maxHeight={300} 
                 handler={(selection, row) => this.setState({ text: data[selection][row] })}
                 data={data}
               >
-              </DropdownMenu>
 
-            </View> */}
-            {/* <ModalDropdown
+                <View style={{ flex: 1 }}>
+                  <Text>
+                    {this.state.text} is the best language in the world
+            </Text>
+                </View>
+
+              </DropdownMenu> */}
+
+              {/* <ModalDropdown
                 showsVerticalScrollIndicator={false}
                 textStyle={styles.text1}
                 defaultValue="I'm a..."
-                dropdownTextStyle={{ backgroundColor: '#fff', color: 'grey' }}
+                dropdownTextStyle={{ backgroundColor: '#fff', color: 'grey' }} 
                 dropdownStyle={{
 
                   width: '90%',
@@ -207,6 +218,8 @@ export default class CreateAccount extends Component {
                 options={['Singer', 'Musician', 'Athlete', 'Footballer', 'Blogger', 'Influencer']}>
 
               </ModalDropdown> */}
+            </View>
+
             {/* <Dropdown
                 label='Favorite Fruit'
                 data={[{
@@ -281,7 +294,7 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.7),
     color: colorBlack,
     marginTop: responsiveWidth(5),
-    fontWeight:'bold'
+    fontWeight: 'bold'
 
   },
   textinput:
@@ -291,7 +304,7 @@ const styles = StyleSheet.create({
     height: responsiveHeight(7),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(1),
-    fontSize:responsiveFontSize(1.5),
+    fontSize: responsiveFontSize(1.5),
     // backgroundColor:'red',
   },
   checkboxtext:
@@ -326,6 +339,7 @@ const styles = StyleSheet.create({
   },
   dropdown:
   {
+    flexDirection: 'row',
     borderWidth: responsiveWidth(.3),
     borderRadius: responsiveWidth(1),
     borderColor: colorGrey,

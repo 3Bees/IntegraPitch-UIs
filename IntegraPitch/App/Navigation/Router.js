@@ -38,7 +38,7 @@ const MainStack = createStackNavigator();
 const token = true
 const Main = () => {
     return (
-        <MainStack.Navigator initialRouteName="SubmitNewIdea" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="CreateAccount" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="CreateAccount" component={CreateAccount} />
             <MainStack.Screen name="Settings" component={Settings} />

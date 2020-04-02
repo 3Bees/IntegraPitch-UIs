@@ -33,8 +33,8 @@ export default class Marketplace extends Component {
         console.log('User tapped custom button: ', response.customButton);
       } else {
         const source = { uri: response.uri };
-        let {Imagedatasource}=this.state
-      Imagedatasource.push(source)
+        let { Imagedatasource } = this.state
+        Imagedatasource.push(source)
         this.setState({ Imagedatasource });
       }
     });
@@ -45,9 +45,9 @@ export default class Marketplace extends Component {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.pdf],
       });
-      let {documentdatasource}=this.state
+      let { documentdatasource } = this.state
       documentdatasource.push(res)
-        this.setState({ documentdatasource });
+      this.setState({ documentdatasource });
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
         // User cancelled the picker, exit any dialogs or menus and move on
@@ -99,7 +99,7 @@ export default class Marketplace extends Component {
           </View>
           <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
             <Text style={styles.text}>Submit New Idea</Text>
-            
+
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Idea Title</Text>
               <TextInput style={styles.textinputStyles}
@@ -199,11 +199,11 @@ export default class Marketplace extends Component {
                   keyExtractor={(item, index) => index}
                   renderItem={({ item, index }) => {
                     return (
-                      <View style={[styles.buttonChildContainer,{justifyContent:'center',alignItems:'center'}]}>
+                      <View style={[styles.buttonChildContainer, { justifyContent: 'center', alignItems: 'center' }]}>
                         <Text>
-                          {'doc('+index+')'}
-                          </Text>
-                        </View>
+                          {'doc(' + index + ')'}
+                        </Text>
+                      </View>
                     )
                   }} />
               </View>
@@ -275,7 +275,7 @@ export default class Marketplace extends Component {
                   <Text style={styles.buttonTextStyle}>Starting at</Text>
                 </TouchableOpacity> */}
 
-                <TextInput style={[{ height: responsiveHeight(6.5), width: '29%', margin: 0, padding: 0,fontSize:responsiveFontSize(1.88) }]}
+                <TextInput style={[{ height: responsiveHeight(6.5), width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
                   // label='Email'
                   placeholder={'Starting at'}
                   mode={'outlined'}
@@ -296,7 +296,7 @@ export default class Marketplace extends Component {
 
                 <TouchableOpacity style={[styles.buttonChildContainer, { height: responsiveHeight(5), width: '20%', borderWidth: 0 }]} />
                 <Text style={[styles.TextInputTitleStyle, { position: 'absolute', start: responsiveWidth(50) }]} >$</Text>
-                <TextInput style={[{ height: responsiveHeight(6.5), width: '29%', margin: 0, padding: 0,fontSize:responsiveFontSize(1.88) }]}
+                <TextInput style={[{ height: responsiveHeight(6.5), width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
                   // label='Email'
                   placeholder={'Full price'}
                   mode={'outlined'}
