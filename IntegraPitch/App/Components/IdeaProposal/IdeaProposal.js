@@ -226,7 +226,25 @@ const styles = StyleSheet.create({
         width: responsiveWidth(25),
         height: responsiveHeight(10),
         borderRadius: responsiveWidth(1)
-    }
+    },  button:
+    {
+      width: responsiveWidth(60),
+      alignSelf: 'center',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: colorGrey,
+      height: responsiveHeight(7),
+      marginTop: responsiveWidth(2),
+      borderRadius: responsiveWidth(1)
+    },
+    buttontext:
+    {
+      fontFamily: Muli,
+      color: colorWhite,
+      fontSize: responsiveFontSize(2.5)
+  
+    },
+    
 
 });
 
