@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import { Button } from 'react-native-paper';
+
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite, colorGrey, colorBlack } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { TextInput, Title } from 'react-native-paper';
 export default class Marketplace extends Component {
 
   state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4] }
@@ -33,6 +33,73 @@ export default class Marketplace extends Component {
           <View style={styles.MainContainer}>
             <Text style={styles.text}>Submit New Idea</Text>
 
+            <View style={{ width: '100%', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
+              <Text style={styles.TextInputTitleStyle}>Idea Title</Text>
+              <TextInput style={styles.textinputStyles}
+                placeholder={'Descriptive title for your idea'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={Title => this.setState({ Title })}
+                value={this.state.Title}
+                underlineColorAndroid='transparent'
+                multiline={true}
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+            </View>
+            <View style={{ width: '100%', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
+              <Text style={styles.TextInputTitleStyle}>Description</Text>
+              <View style={{ height: responsiveHeight(15), }}>
+                <TextInput style={[styles.textinputStyles, { height: '100%' }]}
+                  placeholder={'Pitch that will be shown on your ideaʼspreview. Make it attractive (50 wordsmax)'}
+                  mode={'outlined'}
+                  multiline={true}
+
+                  selectionColor={colorBlack}
+                  onChangeText={Description => this.setState({ Description })}
+                  value={this.state.Description}
+                  underlineColorAndroid='transparent'
+                  multiline={true}
+                  theme={{
+                    colors: {
+                      placeholder: colorGrey,
+                      primary: colorGrey,
+                      underlineColor: 'transparent',
+
+                    }
+                  }}
+                />
+              </View>
+            </View>
+            <View style={{ width: '100%', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
+              <Text style={styles.TextInputTitleStyle}>Executive Summary</Text>
+              <View style={{ height: responsiveHeight(20), }}>
+                <TextInput style={[styles.textinputStyles, { height: '100%' }]}
+                  placeholder={'Describe in detail your idea in order toconvince the buyer or collaborator thatit is worth it.'}
+                  mode={'outlined'}
+                  multiline={true}
+
+                  selectionColor={colorBlack}
+                  onChangeText={Summary => this.setState({ Summary })}
+                  value={this.state.Summary}
+                  underlineColorAndroid='transparent'
+                  multiline={true}
+                  theme={{
+                    colors: {
+                      placeholder: colorGrey,
+                      
+                      color:colorBlack,
+                      underlineColor: 'transparent',}}}/>
+              </View>
+            </View>
+            <View style={{ width: '100%', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
+              <Text style={styles.TextInputTitleStyle}>Images</Text>
+            </View>
           </View>
         </View>
       </CustomSafeAreaView>
@@ -83,11 +150,28 @@ const styles = StyleSheet.create({
   text:
   {
     fontFamily: 'Muli-Bold',
-    fontSize: responsiveFontSize(2.7),
+    fontSize: responsiveFontSize(2.8),
     color: colorBlack,
     marginTop: responsiveHeight(2),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(1)
+  },
+  textinputStyles:
+  {
+    margin: 0, padding: 0,
+    backgroundColor: colorWhite,
+    width: '100%',
+    // backgroundColor:'red',
+    height: responsiveHeight(6),
+    fontSize: responsiveFontSize(2.2),
+  },
+  TextInputTitleStyle:
+  {
+    fontSize: responsiveFontSize(2.2),
+    color: colorBlack,
+    marginTop: responsiveHeight(1),
+    fontWeight: 'bold',
+    marginBottom: responsiveHeight(.5)
   },
 
 });
