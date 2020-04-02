@@ -6,11 +6,40 @@ import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold } from '
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
 export default class IdeaProposal extends Component {
 
     state = {
         summary: '',
 
+    }
+    image = () => {
+        const options = {
+            title: 'Select Image',
+
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const source = { uri: response.uri };
+
+
+                this.setState({
+                    avatarSource: source,
+                });
+            }
+        });
     }
     componentDidMount = async () => {
 
@@ -72,6 +101,10 @@ export default class IdeaProposal extends Component {
                                 />
                             </View>
                             <Text style={styles.text}>Documents</Text>
+                            <TouchableOpacity onPress={() => this.image()} style={styles.documentimage}>
+                                <Image source={require('../../Assets/girl.jpg')} style={styles.documentimage} >
+                                </Image>
+                            </TouchableOpacity>
                             <TouchableOpacity style={styles.button}>
                                 <Text style={styles.buttontext}>SUBMIT PROPOSAL</Text>
                             </TouchableOpacity>
@@ -182,13 +215,18 @@ const styles = StyleSheet.create({
     {
         margin: 0,
         padding: 0,
-       // height: responsiveHeight(6),
+        // height: responsiveHeight(6),
         backgroundColor: colorWhite,
         width: responsiveWidth(90),
         height: '100%',
         fontSize: responsiveFontSize(2.2),
     },
-
+    documentimage:
+    {
+        width: responsiveWidth(25),
+        height: responsiveHeight(10),
+        borderRadius: responsiveWidth(1)
+    }
 
 });
 

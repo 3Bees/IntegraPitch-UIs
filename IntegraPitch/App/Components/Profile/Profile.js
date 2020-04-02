@@ -7,6 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
+import DatePicker from 'react-native-datepicker'
 export default class Profile extends Component {
 
   state = {
@@ -70,13 +71,14 @@ export default class Profile extends Component {
           </View>
           <ScrollView>
             <View style={styles.body}>
-              <TouchableOpacity onPress={() => this.image()}>
+              <TouchableOpacity onPress={() => this.image()} style={styles.profileimage}>
                 <Image source={require('../../Assets/girl.jpg')} style={styles.profileimage} ></Image>
               </TouchableOpacity>
               <View style={styles.emailwrapper}>
                 <TextInput style={styles.emailtextinput}
                   placeholder={'ADD EMAIL'}
                   mode={'outlined'}
+                  keyboardType={'email-address'}
                   selectionColor={colorBlack}
                   onChangeText={email => this.setState({ email })}
                   value={this.state.email}
@@ -91,6 +93,7 @@ export default class Profile extends Component {
                 />
                 <TextInput style={styles.emailtextinput}
                   placeholder={'ADD PHONE'}
+                  keyboardType={'numeric'}
                   mode={'outlined'}
                   selectionColor={colorBlack}
                   onChangeText={phone => this.setState({ phone })}
@@ -124,26 +127,44 @@ export default class Profile extends Component {
                   }
                 }}
               />
-              <TextInput style={styles.textinput}
-                // label='Email'
-                placeholder={'MM-DD-YYYY'}
-                mode={'outlined'}
-                selectionColor={colorBlack}
-                onChangeText={dob => this.setState({ dob })}
-                value={this.state.dob}
-                underlineColorAndroid='transparent'
-                theme={{
-                  colors: {
-                    placeholder: colorGrey,
-                    primary: colorGrey,
-                    // text: 'grey',
-                    underlineColor: 'transparent',
-                  }
-                }}
-              />
+              <View style={styles.dropdown}>
+                <DatePicker
+                  style={{ width: '40%', marginLeft: responsiveWidth(-3) }}
+                  date={this.state.date}
+                  mode="date"
+                  androidMode='spinner'
+                  placeholder="DD-MM-YYYY"
+                  placeholderTextColor={"grey"}
+                  format='DD-MM-YYYY'
+                  confirmBtnText="Confirm"
+                  cancelBtnText="Cancel"
+                  minuteInterval={10}
+                  customStyles={{
+                    dateInput: {
+
+                      height: '100%',
+                      width: '100%',
+                      borderWidth: 0,
+                    },
+                    dateText: {
+                      color: 'black',
+                      fontSize: responsiveFontSize(1.8),
+                      fontFamily: 'Muli-Bold',
+                      numberOfLines: 1
+                    },
+                  }}
+                  showIcon={false}
+                  // showIcon={true}    
+                  onDateChange={(date) => {
+                    console.log(date)
+                    this.setState({ date: date })
+                  }}
+                />
+              </View>
               <TextInput style={styles.textinput}
                 // label='Email'
                 placeholder={'address@mail.com'}
+                keyboardType={'email-address'}
                 mode={'outlined'}
                 selectionColor={colorBlack}
                 onChangeText={mailaddress => this.setState({ mailaddress })}
@@ -382,6 +403,16 @@ const styles = StyleSheet.create({
   checkbox:
   {
     marginLeft: responsiveWidth(-2)
+  },
+  dropdown:
+  {
+    borderWidth: responsiveWidth(.3),
+    borderRadius: responsiveWidth(1),
+    borderColor: colorGrey,
+    height: responsiveHeight(5.5),
+    backgroundColor: colorWhite,
+    marginTop: responsiveWidth(2.5),
+    justifyContent: 'center'
   },
 
 });
