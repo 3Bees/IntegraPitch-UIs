@@ -8,6 +8,7 @@ import { colorWhite,colorGrey,colorBlack,Muli,MuliBold } from '../../Globals/col
 //import ModalDropdown from 'react-native-modal-dropdown';
 import DropdownMenu from 'react-native-dropdown-menu';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import DatePicker from 'react-native-datepicker'
 export default class CreateAccount extends Component {
   state = {
     name: '',
@@ -66,40 +67,40 @@ export default class CreateAccount extends Component {
                 }
               }}
             />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Date Of Birth'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={dob => this.setState({ dob })}
-              value={this.state.dob}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Mailing Address'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={mailaddress => this.setState({ mailaddress })}
-              value={this.state.mailaddress}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorBlack,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
+             <View style={styles.dropdown}>
+                <DatePicker
+                  style={{ width: '40%', marginLeft: responsiveWidth(-3) }}
+                  date={this.state.date}
+                  mode="date"
+                  androidMode='spinner'
+                  placeholder="DD-MM-YYYY"
+                  placeholderTextColor={"grey"}
+                  format='DD-MM-YYYY'
+                  confirmBtnText="Confirm"
+                  cancelBtnText="Cancel"
+                  minuteInterval={10}
+                  customStyles={{
+                    dateInput: {
+
+                      height: '100%',
+                      width: '100%',
+                      borderWidth: 0,
+                    },
+                    dateText: {
+                      color: 'black',
+                      fontSize: responsiveFontSize(1.8),
+                      fontFamily: 'Muli-Bold',
+                      numberOfLines: 1
+                    },
+                  }}
+                  showIcon={false}
+                  // showIcon={true}    
+                  onDateChange={(date) => {
+                    console.log(date)
+                    this.setState({ date: date })
+                  }}
+                />
+              </View>
             <TextInput style={styles.textinput}
               // label='Email'
               placeholder={'Upload ID'}

@@ -6,6 +6,7 @@ import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold } from '
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
 export default class ProposalOffer extends Component {
 
     state = {
@@ -14,9 +15,37 @@ export default class ProposalOffer extends Component {
         convinceText: '',
         percentageText: ''
     }
+    image = () => {
+        const options = {
+            title: 'Select Image',
+
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const source = { uri: response.uri };
+
+
+                this.setState({
+                    avatarSource: source,
+                });
+            }
+        });
+    }
     componentDidMount = async () => {
 
-        setTimeout(() => { 
+        setTimeout(() => {
             // this.props.navigation.navigate('Auth');
         }, 3000);
     };
@@ -89,6 +118,10 @@ export default class ProposalOffer extends Component {
                             <Text style={styles.text}>
                                 Supportive Document
                         </Text>
+                            <TouchableOpacity onPress={() => this.image()} style={styles.documentimage}>
+                                <Image source={require('../../Assets/girl.jpg')} style={styles.documentimage} >
+                                </Image>
+                            </TouchableOpacity>
                             <Text style={styles.text}>
                                 Percentage Offer
                         </Text>
@@ -279,6 +312,12 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(2.5)
 
     },
+    documentimage:
+    {
+     width:responsiveWidth(25),
+     height:responsiveHeight(10),
+     borderRadius:responsiveWidth(1)
+    }
 
 
 });

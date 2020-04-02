@@ -23,7 +23,6 @@ import CreateAccount from '../Components/CreateAccount/CreateAccount';
 import Settings from '../Components/Settings/Settings';
 import Profile from '../Components/Profile/Profile';
 import OfferReceived from '../Components/OfferReceived/OfferReceived';
-
 import IdeaProposal from '../Components/IdeaProposal/IdeaProposal';
 import AdjustProposal from '../Components/AdjustProposal/AdjustPropsal';
 import ProposalOffer from '../Components/ProposalOffer/ProposalOffer'
@@ -39,7 +38,7 @@ const MainStack = createStackNavigator();
 const token = true
 const Main = () => {
     return (
-        <MainStack.Navigator initialRouteName="Marketplace" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="CreateAccount" component={CreateAccount} />
             <MainStack.Screen name="Settings" component={Settings} />
