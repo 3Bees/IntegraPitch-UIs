@@ -16,7 +16,7 @@ export default class ProposalOffer extends Component {
     }
     componentDidMount = async () => {
 
-        setTimeout(() => {
+        setTimeout(() => { 
             // this.props.navigation.navigate('Auth');
         }, 3000);
     };

@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    height: responsiveHeight(5),
+    height: responsiveHeight(6),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(1),
     fontSize:responsiveFontSize(1.5)
