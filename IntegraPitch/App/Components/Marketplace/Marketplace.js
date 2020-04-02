@@ -31,7 +31,9 @@ export default class Marketplace extends Component {
             <Text style={styles.text}>Marketplace</Text>
             <Text style={styles.text1}>See: all ideas</Text>
             <View style={styles.buttonParentContainer}>
-              <TouchableOpacity style={styles.buttonChildContainer}>
+              <TouchableOpacity style={styles.buttonChildContainer}
+              onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
+              >
                 <Text style={styles.buttonTextStyle}>Row</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonChildContainer}>
