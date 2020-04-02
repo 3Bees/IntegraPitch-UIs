@@ -7,15 +7,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import DocumentPicker from 'react-native-document-picker';
 export default class ProposalOffer extends Component {
 
     state = {
 
         status: '',
         convinceText: '',
-        percentageText: ''
+        percentageText: '',
+        Imagedatasource: [],
+        documentdatasource: []
     }
-    image = () => {
+    imageUpload = () => {
         const options = {
             title: 'Select Image',
 
@@ -35,20 +39,55 @@ export default class ProposalOffer extends Component {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
                 const source = { uri: response.uri };
-
-
-                this.setState({
-                    avatarSource: source,
-                });
+                let { Imagedatasource } = this.state
+                Imagedatasource.push(source)
+                this.setState({ Imagedatasource });
             }
         });
     }
-    componentDidMount = async () => {
-
-        setTimeout(() => {
-            // this.props.navigation.navigate('Auth');
-        }, 3000);
+    documentUpload = async () => {
+        try {
+            const res = await DocumentPicker.pick({
+                type: [DocumentPicker.types.pdf],
+            });
+            let { documentdatasource } = this.state
+            documentdatasource.push(res)
+            this.setState({ documentdatasource });
+        } catch (err) {
+            if (DocumentPicker.isCancel(err)) {
+                // User cancelled the picker, exit any dialogs or menus and move on
+            } else {
+                throw err;
+            }
+        }
     };
+    documentUpload1 = () => {
+        const options = {
+            title: 'Select Image',
+
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const source = { uri: response.uri };
+                let array = []
+                array.push(source)
+                console.log(array)
+                this.setState({ documentdatasource: array });
+            }
+        });
+    }
     render() {
         return (
             <CustomSafeAreaView>
@@ -118,10 +157,29 @@ export default class ProposalOffer extends Component {
                             <Text style={styles.text}>
                                 Supportive Document
                         </Text>
-                            <TouchableOpacity onPress={() => this.image()} style={styles.documentimage}>
-                                <Image source={require('../../Assets/girl.jpg')} style={styles.documentimage} >
-                                </Image>
-                            </TouchableOpacity>
+                            <View style={styles.titConatiner}>
+
+                                <View style={styles.buttonParentContainer}>
+                                    <TouchableOpacity onPress={() => this.documentUpload()}
+                                        style={[styles.buttonChildContainer, { justifyContent: 'center', alignItems: 'center' }]} >
+                                        <AntDesign name={'plus'} color={colorGrey} size={responsiveWidth(8)} />
+                                    </TouchableOpacity>
+                                    <FlatList
+                                        horizontal={true}
+                                        showsHorizontalScrollIndicator={false}
+                                        data={this.state.documentdatasource}
+                                        keyExtractor={(item, index) => index}
+                                        renderItem={({ item, index }) => {
+                                            return (
+                                                <View style={[styles.buttonChildContainer, { justifyContent: 'center', alignItems: 'center' }]}>
+                                                    <Text>
+                                                        {'doc(' + index + ')'}
+                                                    </Text>
+                                                </View>
+                                            )
+                                        }} />
+                                </View>
+                            </View>
                             <Text style={styles.text}>
                                 Percentage Offer
                         </Text>
@@ -314,10 +372,29 @@ const styles = StyleSheet.create({
     },
     documentimage:
     {
-     width:responsiveWidth(25),
-     height:responsiveHeight(10),
-     borderRadius:responsiveWidth(1)
-    }
+        width: responsiveWidth(25),
+        height: responsiveHeight(10),
+        borderRadius: responsiveWidth(1)
+    },
+    buttonParentContainer: {
+        width: '100%',
+        height: responsiveHeight(10),
+        flexDirection: 'row',
+        alignItems: 'center',
+        // backgroundColor: 'red',
+        justifyContent: 'space-between'
+      },
+      buttonChildContainer: {
+        height: responsiveHeight(8),
+        width: responsiveWidth(18),
+        marginEnd: responsiveWidth(2),
+        borderRadius: responsiveWidth(1),
+        borderWidth: 1,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // backgroundColor: 'green'
+    
+      },
 
 
 });
