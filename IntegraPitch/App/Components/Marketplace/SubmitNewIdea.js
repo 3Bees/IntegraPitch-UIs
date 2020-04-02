@@ -9,7 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TextInput, Title } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
-
+import DocumentPicker from 'react-native-document-picker';
 export default class Marketplace extends Component {
 
   state = { flag1: false, flag2: true, flag3: false, Imagedatasource: [], documentdatasource: [] }
@@ -33,14 +33,30 @@ export default class Marketplace extends Component {
         console.log('User tapped custom button: ', response.customButton);
       } else {
         const source = { uri: response.uri };
-        let array = []
-        array.push(source)
-        console.log(array)
-        this.setState({ Imagedatasource: array });
+        let {Imagedatasource}=this.state
+      Imagedatasource.push(source)
+        this.setState({ Imagedatasource });
       }
     });
   }
-  documentUpload = () => {
+
+  documentUpload = async () => {
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.pdf],
+      });
+      let {documentdatasource}=this.state
+      documentdatasource.push(res)
+        this.setState({ documentdatasource });
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        // User cancelled the picker, exit any dialogs or menus and move on
+      } else {
+        throw err;
+      }
+    }
+  };
+  documentUpload1 = () => {
     const options = {
       title: 'Select Image',
 
@@ -183,7 +199,11 @@ export default class Marketplace extends Component {
                   keyExtractor={(item, index) => index}
                   renderItem={({ item, index }) => {
                     return (
-                      <Image style={styles.buttonChildContainer} source={item} />
+                      <View style={[styles.buttonChildContainer,{justifyContent:'center',alignItems:'center'}]}>
+                        <Text>
+                          {'doc('+index+')'}
+                          </Text>
+                        </View>
                     )
                   }} />
               </View>
