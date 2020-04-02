@@ -23,6 +23,9 @@ import CreateAccount from '../Components/CreateAccount/CreateAccount';
 import Settings from '../Components/Settings/Settings';
 import Profile from '../Components/Profile/Profile';
 import OfferReceived from '../Components/OfferReceived/OfferReceived';
+import ProposalOffer from '../Components/ProposalOffer/ProposalOffer';
+import IdeaProposal from '../Components/IdeaProposal/IdeaProposal';
+import AdjustProposal from '../Components/AdjustProposal/AdjustPropsal';
 import ProposalOffer from '../Components/ProposalOffer/ProposalOffer'
 import Marketplace from '../Components/Marketplace/Marketplace'
 import IdeaDetails from '../Components/Marketplace/IdeaDetails'
@@ -43,6 +46,8 @@ const Main = () => {
             <MainStack.Screen name="Profile" component={Profile} />
             <MainStack.Screen name="OfferReceived" component={OfferReceived} />
             <MainStack.Screen name="ProposalOffer" component={ProposalOffer} />
+            <MainStack.Screen name="IdeaProposal" component={IdeaProposal} />
+            <MainStack.Screen name="AdjustProposal" component={AdjustProposal} />
             <MainStack.Screen name="Marketplace" component={Marketplace} />
             <MainStack.Screen name="IdeaDetails" component={IdeaDetails} />
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />

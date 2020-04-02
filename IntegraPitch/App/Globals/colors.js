@@ -3,5 +3,6 @@ export const phColor = "#3E3E3E"//
 export const colorWhite = '#FFFFFF';
 export const colorGrey = 'grey';
 export const textInputBgColor = 'rgba(255,255,255,.5)';
-export const cardBgColor = '#D3D3D3'
-
+export const cardBgColor = '#D3D3D3';
+export const Muli='Muli';
+export const MuliBold='Muli-Bold'

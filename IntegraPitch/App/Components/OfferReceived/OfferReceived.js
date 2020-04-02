@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, cardBgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, cardBgColor,Muli,MuliBold } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
 
     text:
     {
-        fontFamily: 'Muli-Bold',
+        fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
         color: colorBlack,
         marginTop: responsiveWidth(2),
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     {
         width: '50%',
         fontSize: responsiveFontSize(1.8),
-        fontFamily: 'Muli',
+        fontFamily: Muli,
         marginVertical: responsiveWidth(2)
 
     },
@@ -185,14 +185,14 @@ const styles = StyleSheet.create({
     {
 
         fontSize: responsiveFontSize(2.5),
-        fontFamily: 'Muli',
+        fontFamily: Muli,
         color: colorWhite,
 
     },
     daystext:
     {
         fontSize: responsiveFontSize(1.2),
-        fontFamily: 'Muli',
+        fontFamily: Muli,
         marginLeft: responsiveWidth(4.5),
         marginTop: responsiveWidth(1)
     }
