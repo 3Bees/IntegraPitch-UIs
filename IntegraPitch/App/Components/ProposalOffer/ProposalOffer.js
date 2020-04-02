@@ -16,7 +16,7 @@ export default class ProposalOffer extends Component {
     }
     componentDidMount = async () => {
 
-        setTimeout(() => {
+        setTimeout(() => { 
             // this.props.navigation.navigate('Auth');
         }, 3000);
     };
@@ -92,8 +92,8 @@ export default class ProposalOffer extends Component {
                             <Text style={styles.text}>
                                 Percentage Offer
                         </Text>
-                            <View style={{ flexDirection: 'row' }}>
-                                <Text>%</Text>
+                            <View style={{ flexDirection: 'row' ,height:responsiveHeight(6),alignItems:'center' }}>
+                            <Text style={styles.text}>%</Text>
                                 <TextInput style={styles.percentageextinput}
                                     placeholder={'Max. 15'}
                                     mode={'outlined'}
@@ -111,7 +111,7 @@ export default class ProposalOffer extends Component {
                                     }}
                                 />
                                 <Text>
-                                    Indicate how much of sales proceeding ypu worth it.
+                                    {'Indicate how much of sales proceeding ypu worth it.'}
                                </Text>
                             </View>
 
@@ -229,13 +229,11 @@ const styles = StyleSheet.create({
     },
     percentageextinput:
     {
-        margin: 0,
-        padding: 0,
-        height: responsiveHeight(6),
+        
+        height: responsiveHeight(5),
         backgroundColor: colorWhite,
         width: responsiveWidth(25),
         fontSize: responsiveFontSize(2),
-        paddingVertical: 0
     }
 
 

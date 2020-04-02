@@ -17,7 +17,7 @@ export default class OfferReceived extends Component {
                 days: '10d ago'
             },
             {
-                text: '',
+                text: '', 
                 image: '',
                 Percentage: "10%",
                 days: '10d ago'
@@ -60,7 +60,7 @@ export default class OfferReceived extends Component {
                         <Text style={styles.text}>Offers Received</Text>
                         <FlatList showsScrollIndicator='false'
                             data={this.state.data}
-
+                            keyExtractor={(item, index) => index}
                             renderItem={({ item }) => {
                                 return (
                                     <View style={styles.cardview}>

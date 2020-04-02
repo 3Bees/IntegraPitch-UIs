@@ -24,6 +24,9 @@ import Settings from '../Components/Settings/Settings';
 import Profile from '../Components/Profile/Profile';
 import OfferReceived from '../Components/OfferReceived/OfferReceived';
 import ProposalOffer from '../Components/ProposalOffer/ProposalOffer'
+import Marketplace from '../Components/Marketplace/Marketplace'
+import IdeaDetails from '../Components/Marketplace/IdeaDetails'
+import SharedIdeas from '../Components/Marketplace/SharedIdeas'
 
 
 console.disableYellowBox = true
@@ -32,13 +35,16 @@ const MainStack = createStackNavigator();
 const token = true
 const Main = () => {
     return (
-        <MainStack.Navigator initialRouteName="ProposalOffer" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Marketplace" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="CreateAccount" component={CreateAccount} />
             <MainStack.Screen name="Settings" component={Settings} />
             <MainStack.Screen name="Profile" component={Profile} />
             <MainStack.Screen name="OfferReceived" component={OfferReceived} />
             <MainStack.Screen name="ProposalOffer" component={ProposalOffer} />
+            <MainStack.Screen name="Marketplace" component={Marketplace} />
+            <MainStack.Screen name="IdeaDetails" component={IdeaDetails} />
+            <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
         </MainStack.Navigator>
     );
 
