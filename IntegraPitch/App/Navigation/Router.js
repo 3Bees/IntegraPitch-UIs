@@ -27,6 +27,7 @@ import ProposalOffer from '../Components/ProposalOffer/ProposalOffer'
 import Marketplace from '../Components/Marketplace/Marketplace'
 import IdeaDetails from '../Components/Marketplace/IdeaDetails'
 import SharedIdeas from '../Components/Marketplace/SharedIdeas'
+import SubmitNewIdea from '../Components/Marketplace/SubmitNewIdea'
 
 
 console.disableYellowBox = true
@@ -45,6 +46,7 @@ const Main = () => {
             <MainStack.Screen name="Marketplace" component={Marketplace} />
             <MainStack.Screen name="IdeaDetails" component={IdeaDetails} />
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
+            <MainStack.Screen name="SubmitNewIdea" component={SubmitNewIdea} />
         </MainStack.Navigator>
     );
 
