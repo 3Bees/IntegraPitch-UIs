@@ -92,7 +92,7 @@ export default class CreateAccount extends Component {
                     dateText: {
                       color: 'black',
                       fontSize: responsiveFontSize(1.8),
-                      fontFamily: 'Muli-Bold',
+                      fontFamily: MuliBold,
                       numberOfLines: 1
                     },
                   }}
