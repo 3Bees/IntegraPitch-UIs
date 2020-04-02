@@ -23,22 +23,24 @@ import CreateAccount from '../Components/CreateAccount/CreateAccount';
 import Settings from '../Components/Settings/Settings';
 import Profile from '../Components/Profile/Profile';
 import OfferReceived from '../Components/OfferReceived/OfferReceived';
-import ProposalOffer from '../Components/ProposalOffer/ProposalOffer'
-
-
+import ProposalOffer from '../Components/ProposalOffer/ProposalOffer';
+import IdeaProposal from '../Components/IdeaProposal/IdeaProposal';
+import AdjustProposal from '../Components/AdjustProposal/AdjustPropsal';
 console.disableYellowBox = true
 
 const MainStack = createStackNavigator();
 const token = true
 const Main = () => {
     return (
-        <MainStack.Navigator initialRouteName="ProposalOffer" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="CreateAccount" component={CreateAccount} />
             <MainStack.Screen name="Settings" component={Settings} />
             <MainStack.Screen name="Profile" component={Profile} />
             <MainStack.Screen name="OfferReceived" component={OfferReceived} />
             <MainStack.Screen name="ProposalOffer" component={ProposalOffer} />
+            <MainStack.Screen name="IdeaProposal" component={IdeaProposal} />
+            <MainStack.Screen name="AdjustProposal" component={AdjustProposal} />
         </MainStack.Navigator>
     );
 

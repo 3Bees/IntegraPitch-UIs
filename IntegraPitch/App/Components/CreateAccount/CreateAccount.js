@@ -3,10 +3,7 @@ import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, Touch
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite } from '../../Globals/colors';
-import { colorGrey } from '../../Globals/colors';
-import { colorBlack } from '../../Globals/colors';
-import PropTypes from 'prop-types';
+import { colorWhite,colorGrey,colorBlack,Muli,MuliBold } from '../../Globals/colors';
 //import { Dropdown } from 'react-native-material-dropdown';
 //import ModalDropdown from 'react-native-modal-dropdown';
 import DropdownMenu from 'react-native-dropdown-menu';
@@ -264,7 +261,7 @@ const styles = StyleSheet.create({
   },
   headertext:
   {
-    fontFamily: 'Muli-Bold',
+    fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.2),
     color: colorWhite,
   },
@@ -276,7 +273,7 @@ const styles = StyleSheet.create({
   },
   text:
   {
-    fontFamily: 'Muli-Bold',
+    fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
     color: colorBlack,
     marginTop: responsiveWidth(5),
@@ -295,7 +292,7 @@ const styles = StyleSheet.create({
   },
   checkboxtext:
   {
-    fontFamily: 'Muli',
+    fontFamily: Muli,
     fontSize: responsiveFontSize(2),
     color: colorGrey,
     marginTop: responsiveWidth(1)
@@ -318,7 +315,7 @@ const styles = StyleSheet.create({
   },
   buttontext:
   {
-    fontFamily: 'Muli',
+    fontFamily: Muli,
     color: colorWhite,
     fontSize: responsiveFontSize(2.5)
 
@@ -336,7 +333,7 @@ const styles = StyleSheet.create({
   text1:
   {
     color: colorGrey,
-    fontFamily: 'Muli',
+    fontFamily: Muli,
     marginLeft: responsiveWidth(4.5),
     fontSize: responsiveFontSize(2)
 

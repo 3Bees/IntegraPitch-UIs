@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, cardBgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
@@ -93,8 +93,10 @@ export default class ProposalOffer extends Component {
                                 Percentage Offer
                         </Text>
                             <View style={{ flexDirection: 'row' }}>
-                                <Text>%</Text>
-                                <TextInput style={styles.percentageextinput}
+                                <Text style={styles.percentagetext}>
+                                    %
+                                </Text>
+                                <TextInput style={styles.percentagetextinput}
                                     placeholder={'Max. 15'}
                                     mode={'outlined'}
                                     selectionColor={colorBlack}
@@ -110,15 +112,22 @@ export default class ProposalOffer extends Component {
                                         }
                                     }}
                                 />
-                                <Text>
-                                    Indicate how much of sales proceeding ypu worth it.
+                                <Text style={styles.proceedingtext}>
+                                    Indicate how much of sales proceeding you worth it.
                                </Text>
                             </View>
-
+                            <View style={{ marginVertical: responsiveWidth(4) }}>
+                                <Text style={styles.descriptiontext}>
+                                    If your proposal is not acceptable the document you uploaded will reamain your property
+                            </Text>
+                            </View>
+                            <TouchableOpacity style={styles.button}>
+                                <Text style={styles.buttontext}>SUBMIT OFFER</Text>
+                            </TouchableOpacity>
                         </View>
                     </ScrollView>
                 </View>
-            </CustomSafeAreaView>
+            </CustomSafeAreaView >
         );
     }
 }
@@ -167,7 +176,7 @@ const styles = StyleSheet.create({
 
     text:
     {
-        fontFamily: 'Muli-Bold',
+        fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
         color: colorBlack,
         marginTop: responsiveWidth(2),
@@ -177,7 +186,7 @@ const styles = StyleSheet.create({
     },
     offertext:
     {
-        fontFamily: 'Muli',
+        fontFamily: Muli,
         fontSize: responsiveFontSize(2),
         color: colorGrey,
 
@@ -212,7 +221,7 @@ const styles = StyleSheet.create({
     descriptiontext:
     {
 
-        fontFamily: 'Muli',
+        fontFamily: Muli,
         fontSize: responsiveFontSize(1.9),
         color: colorGrey,
 
@@ -227,16 +236,49 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(1.8),
         paddingVertical: 0
     },
-    percentageextinput:
+    percentagetextinput:
     {
-        margin: 0,
-        padding: 0,
-        height: responsiveHeight(6),
         backgroundColor: colorWhite,
         width: responsiveWidth(25),
+        height: responsiveHeight(6),
         fontSize: responsiveFontSize(2),
-        paddingVertical: 0
-    }
+    },
+    proceedingtext:
+    {
+        fontFamily: Muli,
+        fontSize: responsiveFontSize(1.9),
+        color: colorGrey,
+        width: responsiveWidth(50),
+        marginLeft: responsiveWidth(2.5),
+        marginTop: responsiveWidth(2)
+    },
+    percentagetext:
+    {
+        fontFamily: Muli,
+        fontSize: responsiveFontSize(3),
+        color: colorBlack,
+        width: responsiveWidth(10),
+        marginRight: responsiveWidth(-3),
+        marginTop: responsiveWidth(4)
+    },
+    button:
+    {
+        width: responsiveWidth(70),
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colorGrey,
+        height: responsiveHeight(7),
+        marginVertical: responsiveWidth(2),
+        borderRadius: responsiveWidth(1)
+    },
+    buttontext:
+    {
+        fontFamily: Muli,
+        color: colorWhite,
+        fontSize: responsiveFontSize(2.5)
+
+    },
 
 
 });

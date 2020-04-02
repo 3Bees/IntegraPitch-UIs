@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image,CheckBox } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
 export default class Profile extends Component {
 
   state = {
-    email:'',
-    phone:'',
+    email: '',
+    phone: '',
     name: '',
     dob: '',
     mailaddress: '',
@@ -18,7 +19,36 @@ export default class Profile extends Component {
     nickname: '',
     portfolio: '',
     creator: '',
-   }
+  }
+  image = () => {
+    const options = {
+      title: 'Select Image',
+
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = { uri: response.uri };
+
+
+        this.setState({
+          avatarSource: source,
+        });
+      }
+    });
+  }
+
   componentDidMount = async () => {
 
     setTimeout(() => {
@@ -26,7 +56,6 @@ export default class Profile extends Component {
     }, 3000);
   };
   render() {
-    const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
         <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
@@ -39,32 +68,52 @@ export default class Profile extends Component {
               <Text style={styles.headertext}>Profile</Text>
             </View>
           </View>
-          <View style={styles.body}>
-            <TouchableOpacity >
-              <Image source={require('../../Assets/girl.jpg')} style={styles.profileimage} ></Image>
-            </TouchableOpacity>
-            <View style={styles.emailwrapper}>
-              <TextInput style={styles.emailtextinput}
-                placeholder={'ADD EMAIL'}
+          <ScrollView>
+            <View style={styles.body}>
+              <TouchableOpacity onPress={() => this.image()}>
+                <Image source={require('../../Assets/girl.jpg')} style={styles.profileimage} ></Image>
+              </TouchableOpacity>
+              <View style={styles.emailwrapper}>
+                <TextInput style={styles.emailtextinput}
+                  placeholder={'ADD EMAIL'}
+                  mode={'outlined'}
+                  selectionColor={colorBlack}
+                  onChangeText={email => this.setState({ email })}
+                  value={this.state.email}
+                  underlineColorAndroid='transparent'
+                  theme={{
+                    colors: {
+                      placeholder: colorGrey,
+                      primary: colorGrey,
+                      underlineColor: 'transparent',
+                    }
+                  }}
+                />
+                <TextInput style={styles.emailtextinput}
+                  placeholder={'ADD PHONE'}
+                  mode={'outlined'}
+                  selectionColor={colorBlack}
+                  onChangeText={phone => this.setState({ phone })}
+                  value={this.state.phone}
+                  underlineColorAndroid='transparent'
+                  theme={{
+                    colors: {
+                      placeholder: colorGrey,
+                      primary: colorGrey,
+                      // text: 'grey',
+                      underlineColor: 'transparent',
+                    }
+                  }}
+                />
+              </View>
+              <Text style={styles.text}>Internal profile</Text>
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Name Surname'}
                 mode={'outlined'}
                 selectionColor={colorBlack}
-                onChangeText={email => this.setState({email })}
-                value={this.state.email}
-                underlineColorAndroid='transparent'
-                theme={{
-                  colors: {
-                    placeholder: colorGrey,
-                    primary: colorGrey,
-                    underlineColor: 'transparent',
-                  }
-                }}
-              />
-              <TextInput style={styles.emailtextinput}
-                placeholder={'ADD PHONE'}
-                mode={'outlined'}
-                selectionColor={colorBlack}
-                onChangeText={phone => this.setState({ phone })}
-                value={this.state.phone}
+                onChangeText={name => this.setState({ name })}
+                value={this.state.name}
                 underlineColorAndroid='transparent'
                 theme={{
                   colors: {
@@ -75,130 +124,111 @@ export default class Profile extends Component {
                   }
                 }}
               />
-            </View>
-            <Text style={styles.text}>Internal profile</Text>
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Name Surname'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={name => this.setState({ name })}
-              value={this.state.name}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'MM-DD-YYYY'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={dob => this.setState({ dob })}
-              value={this.state.dob}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'address@mail.com'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={mailaddress => this.setState({ mailaddress })}
-              value={this.state.mailaddress}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorBlack,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Replace ID'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={uploadid => this.setState({ uploadid })}
-              value={this.state.uploadid}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorBlack,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <Text style={styles.text}>Public profile</Text>
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Nickname'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={nickname => this.setState({ nickname })}
-              value={this.state.nickname}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorBlack,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Portfolio'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={portfolio => this.setState({ portfolio })}
-              value={this.state.portfolio}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Tecnologies'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={interests => this.setState({ interests })}
-              value={this.state.interests}
-              underlineColorAndroid='transparent'
-              multiline={true}
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            {/* <View style={styles.dropdown}>
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'MM-DD-YYYY'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={dob => this.setState({ dob })}
+                value={this.state.dob}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'address@mail.com'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={mailaddress => this.setState({ mailaddress })}
+                value={this.state.mailaddress}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Replace ID'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={uploadid => this.setState({ uploadid })}
+                value={this.state.uploadid}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <Text style={styles.text}>Public profile</Text>
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Nickname'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={nickname => this.setState({ nickname })}
+                value={this.state.nickname}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Portfolio'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={portfolio => this.setState({ portfolio })}
+                value={this.state.portfolio}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Tecnologies'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={interests => this.setState({ interests })}
+                value={this.state.interests}
+                underlineColorAndroid='transparent'
+                multiline={true}
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              {/* <View style={styles.dropdown}>
               <DropdownMenu
                 style={{ flex: 1 }}
                 bgColor={'red'}
@@ -215,7 +245,7 @@ export default class Profile extends Component {
               </DropdownMenu>
 
             </View> */}
-            {/* <ModalDropdown
+              {/* <ModalDropdown
                 showsVerticalScrollIndicator={false}
                 textStyle={styles.text1}
                 defaultValue="I'm a..."
@@ -231,7 +261,7 @@ export default class Profile extends Component {
                 options={['Singer', 'Musician', 'Athlete', 'Footballer', 'Blogger', 'Influencer']}>
 
               </ModalDropdown> */}
-            {/* <Dropdown
+              {/* <Dropdown
                 label='Favorite Fruit'
                 data={[{
                   value: 'Banana',
@@ -242,15 +272,15 @@ export default class Profile extends Component {
                 }]}
               /> */}
 
-            <View style={{ flexDirection: 'row' }}>
-              <CheckBox style={styles.checkbox}
-                value={this.state.checked}
-                onValueChange={() => this.setState({ checked: !this.state.checked })}
-              />
-              <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
+              <View style={{ flexDirection: 'row' }}>
+                <CheckBox style={styles.checkbox}
+                  value={this.state.checked}
+                  onValueChange={() => this.setState({ checked: !this.state.checked })}
+                />
+                <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
+              </View>
             </View>
-          </View>
-
+          </ScrollView>
         </View>
       </CustomSafeAreaView>
     );
@@ -309,7 +339,7 @@ const styles = StyleSheet.create({
   },
   text:
   {
-    fontFamily: 'Muli-Bold',
+    fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
     color: colorBlack,
     marginTop: responsiveWidth(2),
@@ -322,14 +352,14 @@ const styles = StyleSheet.create({
     padding: 0,
     height: responsiveHeight(5),
     backgroundColor: colorWhite,
-   // marginTop: responsiveWidth(1),
+    // marginTop: responsiveWidth(1),
     width: responsiveWidth(30),
     fontSize: responsiveFontSize(1.5)
     //borderColor:'black'
   },
-  emailwrapper:{
-    flexDirection:'row',
-    width:'100%',
+  emailwrapper: {
+    flexDirection: 'row',
+    width: '100%',
     justifyContent: "space-around",
   },
   textinput:
@@ -344,7 +374,7 @@ const styles = StyleSheet.create({
   },
   checkboxtext:
   {
-    fontFamily: 'Muli',
+    fontFamily: Muli,
     fontSize: responsiveFontSize(2),
     color: colorGrey,
     marginTop: responsiveWidth(1)
