@@ -54,7 +54,7 @@ export default class Marketplace extends Component {
                     onPress={() => this.props.navigation.navigate('IdeaDetails')}
                   >
                     <Text style={styles.ideaTextStyle}>Idea title</Text>
-                    <Image style={styles.ideaImageStyle} source={require('../../Assets/idea.png')} />
+                    <Image style={styles.ideaImageStyle} source={require('../../Assets/idea2.png')} />
                     <Text style={styles.ideaTextStyle1} numberOfLines={3} textBreakStrategy={'highQuality'}>SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes. </Text>
                     <View style={styles.ideaButtonParentContainer1}>
                       <TouchableOpacity style={styles.ideabuttonChildContainer1}>

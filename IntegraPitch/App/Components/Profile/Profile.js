@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox,ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, ScrollView, FlatList, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite, colorGrey, colorBlack, Muli, MuliBold } from '../../Globals/colors';
@@ -20,6 +20,31 @@ export default class Profile extends Component {
     nickname: '',
     portfolio: '',
     creator: '',
+    modalVisible: false,
+    category: [
+      {
+        name: 'Creator 1',
+        flag: true
+      },
+      {
+        name: 'Creator 2',
+        flag: false
+      },
+      {
+        name: 'Creator 3',
+        flag: false
+      },
+      {
+        name: 'Creator 4',
+        flag: false
+      },
+      {
+        name: 'Creator 5',
+        flag: false
+      },
+
+    ],
+    selected: 'Creator',
   }
   image = () => {
     const options = {
@@ -50,6 +75,20 @@ export default class Profile extends Component {
     });
   }
 
+  async modalStateChange(index) {
+    let array = this.state.category
+
+    await array.map((item, i) => {
+      if (index === i) {
+        item.flag = true
+        this.setState({ selected: item.name })
+      }
+      else {
+        item.flag = false
+      }
+    })
+    this.setState({ category: array }, () => this.setState({ modalVisible: false }));
+  }
   componentDidMount = async () => {
 
     setTimeout(() => {
@@ -139,8 +178,8 @@ export default class Profile extends Component {
                   cancelBtnText="Cancel"
                   minuteInterval={10}
                   customStyles={{
-                    placeholderText:{
-                      color:colorGrey,
+                    placeholderText: {
+                      color: colorGrey,
                       fontSize: responsiveFontSize(1.6),
                     },
                     dateInput: {
@@ -176,7 +215,7 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                  
+
                     underlineColor: 'transparent',
                   }
                 }}
@@ -233,6 +272,18 @@ export default class Profile extends Component {
                   }
                 }}
               />
+
+
+              <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width: responsiveWidth(90), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
+                onPress={() => {
+                  this.setState({ modalVisible: true });
+                }}
+              >
+                <Text style={{ marginLeft: responsiveWidth(4), color: colorBlack }}>
+                  {this.state.selected}
+                </Text>
+                <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />
+              </TouchableOpacity>
               <TextInput style={styles.textinput}
                 // label='Email'
                 placeholder={'Tecnologies'}
@@ -251,49 +302,8 @@ export default class Profile extends Component {
                   }
                 }}
               />
-              {/* <View style={styles.dropdown}>
-              <DropdownMenu
-                style={{ flex: 1 }}
-                bgColor={'red'}
-                tintColor={'#666666'}
-                activityTintColor={'green'}
-                // arrowImg={}      
-                // checkImage={}   
-                // optionTextStyle={{color: '#333333'}}
-                // titleStyle={{color: '#333333'}} 
-                maxHeight={responsiveHeight(100)}
-                handler={(selection, row) => this.setState({ text: data[selection][row] })}
-                data={data}
-              >
-              </DropdownMenu>
 
-            </View> */}
-              {/* <ModalDropdown
-                showsVerticalScrollIndicator={false}
-                textStyle={styles.text1}
-                defaultValue="I'm a..."
-                dropdownTextStyle={{ backgroundColor: '#fff', color: 'grey' }}
-                dropdownStyle={{
 
-                  width: '90%',
-                  marginBottom: responsiveHeight(4),
-
-                  backgroundColor: '#fff',
-                }}
-
-                options={['Singer', 'Musician', 'Athlete', 'Footballer', 'Blogger', 'Influencer']}>
-
-              </ModalDropdown> */}
-              {/* <Dropdown
-                label='Favorite Fruit'
-                data={[{
-                  value: 'Banana',
-                }, {
-                  value: 'Mango',
-                }, {
-                  value: 'Pear',
-                }]}
-              /> */}
 
               <View style={{ flexDirection: 'row' }}>
                 <CheckBox style={styles.checkbox}
@@ -309,6 +319,40 @@ export default class Profile extends Component {
             </TouchableOpacity>
           </ScrollView>
         </View>
+        <Modal
+          visible={this.state.modalVisible}
+          // onPressOut={()=>this.setState({ modalVisible:false  })}
+          onRequestClose={() => this.setState({ modalVisible: false })}
+          animationType="fade"
+          transparent={true}
+
+        >
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,.8)' }}>
+            <View style={{ backgroundColor: colorWhite, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                style={{ marginBottom: responsiveHeight(1) }}
+                data={this.state.category}
+                keyExtractor={(item, index) => index}
+                renderItem={({ item, index }) => {
+                  return (
+                    <TouchableOpacity style={{ borderBottomWidth: .4, borderBottomColor: colorGrey, marginTop: responsiveHeight(1), height: responsiveHeight(6), width: '95%', alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}
+                      onPress={() => this.modalStateChange(index)}
+                    >
+                      <Text style={{ marginLeft: responsiveWidth(2), color: item.flag ? colorBlack : colorGrey }}>
+                        {item.name}
+                      </Text>
+                      <CheckBox style={{}}
+                        value={item.flag}
+                        onValueChange={() => { this.modalStateChange(index) }}
+                      />
+                    </TouchableOpacity>
+                  )
+                }}></FlatList>
+
+            </View>
+          </View>
+        </Modal>
       </CustomSafeAreaView>
     );
   }
@@ -382,7 +426,7 @@ const styles = StyleSheet.create({
     // marginTop: responsiveWidth(1),
     width: responsiveWidth(30),
     fontSize: responsiveFontSize(1.5),
-    justifyContent:'center',
+    justifyContent: 'center',
     //borderColor:'black'
   },
   emailwrapper: {
@@ -394,7 +438,7 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    
+
     height: responsiveHeight(7),
     backgroundColor: colorWhite,
     marginTop: responsiveWidth(1),

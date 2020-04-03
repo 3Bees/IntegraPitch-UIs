@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, CheckBox } from 'react-native';
+import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, CheckBox, Modal, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
@@ -18,8 +18,33 @@ export default class CreateAccount extends Component {
     nickname: '',
     portfolio: '',
     interests: '',
-    category: '',
+
     setSelectedValue: '',
+    modalVisible: false,
+    category: [
+      {
+        name: 'Option 1',
+        flag: true
+      },
+      {
+        name: 'Option 2',
+        flag: false
+      },
+      {
+        name: 'Option 3',
+        flag: false
+      },
+      {
+        name: 'Option 4',
+        flag: false
+      },
+      {
+        name: 'Option 5',
+        flag: false
+      },
+
+    ],
+    selected: 'I am a…',
     text: ''
   }
   componentDidMount = async () => {
@@ -27,8 +52,22 @@ export default class CreateAccount extends Component {
       // this.props.navigation.navigate('Auth');
     }, 3000);
   };
+  async modalStateChange(index) {
+    let array = this.state.category
+
+    await array.map((item, i) => {
+      if (index === i) {
+        item.flag = true
+        this.setState({ selected: item.name })
+      }
+      else {
+        item.flag = false
+      }
+    })
+    this.setState({ category: array }, () => this.setState({ modalVisible: false }));
+  }
   render() {
-    const data = [["C", 'd', 'e']];
+
 
     return (
       <CustomSafeAreaView>
@@ -61,9 +100,9 @@ export default class CreateAccount extends Component {
                 }
               }}
             />
-            <View style={[styles.dropdown,{alignItems:'center',justifyContent:'flex-start'}]}>
+            <View style={[styles.dropdown, { alignItems: 'center', justifyContent: 'flex-start' }]}>
               <DatePicker
-                
+
                 date={this.state.date}
                 mode="date"
                 androidMode='spinner'
@@ -74,25 +113,25 @@ export default class CreateAccount extends Component {
                 cancelBtnText="Cancel"
                 minuteInterval={10}
                 customStyles={{
-                
+
                   placeholderText: {
                     color: colorGrey,
                     fontSize: responsiveFontSize(1.6),
                   },
                   dateInput: {
-                    marginStart:15,
+                    marginStart: 15,
                     // backgroundColor:'red',
-                    width:'100%',
-                    alignItems:'flex-start',
+                    width: '100%',
+                    alignItems: 'flex-start',
                     height: '100%',
                     borderWidth: 0,
                   },
-                  
+
                   dateText: {
                     color: 'black',
                     fontSize: responsiveFontSize(1.8),
                     fontFamily: 'Muli-Bold',
-                    textAlign:'center',
+                    textAlign: 'center',
                     numberOfLines: 1
                   },
                 }}
@@ -174,62 +213,16 @@ export default class CreateAccount extends Component {
                 }
               }}
             />
-            <View style={styles.dropdown}>
-              {/* <View style={{ flex: .5 }}>
-                <Text>
-                  {this.state.text} is the best language in the world
-            </Text>
-              </View>
-              <DropdownMenu
-                style={{ flex: 1 }}
-                bgColor={'white'}
-                tintColor={'#666666'}
-                activityTintColor={'green'}
-                // arrowImg={}      
-                // checkImage={}   
-                // optionTextStyle={{color: '#333333'}}
-                // titleStyle={{color: '#333333'}} 
-                // maxHeight={300} 
-                handler={(selection, row) => this.setState({ text: data[selection][row] })}
-                data={data}
-              >
-
-                <View style={{ flex: 1 }}>
-                  <Text>
-                    {this.state.text} is the best language in the world
-            </Text>
-                </View>
-
-              </DropdownMenu> */}
-
-              {/* <ModalDropdown
-                showsVerticalScrollIndicator={false}
-                textStyle={styles.text1}
-                defaultValue="I'm a..."
-                dropdownTextStyle={{ backgroundColor: '#fff', color: 'grey' }} 
-                dropdownStyle={{
-
-                  width: '90%',
-                  marginBottom: responsiveHeight(4),
-
-                  backgroundColor: '#fff',
-                }}
-
-                options={['Singer', 'Musician', 'Athlete', 'Footballer', 'Blogger', 'Influencer']}>
-
-              </ModalDropdown> */}
-            </View>
-
-            {/* <Dropdown
-                label='Favorite Fruit'
-                data={[{
-                  value: 'Banana',
-                }, {
-                  value: 'Mango',
-                }, {
-                  value: 'Pear',
-                }]}
-              /> */}
+            <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width: responsiveWidth(90), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
+              onPress={() => {
+                this.setState({ modalVisible: true });
+              }}
+            >
+              <Text style={{ marginLeft: responsiveWidth(4), color: colorBlack }}>
+                {this.state.selected}
+              </Text>
+              <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30}  style={{marginRight:responsiveWidth(3)}}/>
+            </TouchableOpacity>
 
             <View style={{ flexDirection: 'row' }}>
               <CheckBox style={styles.checkbox}
@@ -242,9 +235,41 @@ export default class CreateAccount extends Component {
               <Text style={styles.buttontext}>Sign Up</Text>
             </TouchableOpacity>
           </View>
-
-
         </View>
+        <Modal
+          visible={this.state.modalVisible}
+          // onPressOut={()=>this.setState({ modalVisible:false  })}
+          onRequestClose={() => this.setState({ modalVisible: false })}
+          animationType="fade"
+          transparent={true}
+
+        >
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,.8)' }}>
+            <View style={{ backgroundColor: colorWhite, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                style={{ marginBottom: responsiveHeight(1) }}
+                data={this.state.category}
+                keyExtractor={(item, index) => index}
+                renderItem={({ item, index }) => {
+                  return (
+                    <TouchableOpacity style={{ borderBottomWidth: .4, borderBottomColor: colorGrey, marginTop: responsiveHeight(1), height: responsiveHeight(6), width: '95%', alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}
+                    onPress={()=> this.modalStateChange(index) }
+                    >
+                      <Text style={{ marginLeft: responsiveWidth(2), color: item.flag ? colorBlack : colorGrey }}>
+                        {item.name}
+                      </Text>
+                      <CheckBox style={{}}
+                        value={item.flag}
+                        onValueChange={() => { this.modalStateChange(index) }}
+                      />
+                    </TouchableOpacity>
+                  )
+                }}></FlatList>
+
+            </View>
+          </View>
+        </Modal>
       </CustomSafeAreaView>
     );
   }

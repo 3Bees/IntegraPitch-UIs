@@ -44,7 +44,7 @@ export default class Marketplace extends Component {
 
             <View style={styles.ideaMainCard} >
               <Text style={styles.ideaTextStyle}>Idea title</Text>
-              <Image style={styles.ideaImageStyle} source={require('../../Assets/idea.png')} />
+              <Image style={styles.ideaImageStyle} source={require('../../Assets/idea2.png')} />
               <View style={styles.buttonParentContainer}>
                 <FlatList
                   horizontal={true}

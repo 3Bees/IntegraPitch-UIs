@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList, ScrollView, CheckBox } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList, ScrollView, CheckBox,Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
@@ -12,7 +12,47 @@ import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
 export default class Marketplace extends Component {
 
-  state = { flag1: false, flag2: true, flag3: false, Imagedatasource: [], documentdatasource: [] }
+  state = { flag1: false, flag2: true, flag3: false, Imagedatasource: [], documentdatasource: [] ,
+    modalVisible: false,
+    category: [
+      {
+        name: 'categories 1',
+        flag: true
+      },
+      {
+        name: 'categories 2',
+        flag: false
+      },
+      {
+        name: 'categories 3',
+        flag: false
+      },
+      {
+        name: 'categories 4',
+        flag: false
+      },
+      {
+        name: 'categories 5',
+        flag: false
+      },
+
+    ],
+    selected: 'Choose categories...',
+  }
+  async modalStateChange(index) {
+    let array = this.state.category
+
+    await array.map((item, i) => {
+      if (index === i) {
+        item.flag = true
+        this.setState({ selected: item.name })
+      }
+      else {
+        item.flag = false
+      }
+    })
+    this.setState({ category: array }, () => this.setState({ modalVisible: false }));
+  }
   imageUpload = () => {
     const options = {
       title: 'Select Image',
@@ -251,8 +291,16 @@ export default class Marketplace extends Component {
 
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Idea Category</Text>
-              <View style={{ height: responsiveHeight(7), width: '100%', borderRadius: responsiveWidth(1), borderWidth: 1, marginTop: responsiveHeight(1) }}>
-              </View>
+              <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width: responsiveWidth(90), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
+              onPress={() => {
+                this.setState({ modalVisible: true });
+              }}
+            >
+              <Text style={{ marginLeft: responsiveWidth(4), color: colorBlack }}>
+                {this.state.selected}
+              </Text>
+              <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30}  style={{marginRight:responsiveWidth(3)}}/>
+            </TouchableOpacity>
             </View>
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Bid Pricing</Text>
@@ -342,6 +390,41 @@ export default class Marketplace extends Component {
 
           </ScrollView>
         </View>
+
+        <Modal
+          visible={this.state.modalVisible}
+          // onPressOut={()=>this.setState({ modalVisible:false  })}
+          onRequestClose={() => this.setState({ modalVisible: false })}
+          animationType="fade"
+          transparent={true}
+
+        >
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,.8)' }}>
+            <View style={{ backgroundColor: colorWhite, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                style={{ marginBottom: responsiveHeight(1) }}
+                data={this.state.category}
+                keyExtractor={(item, index) => index}
+                renderItem={({ item, index }) => {
+                  return (
+                    <TouchableOpacity style={{ borderBottomWidth: .4, borderBottomColor: colorGrey, marginTop: responsiveHeight(1), height: responsiveHeight(6), width: '95%', alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}
+                    onPress={()=> this.modalStateChange(index) }
+                    >
+                      <Text style={{ marginLeft: responsiveWidth(2), color: item.flag ? colorBlack : colorGrey }}>
+                        {item.name}
+                      </Text>
+                      <CheckBox style={{}}
+                        value={item.flag}
+                        onValueChange={() => { this.modalStateChange(index) }}
+                      />
+                    </TouchableOpacity>
+                  )
+                }}></FlatList>
+
+            </View>
+          </View>
+        </Modal>
       </CustomSafeAreaView>
     );
   }
