@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, ScrollView, FlatList, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor, bgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Button, TextInput } from 'react-native-paper';
@@ -109,7 +109,7 @@ export default class Profile extends Component {
               <Text style={styles.headertext}>Profile</Text>
             </View>
           </View>
-          <ScrollView>
+          <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
             <View style={styles.body}>
               <TouchableOpacity onPress={() => this.image()} style={styles.profileimage}>
                 <Image source={require('../../Assets/girl.jpg')} style={styles.profileimage} ></Image>
@@ -120,7 +120,7 @@ export default class Profile extends Component {
                   mode={'outlined'}
                   
                   keyboardType={'email-address'}
-                  selectionColor={colorBlack}
+                 selectionColor={colorWhite}
                   onChangeText={email => this.setState({ email })}
                   value={this.state.email}
                   underlineColorAndroid='transparent'
@@ -137,7 +137,7 @@ export default class Profile extends Component {
                   placeholder={'ADD PHONE'}
                   keyboardType={'numeric'}
                   mode={'outlined'}
-                  selectionColor={colorBlack}
+                 selectionColor={colorWhite}
                   onChangeText={phone => this.setState({ phone })}
                   value={this.state.phone}
                   underlineColorAndroid='transparent'
@@ -158,7 +158,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Name Surname'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+               selectionColor={colorWhite}
                 onChangeText={name => this.setState({ name })}
                 value={this.state.name}
                 underlineColorAndroid='transparent'
@@ -213,7 +213,7 @@ export default class Profile extends Component {
                 placeholder={'address@mail.com'}
                 keyboardType={'email-address'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+               selectionColor={colorWhite}
                 onChangeText={mailaddress => this.setState({ mailaddress })}
                 value={this.state.mailaddress}
                 underlineColorAndroid='transparent'
@@ -230,7 +230,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Replace ID'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+               selectionColor={colorWhite}
                 onChangeText={uploadid => this.setState({ uploadid })}
                 value={this.state.uploadid}
                 underlineColorAndroid='transparent'
@@ -238,7 +238,7 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    text:colorWhite,
+                    text: colorWhite,
                     // text: 'grey',
                     underlineColor: 'transparent',
                   }
@@ -249,7 +249,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Nickname'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+               selectionColor={colorWhite}
                 onChangeText={nickname => this.setState({ nickname })}
                 value={this.state.nickname}
                 underlineColorAndroid='transparent'
@@ -267,7 +267,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Portfolio'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+                selectionColor={colorWhite}
                 onChangeText={portfolio => this.setState({ portfolio })}
                 value={this.state.portfolio}
                 underlineColorAndroid='transparent'
@@ -285,13 +285,13 @@ export default class Profile extends Component {
 
               <TouchableOpacity style={{
                 height: responsiveHeight(7),
-                flexDirection: 'row', width: responsiveWidth(90),
+                flexDirection: 'row', width: responsiveWidth(88),
                 alignSelf: 'center', alignItems: 'center',
                 justifyContent: 'space-between',
                 marginTop: responsiveHeight(1),
                 marginBottom: responsiveHeight(1),
                 borderRadius: responsiveWidth(1), borderWidth: 1,
-                borderColor: colorGrey
+                borderColor: colorGrey,
               }}
                 onPress={() => {
                   this.setState({ modalVisible: true });
@@ -306,7 +306,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Tecnologies'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+               selectionColor={colorWhite}
                 onChangeText={interests => this.setState({ interests })}
                 value={this.state.interests}
                 underlineColorAndroid='transparent'
@@ -379,7 +379,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: cardBgColor
+    backgroundColor: bgColor
   },
   header: {
     backgroundColor: colorGrey,
@@ -411,11 +411,15 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.2),
     color: colorWhite,
   },
-  body:
-  {
-    width: responsiveWidth(90),
+  MainContainer: {
+    width: responsiveWidth(92),
+    marginTop:responsiveHeight(1),
+    marginBottom:responsiveHeight(2),
+    borderRadius:responsiveWidth(1),
+    paddingStart:responsiveWidth(2),
+    paddingEnd:responsiveWidth(2),
     alignSelf: 'center',
-
+     backgroundColor:cardBgColor
   },
   profileimage:
   {

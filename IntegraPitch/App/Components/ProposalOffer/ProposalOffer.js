@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold, bgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
@@ -103,7 +103,7 @@ export default class ProposalOffer extends Component {
                             </Text>
                         </View>
                     </View>
-                    <ScrollView>
+                    <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
                         <View style={styles.body}>
 
                             <Text style={styles.text}>Proposal Offer</Text>
@@ -114,7 +114,7 @@ export default class ProposalOffer extends Component {
                                 <TextInput style={styles.statustextinput}
                                     placeholder={'STATUS'}
                                     mode={'outlined'}
-                                    selectionColor={colorBlack}
+                                    selectionColor={colorWhite}
                                     onChangeText={status => this.setState({ status })}
                                     value={this.state.status}
                                     underlineColorAndroid='transparent'
@@ -123,6 +123,7 @@ export default class ProposalOffer extends Component {
                                             placeholder: colorGrey,
                                             primary: colorGrey,
                                             underlineColor: 'transparent',
+                                            text:colorWhite
                                         }
                                     }}
                                 />
@@ -141,7 +142,7 @@ export default class ProposalOffer extends Component {
                             <TextInput style={styles.ideatextinput}
                                 placeholder={'Convince the owner on how this idea can be improved to increase its value'}
                                 mode={'outlined'}
-                                selectionColor={colorBlack}
+                                selectionColor={colorWhite}
                                 onChangeText={convinceText => this.setState({ convinceText })}
                                 value={this.state.convinceText}
                                 underlineColorAndroid='transparent'
@@ -151,6 +152,7 @@ export default class ProposalOffer extends Component {
                                         placeholder: colorGrey,
                                         primary: colorGrey,
                                         underlineColor: 'transparent',
+                                        text:colorWhite
                                     }
                                 }}
                             />
@@ -190,7 +192,7 @@ export default class ProposalOffer extends Component {
                                 <TextInput style={styles.percentagetextinput}
                                     placeholder={'Max. 15'}
                                     mode={'outlined'}
-                                    selectionColor={colorBlack}
+                                    selectionColor={colorWhite}
                                     onChangeText={percentageText => this.setState({ percentageText })}
                                     value={this.state.percentageText}
                                     underlineColorAndroid='transparent'
@@ -200,6 +202,7 @@ export default class ProposalOffer extends Component {
                                             placeholder: colorGrey,
                                             primary: colorGrey,
                                             underlineColor: 'transparent',
+                                            text:colorWhite
                                         }
                                     }}
                                 />
@@ -226,7 +229,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: cardBgColor
+        backgroundColor: bgColor
     },
     header: {
         backgroundColor: colorGrey,
@@ -258,12 +261,16 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(2.2),
         color: colorWhite,
     },
-    body:
-    {
-        width: responsiveWidth(90),
+    MainContainer: {
+        width: responsiveWidth(92),
+        marginTop:responsiveHeight(1),
+        marginBottom:responsiveHeight(2),
+        borderRadius:responsiveWidth(1),
+        paddingStart:responsiveWidth(2),
+        paddingEnd:responsiveWidth(2),
         alignSelf: 'center',
-
-    },
+         backgroundColor:cardBgColor
+      },
 
     text:
     {

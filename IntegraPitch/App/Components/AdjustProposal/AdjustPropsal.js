@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold, bgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
@@ -100,7 +100,7 @@ export default class AdjustProposal extends Component {
                             </Text>
                         </View>
                     </View>
-                    <ScrollView>
+                    <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
                         <View style={styles.body}>
 
                             <Text style={styles.text}>Adjust Proposal</Text>
@@ -124,7 +124,7 @@ export default class AdjustProposal extends Component {
                                 <TextInput style={styles.summarytextinput}
                                     placeholder={"Describe in detail how do you plan to meet creator's requiremnts"}
                                     mode={'outlined'}
-                                    selectionColor={colorBlack}
+                                    selectionColor={colorWhite}
                                     onChangeText={summary => this.setState({ summary })}
                                     value={this.state.summary}
                                     underlineColorAndroid='transparent'
@@ -134,6 +134,7 @@ export default class AdjustProposal extends Component {
                                             placeholder: colorGrey,
                                             primary: colorGrey,
                                             underlineColor: 'transparent',
+                                            text:colorWhite
                                         }
                                     }}
                                 />
@@ -177,7 +178,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: cardBgColor
+        backgroundColor: bgColor
     },
     header: {
         backgroundColor: colorGrey,
@@ -209,12 +210,16 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(2.2),
         color: colorWhite,
     },
-    body:
-    {
-        width: responsiveWidth(90),
+    MainContainer: {
+        width: responsiveWidth(92),
+        marginTop:responsiveHeight(1),
+        marginBottom:responsiveHeight(2),
+        borderRadius:responsiveWidth(1),
+        paddingStart:responsiveWidth(2),
+        paddingEnd:responsiveWidth(2),
         alignSelf: 'center',
-
-    },
+         backgroundColor:cardBgColor
+      },
 
     text:
     {
@@ -274,7 +279,7 @@ const styles = StyleSheet.create({
         padding: 0,
         // height: responsiveHeight(6),
         backgroundColor: cardBgColor,
-        width: responsiveWidth(90),
+        width: responsiveWidth(88),
         height: '100%',
         fontSize: responsiveFontSize(2.2),
     },
