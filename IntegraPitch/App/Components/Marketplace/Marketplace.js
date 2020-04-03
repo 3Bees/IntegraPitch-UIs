@@ -16,6 +16,21 @@ export default class Marketplace extends Component {
       // this.props.navigation.navigate('Auth');
     }, 3000);
   };
+  renderHeader(props) {
+    return (<View style={styles.buttonParentContainer}>
+      <TouchableOpacity style={styles.buttonChildContainer}
+        onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
+      >
+        <Text style={styles.buttonTextStyle}>Row</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonChildContainer}>
+        <Text style={styles.buttonTextStyle}>Sketched</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonChildContainer}>
+        <Text style={styles.buttonTextStyle}>Prototyped</Text>
+      </TouchableOpacity>
+    </View>)
+  }
   render() {
     const { flag1, flag2, flag3 } = this.state
     return (
@@ -30,22 +45,12 @@ export default class Marketplace extends Component {
           <View style={styles.MainContainer}>
             <Text style={styles.text}>Marketplace</Text>
             <Text style={styles.text1}>See: all ideas</Text>
-            <View style={styles.buttonParentContainer}>
-              <TouchableOpacity style={styles.buttonChildContainer}
-              onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
-              >
-                <Text style={styles.buttonTextStyle}>Row</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonChildContainer}>
-                <Text style={styles.buttonTextStyle}>Sketched</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonChildContainer}>
-                <Text style={styles.buttonTextStyle}>Prototyped</Text>
-              </TouchableOpacity>
-            </View>
+
             <FlatList
               showsVerticalScrollIndicator={false}
-              style={{ marginBottom: responsiveHeight(30) }}
+              ListHeaderComponent={this.renderHeader(this)}
+              ListFooterComponentStyle={{ backgroundColor: 'red', marginBottom: 10 }}
+              style={{ marginBottom: responsiveHeight(22) }}
               data={this.state.datasource}
               keyExtractor={(item, index) => index}
               renderItem={({ item, index }) => {
