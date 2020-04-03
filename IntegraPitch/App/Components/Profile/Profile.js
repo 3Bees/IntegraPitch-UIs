@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, ScrollView, FlatList, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Button, TextInput } from 'react-native-paper';
@@ -45,6 +45,7 @@ export default class Profile extends Component {
 
     ],
     selected: 'Creator',
+    text:''
   }
   image = () => {
     const options = {
@@ -98,7 +99,7 @@ export default class Profile extends Component {
   render() {
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent  />
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
@@ -274,7 +275,16 @@ export default class Profile extends Component {
               />
 
 
-              <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width: responsiveWidth(90), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
+              <TouchableOpacity style={{
+                height: responsiveHeight(7),
+                flexDirection: 'row', width: responsiveWidth(90),
+                alignSelf: 'center', alignItems: 'center',
+                justifyContent: 'space-between',
+                marginTop: responsiveHeight(1),
+                marginBottom: responsiveHeight(1),
+                borderRadius: responsiveWidth(1), borderWidth: 1,
+                borderColor: colorGrey
+              }}
                 onPress={() => {
                   this.setState({ modalVisible: true });
                 }}
@@ -328,7 +338,7 @@ export default class Profile extends Component {
 
         >
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,.8)' }}>
-            <View style={{ backgroundColor: colorWhite, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
+            <View style={{ backgroundColor: cardBgColor, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
               <FlatList
                 showsVerticalScrollIndicator={false}
                 style={{ marginBottom: responsiveHeight(1) }}
@@ -361,7 +371,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorWhite
+    backgroundColor: cardBgColor
   },
   header: {
     backgroundColor: colorGrey,
@@ -412,7 +422,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
-    color: colorBlack,
+    color: colorWhite,
     marginTop: responsiveWidth(2),
     fontWeight: 'bold'
 
@@ -422,7 +432,7 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
     height: responsiveHeight(5),
-    backgroundColor: colorWhite,
+    backgroundColor: cardBgColor,
     // marginTop: responsiveWidth(1),
     width: responsiveWidth(30),
     fontSize: responsiveFontSize(1.5),
@@ -440,7 +450,7 @@ const styles = StyleSheet.create({
     padding: 0,
 
     height: responsiveHeight(7),
-    backgroundColor: colorWhite,
+    backgroundColor: cardBgColor,
     marginTop: responsiveWidth(1),
     fontSize: responsiveFontSize(1.5)
     //borderColor:'black'
@@ -461,8 +471,8 @@ const styles = StyleSheet.create({
     borderWidth: responsiveWidth(.3),
     borderRadius: responsiveWidth(1),
     borderColor: colorGrey,
-    height: responsiveHeight(5.5),
-    backgroundColor: colorWhite,
+    height: responsiveHeight(7),
+    backgroundColor: cardBgColor,
     marginTop: responsiveWidth(2.5),
     justifyContent: 'center'
   },

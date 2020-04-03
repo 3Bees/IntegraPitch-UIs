@@ -90,7 +90,7 @@ export default class IdeaProposal extends Component {
     render() {
         return (
             <CustomSafeAreaView>
-                <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
+                <StatusBar barStyle="light-content" translucent backgroundColor={'transparent'} />
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
@@ -110,15 +110,15 @@ export default class IdeaProposal extends Component {
                                 Type of Adjustments
                         </Text>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21} />
+                                <Ionicons name={'ios-square-outline'} size={21}  color={colorGrey}/>
                                 <Text style={styles.icontext}>Functionalities</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21} />
+                                <Ionicons name={'ios-square-outline'} size={21}color={colorGrey} />
                                 <Text style={styles.icontext}>Business Model</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21} />
+                                <Ionicons name={'ios-square-outline'} size={21}color={colorGrey} />
                                 <Text style={styles.icontext}>Target Group</Text>
                             </View>
                             <Text style={styles.text}>Executive Summary</Text>
@@ -180,7 +180,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colorWhite
+        backgroundColor: cardBgColor
     },
     header: {
         backgroundColor: colorGrey,
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     {
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
-        color: colorBlack,
+        color: colorWhite,
         marginTop: responsiveWidth(2),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(2)
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     adjustmenttext: {
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.3),
-        color: colorBlack,
+        color: colorWhite,
         // marginTop: responsiveWidth(1),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(1)
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
         margin: 0,
         padding: 0,
         // height: responsiveHeight(6),
-        backgroundColor: colorWhite,
+        backgroundColor: cardBgColor,
         width: responsiveWidth(90),
         height: '100%',
         fontSize: responsiveFontSize(2.2),
@@ -318,6 +318,7 @@ const styles = StyleSheet.create({
         marginEnd: responsiveWidth(2),
         borderRadius: responsiveWidth(1),
         borderWidth: 1,
+        borderColor:colorGrey
         // alignItems: 'center',
         // justifyContent: 'center',
         // backgroundColor: 'green'

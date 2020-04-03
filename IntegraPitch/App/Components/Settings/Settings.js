@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, } from '
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey } from '../../Globals/colors';
+import { colorWhite, colorGrey, bgColor, cardBgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { } from 'react-native-gesture-handler';
 export default class Settings extends Component {
@@ -20,7 +20,7 @@ export default class Settings extends Component {
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent  />
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() =>{}}>
@@ -36,7 +36,7 @@ export default class Settings extends Component {
                 {'Settings'}
               </Text>
             </View>
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? listBgColor : colorWhite }]} activeOpacity={0} onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('Profile'))}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? colorGrey : cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('Profile'))}>
 
               <Text style={styles.titleTextStyle2}>
                 {'Profile'}
@@ -44,14 +44,14 @@ export default class Settings extends Component {
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ? listBgColor : colorWhite }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false }, () => this.props.navigation.navigate('CreateAccount'))}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ?colorGrey :  cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false }, () => this.props.navigation.navigate('CreateAccount'))}>
               <Text style={styles.titleTextStyle2}>
                 {'Documents'}
               </Text>
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag3 ? listBgColor : colorWhite }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: false, flag3: true })}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag3 ? colorGrey : cardBgColor  }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: false, flag3: true })}>
               <Text style={styles.titleTextStyle2}>
                 {'Preferences'}
               </Text>
@@ -68,7 +68,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorWhite
+    backgroundColor: cardBgColor
   },
   header: {
     backgroundColor: colorGrey,
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
   titleTextStyle: {
     fontSize: responsiveFontSize(3),
     fontWeight: "bold",
+    color:colorWhite
   },
   titleContainer2: {
     height: responsiveHeight(6),
@@ -123,11 +124,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // backgroundColor: 'blue'
   },
   titleTextStyle2: {
     fontSize: responsiveFontSize(2.5),
     fontWeight: "bold",
+    color:colorWhite
   }
 
 });

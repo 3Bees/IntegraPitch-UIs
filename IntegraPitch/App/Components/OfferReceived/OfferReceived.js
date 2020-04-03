@@ -45,7 +45,7 @@ export default class OfferReceived extends Component {
     render() {
         return (
             <CustomSafeAreaView>
-                <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
+                <StatusBar backgroundColor="transparent" barStyle="light-content" translucent  />
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>

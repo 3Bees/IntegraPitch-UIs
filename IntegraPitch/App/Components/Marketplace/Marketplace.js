@@ -30,7 +30,7 @@ export default class Marketplace extends Component {
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={coloGolden} />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent  />
         <View style={styles.container}>
           <View style={styles.header}>
             <View style={styles.headertextView}>

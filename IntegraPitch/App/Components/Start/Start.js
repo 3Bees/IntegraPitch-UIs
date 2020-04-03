@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, Muli, colorBlack } from '../../Globals/colors';
+import { colorWhite, colorGrey, Muli, colorBlack, cardBgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 export default class Settings extends Component {
   render() {
     return (
       <CustomSafeAreaView>
-        <StatusBar  barStyle="dark-content" translucent backgroundColor={colorWhite} />
+        <StatusBar  barStyle="light-content" translucent backgroundColor={'transparent'} />
         <View style={styles.container}>
           <View style={{ height: responsiveHeight(60), width: responsiveWidth(100), alignItems: 'center', justifyContent: 'flex-end' }}>
             <Image source={require('../../Assets/ideaLogo.png')} style={{ height: '50%', resizeMode: 'contain' }} />
@@ -32,7 +32,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorWhite
+    backgroundColor: cardBgColor
   },
   button:
   {

@@ -3,12 +3,13 @@ import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, Touch
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, bgColor, cardBgColor } from '../../Globals/colors';
 //import { Dropdown } from 'react-native-material-dropdown';
 // import ModalDropdown from 'react-native-modal-dropdown';
 import DropdownMenu from 'react-native-dropdown-menu';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DatePicker from 'react-native-datepicker'
+import { ScrollView } from 'react-native-gesture-handler';
 export default class CreateAccount extends Component {
   state = {
     name: '',
@@ -81,160 +82,170 @@ export default class CreateAccount extends Component {
               <Text style={styles.headertext}>Create Account</Text>
             </View>
           </View>
-          <View style={styles.body}>
-            <Text style={styles.text}>Internal profile</Text>
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Full Name'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={name => this.setState({ name })}
-              value={this.state.name}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <View style={[styles.dropdown, { alignItems: 'center', justifyContent: 'flex-start' }]}>
-              <DatePicker
-
-                date={this.state.date}
-                mode="date"
-                androidMode='spinner'
-                placeholder="DD-MM-YYYY"
-                placeholderTextColor={"grey"}
-                format='DD-MM-YYYY'
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                minuteInterval={10}
-                customStyles={{
-
-                  placeholderText: {
-                    color: colorGrey,
-                    fontSize: responsiveFontSize(1.6),
-                  },
-                  dateInput: {
-                    marginStart: 15,
-                    // backgroundColor:'red',
-                    width: '100%',
-                    alignItems: 'flex-start',
-                    height: '100%',
-                    borderWidth: 0,
-                  },
-
-                  dateText: {
-                    color: 'black',
-                    fontSize: responsiveFontSize(1.8),
-                    fontFamily: 'Muli-Bold',
-                    textAlign: 'center',
-                    numberOfLines: 1
-                  },
-                }}
-                showIcon={false}
-                // showIcon={true}    
-                onDateChange={(date) => {
-                  console.log(date)
-                  this.setState({ date: date })
+          <ScrollView>
+            <View style={styles.body}>
+              <Text style={styles.text}>Internal profile</Text>
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Full Name'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={name => this.setState({ name })}
+                value={this.state.name}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
                 }}
               />
-            </View>
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Upload ID'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={uploadid => this.setState({ uploadid })}
-              value={this.state.uploadid}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorBlack,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <Text style={styles.text}>Public profile</Text>
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Nickname'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={nickname => this.setState({ nickname })}
-              value={this.state.nickname}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorBlack,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Portfolio'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={portfolio => this.setState({ portfolio })}
-              value={this.state.portfolio}
-              underlineColorAndroid='transparent'
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TextInput style={styles.textinput}
-              // label='Email'
-              placeholder={'Categories Of Interest'}
-              mode={'outlined'}
-              selectionColor={colorBlack}
-              onChangeText={interests => this.setState({ interests })}
-              value={this.state.interests}
-              underlineColorAndroid='transparent'
-              multiline={true}
-              theme={{
-                colors: {
-                  placeholder: colorGrey,
-                  primary: colorGrey,
-                  // text: 'grey',
-                  underlineColor: 'transparent',
-                }
-              }}
-            />
-            <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width: responsiveWidth(90), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
-              onPress={() => {
-                this.setState({ modalVisible: true });
-              }}
-            >
-              <Text style={{ marginLeft: responsiveWidth(4), color: colorBlack }}>
-                {this.state.selected}
-              </Text>
-              <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30}  style={{marginRight:responsiveWidth(3)}}/>
-            </TouchableOpacity>
+              <View style={[styles.dropdown, { alignItems: 'center', justifyContent: 'flex-start', backgroundColor: cardBgColor, }]}>
+                <DatePicker
 
-            <View style={{ flexDirection: 'row' }}>
-              <CheckBox style={styles.checkbox}
-                value={this.state.checked}
-                onValueChange={() => this.setState({ checked: !this.state.checked })}
+                  date={this.state.date}
+                  mode="date"
+                  androidMode='spinner'
+                  placeholder="DD-MM-YYYY"
+                  placeholderTextColor={"grey"}
+                  format='DD-MM-YYYY'
+                  confirmBtnText="Confirm"
+                  cancelBtnText="Cancel"
+                  minuteInterval={10}
+                  customStyles={{
+
+                    placeholderText: {
+                      color: colorGrey,
+                      fontSize: responsiveFontSize(1.6),
+                    },
+                    dateInput: {
+                      marginStart: 15,
+                      // backgroundColor:'red',
+                      width: '100%',
+                      alignItems: 'flex-start',
+                      height: '100%',
+                      borderWidth: 0,
+                    },
+
+                    dateText: {
+                      color: 'black',
+                      fontSize: responsiveFontSize(1.8),
+                      fontFamily: 'Muli-Bold',
+                      textAlign: 'center',
+                      numberOfLines: 1
+                    },
+                  }}
+                  showIcon={false}
+                  // showIcon={true}    
+                  onDateChange={(date) => {
+                    console.log(date)
+                    this.setState({ date: date })
+                  }}
+                />
+              </View>
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Upload ID'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={uploadid => this.setState({ uploadid })}
+                value={this.state.uploadid}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorBlack,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
               />
-              <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
+              <Text style={styles.text}>Public profile</Text>
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Nickname'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={nickname => this.setState({ nickname })}
+                value={this.state.nickname}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorBlack,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Portfolio'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={portfolio => this.setState({ portfolio })}
+                value={this.state.portfolio}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Categories Of Interest'}
+                mode={'outlined'}
+                selectionColor={colorBlack}
+                onChangeText={interests => this.setState({ interests })}
+                value={this.state.interests}
+                underlineColorAndroid='transparent'
+                multiline={true}
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorGrey,
+                    // text: 'grey',
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TouchableOpacity style={{
+                height: responsiveHeight(7),
+                flexDirection: 'row', width: responsiveWidth(90),
+                alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between',
+                marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1),
+                borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey, backgroundColor: cardBgColor,
+              }}
+                onPress={() => {
+                  this.setState({ modalVisible: true });
+                }}
+              >
+                <Text style={{ marginLeft: responsiveWidth(4), color: colorGrey }}>
+                  {this.state.selected}
+                </Text>
+                <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />
+              </TouchableOpacity>
+
+              <View style={{ flexDirection: 'row' }}>
+                <CheckBox style={styles.checkbox}
+
+                  borderColor={colorGrey}
+                  value={this.state.checked}
+                  onValueChange={() => this.setState({ checked: !this.state.checked })}
+                />
+                <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
+              </View>
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttontext}>Sign Up</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttontext}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
+          </ScrollView>
         </View>
         <Modal
           visible={this.state.modalVisible}
@@ -244,8 +255,15 @@ export default class CreateAccount extends Component {
           transparent={true}
 
         >
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,.8)' }}>
-            <View style={{ backgroundColor: colorWhite, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
+          <View style={{
+            flex: 1, justifyContent: 'center', alignItems: 'center',
+            backgroundColor: 'rgba(0,0,0,.8)'
+          }}>
+            <View style={{
+              backgroundColor: cardBgColor, height: responsiveHeight(30),
+              width: responsiveWidth(90), alignSelf: 'center',
+              borderRadius: responsiveWidth(1),
+            }}>
               <FlatList
                 showsVerticalScrollIndicator={false}
                 style={{ marginBottom: responsiveHeight(1) }}
@@ -253,8 +271,14 @@ export default class CreateAccount extends Component {
                 keyExtractor={(item, index) => index}
                 renderItem={({ item, index }) => {
                   return (
-                    <TouchableOpacity style={{ borderBottomWidth: .4, borderBottomColor: colorGrey, marginTop: responsiveHeight(1), height: responsiveHeight(6), width: '95%', alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}
-                    onPress={()=> this.modalStateChange(index) }
+                    <TouchableOpacity style={{
+                      borderBottomWidth: .4,
+                      borderBottomColor: colorGrey, marginTop: responsiveHeight(1),
+                      height: responsiveHeight(6), width: '95%',
+                      alignSelf: 'center', flexDirection: 'row', alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}
+                      onPress={() => this.modalStateChange(index)}
                     >
                       <Text style={{ marginLeft: responsiveWidth(2), color: item.flag ? colorBlack : colorGrey }}>
                         {item.name}
@@ -278,6 +302,7 @@ export default class CreateAccount extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: cardBgColor
   },
   header: {
     backgroundColor: colorGrey,
@@ -317,7 +342,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
-    color: colorBlack,
+    color: colorWhite,
     marginTop: responsiveWidth(5),
     fontWeight: 'bold'
 
@@ -327,7 +352,7 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
     height: responsiveHeight(7),
-    backgroundColor: colorWhite,
+    backgroundColor: cardBgColor,
     marginTop: responsiveWidth(1),
     fontSize: responsiveFontSize(1.5),
     // backgroundColor:'red',
@@ -342,7 +367,8 @@ const styles = StyleSheet.create({
   checkbox:
   {
 
-    marginLeft: responsiveWidth(-2)
+    marginLeft: responsiveWidth(-2),
+    //backgroundColor:colorGrey
   },
   button:
   {
@@ -352,7 +378,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colorGrey,
     height: responsiveHeight(7),
-    marginTop: responsiveWidth(2),
+    marginVertical: responsiveWidth(4),
     borderRadius: responsiveWidth(1)
   },
   buttontext:
@@ -369,7 +395,6 @@ const styles = StyleSheet.create({
     borderRadius: responsiveWidth(1),
     borderColor: colorGrey,
     height: responsiveHeight(7),
-    backgroundColor: colorWhite,
     marginTop: responsiveWidth(2.5),
     justifyContent: 'center'
   },

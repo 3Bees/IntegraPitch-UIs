@@ -127,7 +127,7 @@ export default class Marketplace extends Component {
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
@@ -152,7 +152,7 @@ export default class Marketplace extends Component {
                 multiline={true}
                 theme={{
                   colors: {
-                    placeholder: listBgColor,
+                    placeholder: colorGrey,
                     primary: colorGrey,
                     underlineColor: 'transparent',
                   }
@@ -174,7 +174,7 @@ export default class Marketplace extends Component {
                   multiline={true}
                   theme={{
                     colors: {
-                      placeholder: listBgColor,
+                      placeholder:colorGrey,
                       primary: colorGrey,
                       underlineColor: 'transparent',
 
@@ -198,7 +198,7 @@ export default class Marketplace extends Component {
                   multiline={true}
                   theme={{
                     colors: {
-                      placeholder: listBgColor,
+                      placeholder:colorGrey,
                       primary: colorGrey,
                       color: colorBlack,
                       underlineColor: 'transparent',
@@ -324,7 +324,7 @@ export default class Marketplace extends Component {
                   <Text style={styles.buttonTextStyle}>Starting at</Text>
                 </TouchableOpacity> */}
 
-                <TextInput style={[{ height: responsiveHeight(6.5), width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
+                <TextInput style={[{ height: responsiveHeight(6.5),backgroundColor:cardBgColor ,width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
                   // label='Email'
                   placeholder={'Starting at'}
                   mode={'outlined'}
@@ -345,7 +345,7 @@ export default class Marketplace extends Component {
 
                 <TouchableOpacity style={[styles.buttonChildContainer, { height: responsiveHeight(5), width: '20%', borderWidth: 0 }]} />
                 <Text style={[styles.TextInputTitleStyle, { position: 'absolute', start: responsiveWidth(50) }]} >$</Text>
-                <TextInput style={[{ height: responsiveHeight(6.5), width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
+                <TextInput style={[{ height: responsiveHeight(6.5),backgroundColor:cardBgColor, width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
                   // label='Email'
                   placeholder={'Full price'}
                   mode={'outlined'}
@@ -495,7 +495,7 @@ const styles = StyleSheet.create({
   textinputStyles:
   {
     margin: 0, padding: 0,
-    backgroundColor: colorWhite,
+    backgroundColor: cardBgColor,
     width: '100%',
     // backgroundColor:'red',
     height: responsiveHeight(6),
