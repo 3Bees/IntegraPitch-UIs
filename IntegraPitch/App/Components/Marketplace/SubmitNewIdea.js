@@ -4,8 +4,8 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli } from '../../Globals/colors';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor,Muli,MuliBold ,colorBlack} from '../../Globals/colors';
+import Ionicons from 'react-native-vector-icons/Ionicons'; 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TextInput, Title } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
@@ -145,14 +145,14 @@ export default class Marketplace extends Component {
               <TextInput style={styles.textinputStyles}
                 placeholder={'Descriptive title for your idea'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+                selectionColor={coloGolden}
                 onChangeText={Title => this.setState({ Title })}
                 value={this.state.Title}
                 underlineColorAndroid='transparent'
                 multiline={true}
                 theme={{
                   colors: {
-                    placeholder: colorGrey,
+                    placeholder: listBgColor,
                     primary: colorGrey,
                     underlineColor: 'transparent',
                   }
@@ -174,7 +174,7 @@ export default class Marketplace extends Component {
                   multiline={true}
                   theme={{
                     colors: {
-                      placeholder: colorGrey,
+                      placeholder: listBgColor,
                       primary: colorGrey,
                       underlineColor: 'transparent',
 
@@ -198,7 +198,7 @@ export default class Marketplace extends Component {
                   multiline={true}
                   theme={{
                     colors: {
-                      placeholder: colorGrey,
+                      placeholder: listBgColor,
                       primary: colorGrey,
                       color: colorBlack,
                       underlineColor: 'transparent',
@@ -254,6 +254,7 @@ export default class Marketplace extends Component {
               <View style={{ flexDirection: 'row', width: '100%', }}>
                 <CheckBox style={styles.checkbox}
                   value={this.state.checked1}
+                  
                   onValueChange={() => this.setState({ checked1: !this.state.checked1 })}
                 />
                 <Text style={styles.checkboxtext}>No, keep my idea only in its current state</Text>
@@ -291,12 +292,12 @@ export default class Marketplace extends Component {
 
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Idea Category</Text>
-              <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width: responsiveWidth(90), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
+              <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width:'100%', alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
               onPress={() => {
                 this.setState({ modalVisible: true });
               }}
             >
-              <Text style={{ marginLeft: responsiveWidth(4), color: colorBlack }}>
+              <Text style={{ marginLeft: responsiveWidth(4), color: colorWhite }}>
                 {this.state.selected}
               </Text>
               <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30}  style={{marginRight:responsiveWidth(3)}}/>
@@ -429,12 +430,11 @@ export default class Marketplace extends Component {
     );
   }
 }
-const cardBgColor = '#f2f2f2'
-const listBgColor = '#b4b4b4'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorWhite
+    backgroundColor: bgColor
   },
   header: {
     backgroundColor: colorGrey,
@@ -468,17 +468,26 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     width: responsiveWidth(92),
-    alignSelf: 'center'
+    marginTop:responsiveHeight(1),
+    marginBottom:responsiveHeight(2),
+    borderRadius:responsiveWidth(1),
+    paddingStart:responsiveWidth(2),
+    paddingEnd:responsiveWidth(2),
+    alignSelf: 'center',
+     backgroundColor:cardBgColor
   },
   titConatiner: {
     width: '100%',
-    justifyContent: 'center', marginTop: responsiveHeight(1)
+    justifyContent: 'center',
+     marginTop: responsiveHeight(1),
+     marginBottom:responsiveHeight(1),
+    //  backgroundColor:cardBgColor
   },
   text:
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.8),
-    color: colorBlack,
+    color:colorWhite,
     marginTop: responsiveHeight(2),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(1)
@@ -495,13 +504,14 @@ const styles = StyleSheet.create({
   TextInputTitleStyle:
   {
     fontSize: responsiveFontSize(2.2),
-    color: colorBlack,
+    color:colorWhite,
     marginTop: responsiveHeight(1),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(.5)
   },
   buttonParentContainer: {
     width: '100%',
+    
     height: responsiveHeight(10),
     flexDirection: 'row',
     alignItems: 'center',
@@ -514,6 +524,7 @@ const styles = StyleSheet.create({
     marginEnd: responsiveWidth(2),
     borderRadius: responsiveWidth(1),
     borderWidth: 1,
+    borderColor:coloGolden,
     // alignItems: 'center',
     // justifyContent: 'center',
     // backgroundColor: 'green'
@@ -528,6 +539,7 @@ const styles = StyleSheet.create({
   },
   checkbox:
   {
+
     marginLeft: responsiveWidth(-2)
   },
   buttonParentContainer: {
@@ -539,6 +551,7 @@ const styles = StyleSheet.create({
   buttonChildContainer1: {
     height: '80%',
     width: '30%',
+    borderColor:coloGolden,
     borderRadius: responsiveWidth(1),
     borderWidth: 1,
     alignItems: 'center',
@@ -548,7 +561,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
+    color:colorWhite,
   },
   button:
   {

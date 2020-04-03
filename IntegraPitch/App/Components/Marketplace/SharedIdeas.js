@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize, responsiveScreenFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack } from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack} from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -15,7 +15,7 @@ export default class Marketplace extends Component {
   componentDidMount = async () => {
 
     setTimeout(() => {
-      // this.props.navigation.navigate('Auth');
+      // this.props.navigation.navigate('Auth'); 
     }, 3000);
   };
   render() {
@@ -82,12 +82,11 @@ export default class Marketplace extends Component {
     );
   }
 }
-const cardBgColor = '#f2f2f2'
-const listBgColor = '#b4b4b4'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorWhite
+    backgroundColor: bgColor
   },
   header: {
     backgroundColor: colorGrey,
@@ -128,7 +127,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.7),
-    color: colorBlack,
+    color: colorWhite,
     marginTop: responsiveHeight(2),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(1)
@@ -137,7 +136,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.5),
-    color: colorBlack,
+    color: colorWhite,
     marginBottom: responsiveHeight(1)
   },
 
@@ -146,7 +145,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingStart: responsiveWidth(4),
     paddingEnd: responsiveWidth(4),
-    borderWidth: 1,
     borderRadius: responsiveWidth(1),
     marginBottom: responsiveHeight(2)
   },
@@ -159,6 +157,7 @@ const styles = StyleSheet.create({
   },
   statusButtonContainer: {
     borderWidth: 1,
+    borderColor:coloGolden,
     borderRadius: responsiveWidth(1),
     height: responsiveHeight(3.5),
     width: responsiveWidth(15),
@@ -169,7 +168,7 @@ const styles = StyleSheet.create({
   {
     // fontWeight: 'bold',
     fontSize: responsiveFontSize(1.6),
-    color: colorBlack
+    color: colorWhite
   },
   ideaListContainer: {
     height: responsiveHeight(12),
@@ -189,7 +188,7 @@ const styles = StyleSheet.create({
   },
   ideaListTextStyle: {
     fontSize: responsiveFontSize(2),
-    color: colorBlack, width: '67%'
+    color: colorWhite, width: '67%'
   },
   ideaButtonParentContainer: {
     height: responsiveHeight(7),
@@ -208,7 +207,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   ideaButtonChildContainer1: {
-    height: '100%',
+    height: '90%',
     borderRadius: responsiveWidth(1),
     width: '50%',
     backgroundColor: colorGrey,
@@ -218,7 +217,7 @@ const styles = StyleSheet.create({
   ideabuttonTextStyle:
   {
     fontSize: responsiveFontSize(1.3),
-    color: colorBlack
+    color: colorWhite
   },
 
 });

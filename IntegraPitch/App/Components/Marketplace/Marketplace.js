@@ -4,22 +4,17 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack } from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 export default class Marketplace extends Component {
 
   state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4] }
-  componentDidMount = async () => {
-
-    setTimeout(() => {
-      // this.props.navigation.navigate('Auth');
-    }, 3000);
-  };
-  renderHeader(props) {
+  renderHeader() {
     return (<View style={styles.buttonParentContainer}>
       <TouchableOpacity style={styles.buttonChildContainer}
-        onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
+      onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
       >
         <Text style={styles.buttonTextStyle}>Row</Text>
       </TouchableOpacity>
@@ -35,7 +30,7 @@ export default class Marketplace extends Component {
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={colorGrey} />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent backgroundColor={coloGolden} />
         <View style={styles.container}>
           <View style={styles.header}>
             <View style={styles.headertextView}>
@@ -45,7 +40,6 @@ export default class Marketplace extends Component {
           <View style={styles.MainContainer}>
             <Text style={styles.text}>Marketplace</Text>
             <Text style={styles.text1}>See: all ideas</Text>
-
             <FlatList
               showsVerticalScrollIndicator={false}
               ListHeaderComponent={this.renderHeader(this)}
@@ -86,16 +80,14 @@ export default class Marketplace extends Component {
     );
   }
 }
-const cardBgColor = '#f2f2f2'
-const listBgColor = '#b4b4b4'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorWhite
+    backgroundColor: bgColor
   },
   header: {
-    backgroundColor: colorGrey,
-
+    backgroundColor: coloGolden,
     flexDirection: 'row',
     width: responsiveWidth(100),
     height: responsiveHeight(13)
@@ -131,7 +123,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.7),
-    color: colorBlack,
+    color: colorWhite,
     marginTop: responsiveHeight(2),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(.5)
@@ -140,7 +132,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.5),
-    color: colorBlack,
+    color: colorWhite,
     marginBottom: responsiveHeight(1)
   },
   buttonParentContainer: {
@@ -154,6 +146,7 @@ const styles = StyleSheet.create({
     width: '30%',
     borderRadius: responsiveWidth(1),
     borderWidth: 1,
+    borderColor: coloGolden,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -161,25 +154,26 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
+    color: colorWhite,
   },
   ideaMainCard: {
     backgroundColor: cardBgColor,
     width: '100%',
     paddingStart: responsiveWidth(4),
     paddingEnd: responsiveWidth(4),
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: responsiveWidth(1),
     marginBottom: responsiveHeight(2)
   },
   ideaImageStyle: {
     width: '100%', height: responsiveHeight(20),
-    borderRadius: responsiveWidth(1), borderWidth: 1
+    borderRadius: responsiveWidth(1),
+    //  borderWidth: 1
   },
   ideaTextStyle:
   {
     fontSize: responsiveFontSize(2.4),
-    color: colorBlack,
+    color: colorWhite,
 
     marginTop: responsiveHeight(1),
     fontWeight: 'bold',
@@ -188,7 +182,7 @@ const styles = StyleSheet.create({
   ideaTextStyle1:
   {
     fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
+    color: colorWhite,
     marginTop: responsiveHeight(1),
     marginBottom: responsiveHeight(1),
   },
@@ -238,5 +232,3 @@ const styles = StyleSheet.create({
     color: colorWhite,
   },
 });
-
-

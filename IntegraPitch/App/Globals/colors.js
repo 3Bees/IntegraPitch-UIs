@@ -1,8 +1,12 @@
 export const colorBlack = '#000000'
 export const phColor = "#3E3E3E"//
 export const colorWhite = '#FFFFFF';
-export const colorGrey = 'grey';
 export const textInputBgColor = 'rgba(255,255,255,.5)';
-export const cardBgColor = '#D3D3D3';
+;
 export const Muli='Muli';
 export const MuliBold='Muli-Bold'
+export const coloGolden = '#DAA520'
+export const colorGrey = coloGolden
+export const bgColor = 'rgba(0,0,0,.9)'
+export const cardBgColor = 'rgba(65,65,65,65)'
+export const listBgColor = '#b4b4b4'

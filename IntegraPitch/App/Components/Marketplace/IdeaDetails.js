@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack } from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack} from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -36,7 +36,7 @@ export default class Marketplace extends Component {
               <TouchableOpacity style={styles.statusButtonContainer}
               onPress={() => this.props.navigation.navigate('SharedIdeas')}
               >
-                <Text style={[styles.ideabuttonTextStyle2, { color: colorBlack }]}>Status</Text>
+                <Text style={[styles.ideabuttonTextStyle2, { color: colorWhite }]}>Status</Text>
               </TouchableOpacity>
               <Text style={styles.text}>Idea title</Text>
             </View>
@@ -71,8 +71,8 @@ export default class Marketplace extends Component {
               <TouchableOpacity style={styles.ideabuttonChildContainer1}>
                 <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { backgroundColor: colorWhite }]}>
-                <Text style={[styles.ideabuttonTextStyle1, { color: colorBlack, textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
+              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { backgroundColor: listBgColor }]}>
+                <Text style={[styles.ideabuttonTextStyle1, {  textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -81,12 +81,11 @@ export default class Marketplace extends Component {
     );
   }
 }
-const cardBgColor = '#f2f2f2'
-const listBgColor = '#b4b4b4'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorWhite
+    backgroundColor: bgColor
   },
   header: {
     backgroundColor: colorGrey,
@@ -129,6 +128,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(18),
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor:coloGolden,
     marginEnd: responsiveWidth(2)
   },
   MainContainer: {
@@ -139,16 +139,15 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.7),
-    color: colorBlack,
+    color: colorWhite,
     // marginTop: responsiveHeight(2),
-    fontWeight: 'bold',
     // marginBottom: responsiveHeight(.5)
   },
   text1:
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.5),
-    color: colorBlack,
+    color: colorWhite,
     marginBottom: responsiveHeight(1)
   },
   buttonParentContainer: {
@@ -164,17 +163,17 @@ const styles = StyleSheet.create({
     width: responsiveWidth(20),
     marginEnd: responsiveWidth(4),
     borderRadius: responsiveWidth(1),
-    borderWidth: 1,
+
     // alignItems: 'center',
     // justifyContent: 'center',
-    backgroundColor: 'green'
+
 
   },
   buttonTextStyle:
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
+    color: colorWhite,
   },
   ideaMainCard: {
     backgroundColor: cardBgColor,
@@ -192,7 +191,7 @@ const styles = StyleSheet.create({
   ideaTextStyle:
   {
     fontSize: responsiveFontSize(2.4),
-    color: colorBlack,
+    color: colorWhite,
 
     marginTop: responsiveHeight(1),
     fontWeight: 'bold',
@@ -201,7 +200,7 @@ const styles = StyleSheet.create({
   ideaTextStyle1:
   {
     fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
+    color: colorWhite,
     marginTop: responsiveHeight(1),
     marginBottom: responsiveHeight(1),
     

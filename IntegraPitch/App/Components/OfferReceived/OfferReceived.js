@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, cardBgColor,Muli,MuliBold } from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor,Muli,MuliBold ,colorBlack} from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
@@ -93,11 +93,11 @@ export default class OfferReceived extends Component {
         );
     }
 }
-const listBgColor = '#ececec'
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colorWhite
+        backgroundColor: bgColor
     },
     header: {
         backgroundColor: colorGrey,
@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
     {
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
-        color: colorBlack,
+        color: colorWhite
+        ,
         marginTop: responsiveWidth(2),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(2)
@@ -167,6 +168,7 @@ const styles = StyleSheet.create({
         width: '50%',
         fontSize: responsiveFontSize(1.8),
         fontFamily: Muli,
+        color:colorWhite,
         marginVertical: responsiveWidth(2)
 
     },
