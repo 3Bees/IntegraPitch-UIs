@@ -154,6 +154,7 @@ export default class Marketplace extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
+                    text:colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -176,6 +177,7 @@ export default class Marketplace extends Component {
                     colors: {
                       placeholder:colorGrey,
                       primary: colorGrey,
+                      text:colorWhite,
                       underlineColor: 'transparent',
 
                     }
@@ -201,6 +203,7 @@ export default class Marketplace extends Component {
                       placeholder:colorGrey,
                       primary: colorGrey,
                       color: colorBlack,
+                      text:colorWhite,
                       underlineColor: 'transparent',
                     }
                   }} />
@@ -337,6 +340,7 @@ export default class Marketplace extends Component {
                     colors: {
                       placeholder: colorGrey,
                       primary: colorGrey,
+                      text:colorWhite,
                       // text: 'grey',
                       underlineColor: 'transparent',
                     }
@@ -359,6 +363,7 @@ export default class Marketplace extends Component {
                       placeholder: colorGrey,
                       primary: colorGrey,
                       // text: 'grey',
+                      text:colorWhite,
                       underlineColor: 'transparent',
                     }
                   }}

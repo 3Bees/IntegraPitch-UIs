@@ -118,6 +118,7 @@ export default class Profile extends Component {
                 <TextInput style={styles.emailtextinput}
                   placeholder={'ADD EMAIL'}
                   mode={'outlined'}
+                  
                   keyboardType={'email-address'}
                  selectionColor={colorWhite}
                   onChangeText={email => this.setState({ email })}
@@ -127,6 +128,7 @@ export default class Profile extends Component {
                     colors: {
                       placeholder: colorGrey,
                       primary: colorGrey,
+                      text:colorWhite,
                       underlineColor: 'transparent',
                     }
                   }}
@@ -143,7 +145,9 @@ export default class Profile extends Component {
                     colors: {
                       placeholder: colorGrey,
                       primary: colorGrey,
-                      text: colorWhite,
+                      // text: 'grey',
+                      text:colorWhite,
+
                       underlineColor: 'transparent',
                     }
                   }}
@@ -162,7 +166,8 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    text: colorWhite,
+                    // text: 'grey',
+                    text:colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -189,7 +194,7 @@ export default class Profile extends Component {
                       borderWidth: 0,
                     },
                     dateText: {
-                      color: 'black',
+                      color:colorWhite,
                       fontSize: responsiveFontSize(1.8),
                       fontFamily: 'Muli-Bold',
                       numberOfLines: 1
@@ -216,7 +221,7 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-
+                    text:colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -234,6 +239,7 @@ export default class Profile extends Component {
                     placeholder: colorGrey,
                     primary: colorGrey,
                     text: colorWhite,
+                    // text: 'grey',
                     underlineColor: 'transparent',
                   }
                 }}
@@ -251,7 +257,8 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    text: colorWhite,
+                    // text: 'grey',
+                    text:colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -268,7 +275,8 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                     text: colorWhite,
+                    // text: 'grey',
+                    text:colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -289,7 +297,7 @@ export default class Profile extends Component {
                   this.setState({ modalVisible: true });
                 }}
               >
-                <Text style={{ marginLeft: responsiveWidth(4), color: colorGrey }}>
+                <Text style={{ marginLeft: responsiveWidth(4), color: colorWhite }}>
                   {this.state.selected}
                 </Text>
                 <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />
@@ -307,7 +315,7 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    text: colorWhite,
+                    text:colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -435,6 +443,7 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
+    
     height: responsiveHeight(5),
     backgroundColor: cardBgColor,
     // marginTop: responsiveWidth(1),
