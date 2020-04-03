@@ -145,7 +145,7 @@ export default class Marketplace extends Component {
               <TextInput style={styles.textinputStyles}
                 placeholder={'Descriptive title for your idea'}
                 mode={'outlined'}
-                selectionColor={coloGolden}
+                selectionColor={colorWhite}
                 onChangeText={Title => this.setState({ Title })}
                 value={this.state.Title}
                 underlineColorAndroid='transparent'
@@ -168,7 +168,7 @@ export default class Marketplace extends Component {
                   mode={'outlined'}
                   multiline={true}
 
-                  selectionColor={colorBlack}
+                  selectionColor={colorWhite}
                   onChangeText={Description => this.setState({ Description })}
                   value={this.state.Description}
                   underlineColorAndroid='transparent'
@@ -193,7 +193,7 @@ export default class Marketplace extends Component {
                   mode={'outlined'}
                   multiline={true}
 
-                  selectionColor={colorBlack}
+                  selectionColor={colorWhite}
                   onChangeText={Summary => this.setState({ Summary })}
                   value={this.state.Summary}
                   underlineColorAndroid='transparent'
@@ -331,7 +331,7 @@ export default class Marketplace extends Component {
                   // label='Email'
                   placeholder={'Starting at'}
                   mode={'outlined'}
-                  selectionColor={colorBlack}
+                  selectionColor={colorWhite}
                   onChangeText={interests => this.setState({ interests })}
                   value={this.state.interests}
                   underlineColorAndroid='transparent'
@@ -353,7 +353,7 @@ export default class Marketplace extends Component {
                   // label='Email'
                   placeholder={'Full price'}
                   mode={'outlined'}
-                  selectionColor={colorBlack}
+                  selectionColor={colorWhite}
                   onChangeText={price => this.setState({ price })}
                   value={this.state.price}
                   underlineColorAndroid='transparent'
