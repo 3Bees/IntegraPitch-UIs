@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, Muli, colorBlack, cardBgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, Muli, colorBlack, cardBgColor, bgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 export default class Settings extends Component {
   render() {
@@ -32,7 +32,7 @@ const listBgColor = '#ececec'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: cardBgColor
+    backgroundColor: bgColor
   },
   button:
   {
