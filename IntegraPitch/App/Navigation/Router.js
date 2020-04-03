@@ -8,7 +8,7 @@
 
 import React from 'react';
 import {
-    SafeAreaView,
+    // SafeAreaView,
     StyleSheet,
     ScrollView,
     View,
@@ -31,7 +31,7 @@ import IdeaDetails from '../Components/Marketplace/IdeaDetails'
 import SharedIdeas from '../Components/Marketplace/SharedIdeas'
 import SubmitNewIdea from '../Components/Marketplace/SubmitNewIdea'
 import Start from '../Components/Start/Start'
-
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 console.disableYellowBox = true
 
@@ -60,10 +60,13 @@ const Main = () => {
 }
 
 export default App = () => {
+
     return (
-        <NavigationContainer>
-            <Main />
-        </NavigationContainer>
+        <SafeAreaProvider >
+            <NavigationContainer>
+                <Main />
+            </NavigationContainer>
+        </SafeAreaProvider>
     );
 }
 

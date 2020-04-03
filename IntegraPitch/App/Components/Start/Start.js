@@ -5,6 +5,8 @@ import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-nat
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite, colorGrey, Muli, colorBlack, cardBgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+// const insets = useSafeArea();
 export default class Settings extends Component {
   componentDidMount() {
   
