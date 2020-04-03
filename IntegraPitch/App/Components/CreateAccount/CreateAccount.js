@@ -82,14 +82,14 @@ export default class CreateAccount extends Component {
               <Text style={styles.headertext}>Create Account</Text>
             </View>
           </View>
-          <ScrollView>
+          <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
             <View style={styles.body}>
               <Text style={styles.text}>Internal profile</Text>
               <TextInput style={styles.textinput}
                 // label='Email'
                 placeholder={'Full Name'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+                selectionColor={colorWhite}
                 onChangeText={name => this.setState({ name })}
                 value={this.state.name}
                 underlineColorAndroid='transparent'
@@ -97,7 +97,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    // text: 'grey',
+                   text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -149,7 +149,7 @@ export default class CreateAccount extends Component {
                 // label='Email'
                 placeholder={'Upload ID'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+                selectionColor={colorWhite}
                 onChangeText={uploadid => this.setState({ uploadid })}
                 value={this.state.uploadid}
                 underlineColorAndroid='transparent'
@@ -157,7 +157,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    // text: 'grey',
+                   text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -167,7 +167,7 @@ export default class CreateAccount extends Component {
                 // label='Email'
                 placeholder={'Nickname'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+                selectionColor={colorWhite}
                 onChangeText={nickname => this.setState({ nickname })}
                 value={this.state.nickname}
                 underlineColorAndroid='transparent'
@@ -175,7 +175,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    // text: 'grey',
+                   text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -184,7 +184,7 @@ export default class CreateAccount extends Component {
                 // label='Email'
                 placeholder={'Portfolio'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+                selectionColor={colorWhite}
                 onChangeText={portfolio => this.setState({ portfolio })}
                 value={this.state.portfolio}
                 underlineColorAndroid='transparent'
@@ -192,7 +192,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    // text: 'grey',
+                   text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -201,7 +201,7 @@ export default class CreateAccount extends Component {
                 // label='Email'
                 placeholder={'Categories Of Interest'}
                 mode={'outlined'}
-                selectionColor={colorBlack}
+                selectionColor={colorWhite}
                 onChangeText={interests => this.setState({ interests })}
                 value={this.state.interests}
                 underlineColorAndroid='transparent'
@@ -210,14 +210,14 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorGrey,
-                    // text: 'grey',
+                   text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
               />
               <TouchableOpacity style={{
                 height: responsiveHeight(7),
-                flexDirection: 'row', width: responsiveWidth(90),
+                flexDirection: 'row', width: responsiveWidth(88),
                 alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between',
                 marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1),
                 borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey, backgroundColor: cardBgColor,
@@ -302,8 +302,9 @@ export default class CreateAccount extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: cardBgColor
+    backgroundColor: bgColor
   },
+ 
   header: {
     backgroundColor: colorGrey,
     flexDirection: 'row',
@@ -332,11 +333,15 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.2),
     color: colorWhite,
   },
-  body:
-  {
-    width: responsiveWidth(90),
+  MainContainer: {
+    width: responsiveWidth(92),
+    marginTop:responsiveHeight(1),
+    marginBottom:responsiveHeight(2),
+    borderRadius:responsiveWidth(1),
+    paddingStart:responsiveWidth(2),
+    paddingEnd:responsiveWidth(2),
     alignSelf: 'center',
-
+     backgroundColor:cardBgColor
   },
   text:
   {
