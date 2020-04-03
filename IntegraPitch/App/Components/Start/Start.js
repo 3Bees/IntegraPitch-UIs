@@ -6,6 +6,19 @@ import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
 import { colorWhite, colorGrey, Muli, colorBlack, cardBgColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 export default class Settings extends Component {
+  componentDidMount() {
+  
+  }
+
+  componentWillUnmount() {
+    // Not mandatory
+    
+    
+  }
+
+  componentDidAppear() {
+
+  }
   render() {
     return (
       <CustomSafeAreaView>
