@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, } from '
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, bgColor, cardBgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, bgColor, cardBgColor, colorBlack } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { } from 'react-native-gesture-handler';
 export default class Settings extends Component {
@@ -36,23 +36,26 @@ export default class Settings extends Component {
                 {'Settings'}
               </Text>
             </View>
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? colorGrey : cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('Profile'))}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? colorGrey : cardBgColor }]} 
+            activeOpacity={0} 
+            onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('Profile'))}>
+              
 
-              <Text style={styles.titleTextStyle2}>
+              <Text style={[styles.titleTextStyle2,{ color:flag1 ?  colorBlack :colorGrey}]}>
                 {'Profile'}
               </Text>
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
             </TouchableOpacity>
 
             <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ?colorGrey :  cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false }, () => this.props.navigation.navigate('CreateAccount'))}>
-              <Text style={styles.titleTextStyle2}>
+            <Text style={[styles.titleTextStyle2,{ color:flag2 ?  colorBlack:colorGrey }]}>
                 {'Documents'}
               </Text>
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
             </TouchableOpacity>
 
             <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag3 ? colorGrey : cardBgColor  }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: false, flag3: true })}>
-              <Text style={styles.titleTextStyle2}>
+              <Text style={[styles.titleTextStyle2,{ color:flag3 ?   colorBlack:colorGrey }]}>
                 {'Preferences'}
               </Text>
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
@@ -98,7 +101,8 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-    color: colorWhite,
+    color: colorBlack,
+    
   },
   MainContainer: {
     width: responsiveWidth(92),
