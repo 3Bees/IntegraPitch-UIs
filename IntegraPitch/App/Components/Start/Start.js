@@ -8,19 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // const insets = useSafeArea();
 export default class Settings extends Component {
-  componentDidMount() {
-  
-  }
 
-  componentWillUnmount() {
-    // Not mandatory
-    
-    
-  }
-
-  componentDidAppear() {
-
-  }
   render() {
     return (
       <CustomSafeAreaView>
@@ -32,7 +20,9 @@ export default class Settings extends Component {
           </View>
           <View style={{ height: responsiveHeight(20), width: responsiveWidth(100), alignItems: 'center', justifyContent: 'space-around', marginTop: responsiveHeight(10) }}>
             <TouchableOpacity style={styles.button} 
-            onPress={() => this.props.navigation.navigate('Marketplace')}>                                                                         
+            onPress={() => {
+              console.log('Click');
+              this.props.navigation.navigate('Marketplace')}}>  
               <Text style={styles.buttontext}>IDEATOR'S POV</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
@@ -57,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colorGrey,
+    // backgroundColor:'red',
     height: responsiveHeight(7),
     marginTop: responsiveWidth(2),
     borderRadius: responsiveWidth(1)
