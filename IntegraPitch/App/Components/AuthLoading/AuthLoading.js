@@ -18,7 +18,7 @@ export default class AuthLoading extends Component {
         <StatusBar  barStyle="light-content" translucent backgroundColor={'transparent'} />
       <View style={styles.container}>
 
-          <Image source={require('../../Assets/splash.jpg')} style={{flex:1}}/>
+          <Image source={require('../../Assets/splash.jpg')} style={{flex:1,resizeMode:'contain'}}/>
       </View>
       </CustomSafeAreaView>
     );
