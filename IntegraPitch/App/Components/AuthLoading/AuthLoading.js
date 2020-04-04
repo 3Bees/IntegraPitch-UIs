@@ -9,19 +9,18 @@ import { colorWhite } from '../../Globals/colors';
 export default class AuthLoading extends Component {
   componentDidMount = async () => {
     setTimeout(() => {
-      this.props.navigation.navigate('CreateAccount');
-    }, 1000);
+      this.props.navigation.navigate('Start');
+    }, 2000);
   };
   render() {
     return (
+      <CustomSafeAreaView>
+        <StatusBar  barStyle="light-content" translucent backgroundColor={'transparent'} />
       <View style={styles.container}>
-        <View style={styles.row}>
-          <Text style={styles.title}>
-            {'Loading'}
-          </Text>
-          <ActivityIndicator size={'large'} />
-        </View>
+
+          <Image source={require('../../Assets/splash.jpg')} style={{flex:1}}/>
       </View>
+      </CustomSafeAreaView>
     );
   }
 }
