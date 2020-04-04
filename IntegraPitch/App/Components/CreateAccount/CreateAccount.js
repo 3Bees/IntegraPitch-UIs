@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, Touch
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, bgColor, cardBgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, bgColor, cardBgColor,headerColor } from '../../Globals/colors';
 //import { Dropdown } from 'react-native-material-dropdown';
 // import ModalDropdown from 'react-native-modal-dropdown';
 import DropdownMenu from 'react-native-dropdown-menu';
@@ -76,7 +76,7 @@ export default class CreateAccount extends Component {
           <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon}>
-              <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+              <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Create Account</Text>
@@ -331,11 +331,11 @@ const styles = StyleSheet.create({
   {
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.2),
-    color: colorWhite,
+    color: headerColor,
   },
   MainContainer: {
     width: responsiveWidth(92),
-    marginTop:responsiveHeight(1),
+    marginTop:responsiveHeight(2),
     marginBottom:responsiveHeight(2),
     borderRadius:responsiveWidth(1),
     paddingStart:responsiveWidth(2),
@@ -347,8 +347,8 @@ const styles = StyleSheet.create({
   {
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
-    color: colorWhite,
-    marginTop: responsiveWidth(5),
+    color: colorGrey,
+    marginVertical: responsiveWidth(3),
     fontWeight: 'bold'
 
   },
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     fontFamily: Muli,
     fontSize: responsiveFontSize(2),
     color: colorGrey,
-    marginTop: responsiveWidth(1)
+    marginTop: responsiveWidth(1.5)
   },
   checkbox:
   {
@@ -389,7 +389,7 @@ const styles = StyleSheet.create({
   buttontext:
   {
     fontFamily: Muli,
-    color: colorWhite,
+    color: colorBlack,
     fontSize: responsiveFontSize(2.5)
 
   },

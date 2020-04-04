@@ -25,7 +25,7 @@ export default class Marketplace extends Component {
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-              <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+              <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Idea details</Text>
@@ -71,7 +71,7 @@ export default class Marketplace extends Component {
               <TouchableOpacity style={styles.ideabuttonChildContainer1}>
                 <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { backgroundColor: listBgColor }]}>
+              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { backgroundColor: coloGolden }]}>
                 <Text style={[styles.ideabuttonTextStyle1, {  textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
               </TouchableOpacity>
             </View>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-    color: colorWhite,
+   // color: colorWhite,
   },
   statusContainer: {
     flexDirection: 'row',
@@ -133,7 +133,13 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     width: responsiveWidth(92),
-    alignSelf: 'center'
+    marginTop:responsiveHeight(1),
+    marginBottom:responsiveHeight(2),
+    borderRadius:responsiveWidth(1),
+    paddingStart:responsiveWidth(2),
+    paddingEnd:responsiveWidth(2),
+    alignSelf: 'center',
+   backgroundColor:cardBgColor
   },
   text:
   {
@@ -181,6 +187,7 @@ const styles = StyleSheet.create({
     paddingStart: responsiveWidth(4),
     paddingEnd: responsiveWidth(4),
     borderWidth: 1,
+    borderColor:colorGrey,
     borderRadius: responsiveWidth(1),
     marginBottom: responsiveHeight(2)
   },
@@ -224,7 +231,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-    color: colorWhite,
+   // color: colorWhite,
   },
   ideaButtonParentContainer2: {
     height: responsiveHeight(5),
@@ -238,16 +245,17 @@ const styles = StyleSheet.create({
     height: '70%',
     width: '20%',
     borderRadius: responsiveWidth(1),
-    backgroundColor: colorGrey,
-    backgroundColor: listBgColor,
+    backgroundColor: '#8B0000',
+   // backgroundColor: listBgColor,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom:responsiveWidth(5)
   },
   ideabuttonTextStyle2:
   {
     // fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-    color: colorWhite,
+   // color: colorWhite,
   },
 });
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, ScrollView, FlatList, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor, bgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor, bgColor,headerColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Button, TextInput } from 'react-native-paper';
@@ -20,6 +20,8 @@ export default class Profile extends Component {
     nickname: '',
     portfolio: '',
     creator: '',
+    Imagedatasource: [],
+     documentdatasource: [] ,
     modalVisible: false,
     category: [
       {
@@ -47,7 +49,7 @@ export default class Profile extends Component {
     selected: 'Creator',
     text:''
   }
-  image = () => {
+  imageUpload = () => {
     const options = {
       title: 'Select Image',
 
@@ -67,15 +69,56 @@ export default class Profile extends Component {
         console.log('User tapped custom button: ', response.customButton);
       } else {
         const source = { uri: response.uri };
-
-
-        this.setState({
-          avatarSource: source,
-        });
+        let { Imagedatasource } = this.state
+        Imagedatasource.push(source)
+        this.setState({ Imagedatasource });
       }
     });
   }
 
+  documentUpload = async () => {
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.pdf],
+      });
+      let { documentdatasource } = this.state
+      documentdatasource.push(res)
+      this.setState({ documentdatasource });
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        // User cancelled the picker, exit any dialogs or menus and move on
+      } else {
+        throw err;
+      }
+    }
+  };
+  documentUpload1 = () => {
+    const options = {
+      title: 'Select Image',
+
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = { uri: response.uri };
+        let array = []
+        array.push(source)
+        console.log(array)
+        this.setState({ documentdatasource: array });
+      }
+    });
+  }
   async modalStateChange(index) {
     let array = this.state.category
 
@@ -103,7 +146,7 @@ export default class Profile extends Component {
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-              <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+              <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Profile</Text>
@@ -111,14 +154,14 @@ export default class Profile extends Component {
           </View>
           <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
             <View style={styles.body}>
-              <TouchableOpacity onPress={() => this.image()} style={styles.profileimage}>
+              <TouchableOpacity onPress={() => this.imageUpload()} style={styles.profileimage}>
                 <Image source={require('../../Assets/girl.jpg')} style={styles.profileimage} ></Image>
               </TouchableOpacity>
               <View style={styles.emailwrapper}>
                 <TextInput style={styles.emailtextinput}
                   placeholder={'ADD EMAIL'}
                   mode={'outlined'}
-                  
+                  textAlign={'center'}
                   keyboardType={'email-address'}
                  selectionColor={colorWhite}
                   onChangeText={email => this.setState({ email })}
@@ -140,6 +183,7 @@ export default class Profile extends Component {
                  selectionColor={colorWhite}
                   onChangeText={phone => this.setState({ phone })}
                   value={this.state.phone}
+                  //style={{ textAlign: '' }}
                   underlineColorAndroid='transparent'
                   theme={{
                     colors: {
@@ -409,11 +453,11 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-    color: colorWhite,
+    color: headerColor,
   },
   MainContainer: {
     width: responsiveWidth(92),
-    marginTop:responsiveHeight(1),
+    marginTop:responsiveHeight(2),
     marginBottom:responsiveHeight(2),
     borderRadius:responsiveWidth(1),
     paddingStart:responsiveWidth(2),
@@ -435,7 +479,7 @@ const styles = StyleSheet.create({
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
     color: colorWhite,
-    marginTop: responsiveWidth(2),
+    marginVertical: responsiveWidth(3),
     fontWeight: 'bold'
 
   },
@@ -443,14 +487,11 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    
     height: responsiveHeight(5),
     backgroundColor: cardBgColor,
-    // marginTop: responsiveWidth(1),
     width: responsiveWidth(30),
     fontSize: responsiveFontSize(1.5),
-    justifyContent: 'center',
-    //borderColor:'black'
+     textAlign:'center',
   },
   emailwrapper: {
     flexDirection: 'row',
@@ -473,7 +514,7 @@ const styles = StyleSheet.create({
     fontFamily: Muli,
     fontSize: responsiveFontSize(2),
     color: colorGrey,
-    marginTop: responsiveWidth(1)
+    marginTop: responsiveWidth(1.5)
   },
   checkbox:
   {
@@ -504,7 +545,7 @@ const styles = StyleSheet.create({
   buttontext:
   {
     fontFamily: Muli,
-    color: colorWhite,
+    color: colorBlack,
     fontSize: responsiveFontSize(2.5)
 
   },

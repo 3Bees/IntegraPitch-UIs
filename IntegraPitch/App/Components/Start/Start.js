@@ -11,8 +11,9 @@ export default class Settings extends Component {
       <CustomSafeAreaView>
         <StatusBar  barStyle="light-content" translucent backgroundColor={'transparent'} />
         <View style={styles.container}>
-          <View style={{ height: responsiveHeight(60), width: responsiveWidth(100), alignItems: 'center', justifyContent: 'flex-end' }}>
-            <Image source={require('../../Assets/ideaLogo.png')} style={{ height: '50%', resizeMode: 'contain' }} />
+          <View style={{ height: responsiveHeight(60), width: responsiveWidth(100),alignItems:'center' ,justifyContent:'center'}}>
+            <Image source={require('../../Assets/integra_trnsprnt.png')} 
+            style={{ height: responsiveHeight(100),marginTop:responsiveWidth(50), width: responsiveWidth(90)  }} />
           </View>
           <View style={{ height: responsiveHeight(20), width: responsiveWidth(100), alignItems: 'center', justifyContent: 'space-around', marginTop: responsiveHeight(10) }}>
             <TouchableOpacity style={styles.button} 
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   buttontext:
   {
     fontFamily: Muli,
-    color: colorWhite,
+   // color: colorWhite,
     fontSize: responsiveFontSize(2.5)
 
   }

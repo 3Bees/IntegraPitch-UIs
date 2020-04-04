@@ -26,7 +26,7 @@ export default class Marketplace extends Component {
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-              <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+              <Ionicons name={'ios-arrow-back'} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Shared Ideas</Text>
@@ -64,7 +64,7 @@ export default class Marketplace extends Component {
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.ideaButtonChildContainer1}
                         >
-                        <Text style={[styles.ideabuttonTextStyle, { color: colorWhite, fontSize: responsiveFontSize(2.2) }]}>NEW PROPOSAL</Text>
+                        <Text style={[styles.ideabuttonTextStyle, { color: colorBlack, fontSize: responsiveFontSize(2.2) }]}>NEW PROPOSAL</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.ideaButtonChildContainer}>
                         <AntDesign name={'checkcircleo'} color={colorGrey} size={28} />
@@ -116,12 +116,13 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-    color: colorWhite,
+   // color: colorWhite,
   },
 
   MainContainer: {
     width: responsiveWidth(92),
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginTop:responsiveWidth(2)
   },
   text:
   {
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     color: colorWhite,
     marginTop: responsiveHeight(2),
     fontWeight: 'bold',
-    marginBottom: responsiveHeight(1)
+    marginBottom: responsiveHeight(2)
   },
   text1:
   {
@@ -188,7 +189,8 @@ const styles = StyleSheet.create({
   },
   ideaListTextStyle: {
     fontSize: responsiveFontSize(2),
-    color: colorWhite, width: '67%'
+    color: colorWhite,
+     width: '67%'
   },
   ideaButtonParentContainer: {
     height: responsiveHeight(7),
@@ -217,7 +219,7 @@ const styles = StyleSheet.create({
   ideabuttonTextStyle:
   {
     fontSize: responsiveFontSize(1.3),
-    color: colorWhite
+    color: colorGrey
   },
 
 });

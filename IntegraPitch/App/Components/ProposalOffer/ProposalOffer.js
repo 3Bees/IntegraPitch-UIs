@@ -95,7 +95,7 @@ export default class ProposalOffer extends Component {
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-                            <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+                            <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>
@@ -259,11 +259,11 @@ const styles = StyleSheet.create({
     {
         fontWeight: 'bold',
         fontSize: responsiveFontSize(2.2),
-        color: colorWhite,
+        color: colorBlack,
     },
     MainContainer: {
         width: responsiveWidth(92),
-        marginTop:responsiveHeight(1),
+        marginTop:responsiveHeight(2),
         marginBottom:responsiveHeight(2),
         borderRadius:responsiveWidth(1),
         paddingStart:responsiveWidth(2),
@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
         padding: 0,
         //  height: responsiveHeight(10),
         backgroundColor: cardBgColor,
-        width: responsiveWidth(90),
+        width: responsiveWidth(88),
         fontSize: responsiveFontSize(1.8),
         paddingVertical: 0
     },
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
     buttontext:
     {
         fontFamily: Muli,
-        color: colorWhite,
+        color: colorBlack,
         fontSize: responsiveFontSize(2.5)
 
     },

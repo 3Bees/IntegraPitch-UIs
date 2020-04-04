@@ -131,7 +131,7 @@ export default class Marketplace extends Component {
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-              <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+              <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Idea Submission</Text>
@@ -310,13 +310,13 @@ export default class Marketplace extends Component {
               <Text style={styles.TextInputTitleStyle}>Bid Pricing</Text>
 
               <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
-                <TouchableOpacity style={[styles.buttonChildContainer1, { height: responsiveHeight(5), width: '30%' }]}>
+                <TouchableOpacity style={[styles.buttonChildContainer1, { height: responsiveHeight(7), width: '30%' }]}>
                   <Text style={styles.buttonTextStyle}>Bid</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonChildContainer1, { height: responsiveHeight(5), width: '20%', borderWidth: 0 }]}>
+                <TouchableOpacity style={[styles.buttonChildContainer1, { height: responsiveHeight(7), width: '20%', borderWidth: 0 }]}>
                   <Text style={styles.buttonTextStyle}>or</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonChildContainer1, { height: responsiveHeight(5), width: '30%' }]}>
+                <TouchableOpacity style={[styles.buttonChildContainer1, { height: responsiveHeight(7), width: '30%' }]}>
                   <Text style={styles.buttonTextStyle}>Buy</Text>
                 </TouchableOpacity>
               </View>
@@ -327,7 +327,7 @@ export default class Marketplace extends Component {
                   <Text style={styles.buttonTextStyle}>Starting at</Text>
                 </TouchableOpacity> */}
 
-                <TextInput style={[{ height: responsiveHeight(6.5),backgroundColor:cardBgColor ,width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
+                <TextInput style={[{ margin:0,padding:0,height: responsiveHeight(6.5),backgroundColor:cardBgColor ,width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
                   // label='Email'
                   placeholder={'Starting at'}
                   mode={'outlined'}
@@ -406,7 +406,7 @@ export default class Marketplace extends Component {
 
         >
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,.8)' }}>
-            <View style={{ backgroundColor: colorWhite, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
+            <View style={{ backgroundColor: cardBgColor, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
               <FlatList
                 showsVerticalScrollIndicator={false}
                 style={{ marginBottom: responsiveHeight(1) }}
@@ -469,11 +469,11 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-    color: colorWhite,
+   // color: colorWhite,
   },
   MainContainer: {
     width: responsiveWidth(92),
-    marginTop:responsiveHeight(1),
+    marginTop:responsiveHeight(3),
     marginBottom:responsiveHeight(2),
     borderRadius:responsiveWidth(1),
     paddingStart:responsiveWidth(2),
@@ -540,7 +540,7 @@ const styles = StyleSheet.create({
     fontFamily: Muli,
     fontSize: responsiveFontSize(2),
     color: colorGrey,
-    marginTop: responsiveWidth(1)
+    marginTop: responsiveWidth(1.5)
   },
   checkbox:
   {
@@ -567,6 +567,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.8),
     color:colorWhite,
+    
   },
   button:
   {
@@ -583,7 +584,7 @@ const styles = StyleSheet.create({
   buttontext:
   {
     fontFamily: Muli,
-    color: colorWhite,
+   // color: colorWhite,
     fontSize: responsiveFontSize(2.5)
 
   },

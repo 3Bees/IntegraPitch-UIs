@@ -113,11 +113,12 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-    color: colorWhite,
+   // color: colorWhite,
   },
   MainContainer: {
     width: responsiveWidth(92),
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginTop:responsiveWidth(2)
   },
   text:
   {
@@ -138,7 +139,8 @@ const styles = StyleSheet.create({
   buttonParentContainer: {
     width: '100%',
     height: responsiveHeight(8),
-    flexDirection: 'row', alignItems: 'center',
+    flexDirection: 'row',
+     alignItems: 'center',
     justifyContent: 'space-between'
   },
   buttonChildContainer: {
@@ -206,7 +208,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-    color: colorWhite,
+    //color: colorWhite,
   },
   ideaButtonParentContainer2: {
     height: responsiveHeight(5),
@@ -220,8 +222,8 @@ const styles = StyleSheet.create({
     height: '70%',
     width: '20%',
     borderRadius: responsiveWidth(1),
-    backgroundColor: colorGrey,
-    backgroundColor: listBgColor,
+    backgroundColor: '#8B0000',
+   // backgroundColor: listBgColor,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -229,6 +231,6 @@ const styles = StyleSheet.create({
   {
     // fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-    color: colorWhite,
+    color: 'black',
   },
 });

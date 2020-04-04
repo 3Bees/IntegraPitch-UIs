@@ -92,7 +92,7 @@ export default class AdjustProposal extends Component {
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-                            <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+                            <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>
@@ -103,7 +103,7 @@ export default class AdjustProposal extends Component {
                     <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
                         <View style={styles.body}>
 
-                            <Text style={styles.text}>Adjust Proposal</Text>
+                            <Text style={styles.ideatext}>Adjust Proposal</Text>
                             <Text style={styles.adjustmenttext}>
                                 Reasons For Rejection
                         </Text>
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     {
         fontWeight: 'bold',
         fontSize: responsiveFontSize(2.2),
-        color: colorWhite,
+      //  color: colorWhite,
     },
     MainContainer: {
         width: responsiveWidth(92),
@@ -235,7 +235,16 @@ const styles = StyleSheet.create({
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.3),
         color: colorWhite,
-        // marginTop: responsiveWidth(1),
+         marginTop: responsiveWidth(1),
+        fontWeight: 'bold',
+        marginBottom: responsiveWidth(2.5)
+
+    },
+    ideatext:{
+        fontFamily: MuliBold,
+        fontSize: responsiveFontSize(2.8),
+        color: colorWhite,
+        marginTop: responsiveWidth(1),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(1)
 
@@ -260,17 +269,18 @@ const styles = StyleSheet.create({
     buttontext:
     {
         fontFamily: Muli,
-        color: colorWhite,
+      //  color: colorWhite,
         fontSize: responsiveFontSize(2.5)
 
     },
     icontext:
     {
         fontFamily: Muli,
-        color: colorGrey,
+       // color: colorGrey,
         fontSize: responsiveFontSize(2),
         width: responsiveWidth(50),
-        marginLeft: responsiveHeight(2)
+        marginLeft: responsiveHeight(2),
+        marginTop:responsiveWidth(.2)
 
     },
     summarytextinput:

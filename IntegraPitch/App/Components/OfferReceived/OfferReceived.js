@@ -49,7 +49,7 @@ export default class OfferReceived extends Component {
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-                            <Ionicons name={'ios-arrow-back'} color={colorWhite} size={28} />
+                            <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>Offers Received</Text>
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     {
         fontWeight: 'bold',
         fontSize: responsiveFontSize(2.2),
-        color: colorWhite,
+        color: colorBlack,
     },
     body:
     {
@@ -140,9 +140,8 @@ const styles = StyleSheet.create({
     {
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
-        color: colorWhite
-        ,
-        marginTop: responsiveWidth(2),
+        color: colorWhite,
+        marginVertical: responsiveWidth(3),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(2)
 
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
     cardview:
     {
         width: '100%',
-        height: responsiveHeight(15),
+        height: responsiveHeight(12),
         backgroundColor: cardBgColor,
          marginVertical:responsiveWidth(1),
         borderRadius: responsiveWidth(1)
@@ -158,10 +157,10 @@ const styles = StyleSheet.create({
     cardimage:
     {
         height: responsiveHeight(12),
-        marginVertical: responsiveWidth(2),
+       // marginVertical: responsiveWidth(2),
         width: "25%",
         borderRadius: responsiveWidth(1),
-        marginHorizontal: responsiveWidth(2)
+        marginRight: responsiveWidth(2)
     },
     ideatext:
     {
@@ -188,7 +187,7 @@ const styles = StyleSheet.create({
 
         fontSize: responsiveFontSize(2.5),
         fontFamily: Muli,
-        color: colorWhite,
+        color: colorBlack,
 
     },
     daystext:
@@ -196,7 +195,8 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(1.2),
         fontFamily: Muli,
         marginLeft: responsiveWidth(4.5),
-        marginTop: responsiveWidth(1)
+        marginTop: responsiveWidth(1),
+        color:coloGolden
     }
 
 
