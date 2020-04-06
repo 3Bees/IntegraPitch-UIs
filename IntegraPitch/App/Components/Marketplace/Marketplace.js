@@ -15,7 +15,7 @@ export default class Marketplace extends Component {
   renderHeader() {
     return (<View style={styles.buttonParentContainer}>
       <TouchableOpacity style={styles.buttonChildContainer}
-      onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
+      // onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
       >
         <Text style={styles.buttonTextStyle}>Row</Text>
       </TouchableOpacity>
