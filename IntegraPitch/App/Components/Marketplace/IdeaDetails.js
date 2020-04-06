@@ -71,7 +71,7 @@ export default class Marketplace extends Component {
               <TouchableOpacity style={styles.ideabuttonChildContainer1}>
                 <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { backgroundColor: coloGolden }]}>
+              <TouchableOpacity style={[styles.ideabuttonChildContainer1, {marginBottom:responsiveHeight(1) }]}>
                 <Text style={[styles.ideabuttonTextStyle1, {  textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
               </TouchableOpacity>
             </View>

@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
     marginVertical: responsiveWidth(3),
     fontWeight: 'bold'
 
-  },
+  }, 
   textinput:
   {
     margin: 0,
