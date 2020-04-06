@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red'
   },
   titleTextStyle: {
-    fontSize: responsiveFontSize(3),
+    fontSize: responsiveFontSize(3.4),
     fontWeight: "bold",
     color:colorWhite
   },
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   titleTextStyle2: {
     fontSize: responsiveFontSize(2.5),
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color:colorWhite
   }
 

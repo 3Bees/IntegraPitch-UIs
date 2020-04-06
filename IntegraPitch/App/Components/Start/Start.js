@@ -22,7 +22,7 @@ export default class Settings extends Component {
             <TouchableOpacity style={styles.button} 
             onPress={() => {
               console.log('Click');
-              this.props.navigation.navigate('Marketplace')}}>  
+              this.props.navigation.navigate('CreateAccount')}}>  
               <Text style={styles.buttontext}>IDEATOR'S POV</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>

@@ -155,7 +155,7 @@ export default class Profile extends Component {
           <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
             <View style={styles.body}>
               <TouchableOpacity onPress={() => this.imageUpload()} style={styles.profileimage}>
-                <Image source={require('../../Assets/girl.jpg')} style={styles.profileimage} ></Image>
+                <Image source={require('../../Assets/add.png')} style={styles.profileimage} ></Image>
               </TouchableOpacity>
               <View style={styles.emailwrapper}>
                 <TextInput style={styles.emailtextinput}
@@ -163,6 +163,7 @@ export default class Profile extends Component {
                   mode={'outlined'}
                   textAlign={'center'}
                   keyboardType={'email-address'}
+                  
                  selectionColor={colorWhite}
                   onChangeText={email => this.setState({ email })}
                   value={this.state.email}
@@ -170,7 +171,7 @@ export default class Profile extends Component {
                   theme={{
                     colors: {
                       placeholder: colorGrey,
-                      primary: colorGrey,
+                      primary: colorBlack,
                       text:colorWhite,
                       underlineColor: 'transparent',
                     }
@@ -188,7 +189,7 @@ export default class Profile extends Component {
                   theme={{
                     colors: {
                       placeholder: colorGrey,
-                      primary: colorGrey,
+                      primary: colorBlack,
                       // text: 'grey',
                       text:colorWhite,
 
@@ -209,7 +210,7 @@ export default class Profile extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                     // text: 'grey',
                     text:colorWhite,
                     underlineColor: 'transparent',
@@ -264,7 +265,7 @@ export default class Profile extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                     text:colorWhite,
                     underlineColor: 'transparent',
                   }
@@ -281,7 +282,7 @@ export default class Profile extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                     text: colorWhite,
                     // text: 'grey',
                     underlineColor: 'transparent',
@@ -300,7 +301,7 @@ export default class Profile extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                     // text: 'grey',
                     text:colorWhite,
                     underlineColor: 'transparent',
@@ -318,7 +319,7 @@ export default class Profile extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                     // text: 'grey',
                     text:colorWhite,
                     underlineColor: 'transparent',
@@ -358,7 +359,7 @@ export default class Profile extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                     text:colorWhite,
                     underlineColor: 'transparent',
                   }
@@ -467,11 +468,12 @@ const styles = StyleSheet.create({
   },
   profileimage:
   {
-    height: responsiveHeight(15),
-    width: responsiveHeight(15),
+    height: responsiveHeight(12),
+    width: responsiveHeight(12),
     borderRadius: responsiveWidth(15),
     marginTop: responsiveWidth(1),
-    alignSelf: 'center'
+    alignSelf: 'center',
+    resizeMode:'stretch'
 
   },
   text:
@@ -487,7 +489,7 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    height: responsiveHeight(5),
+    
     backgroundColor: cardBgColor,
     width: responsiveWidth(30),
     fontSize: responsiveFontSize(1.5),
@@ -503,7 +505,7 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
 
-    height: responsiveHeight(7),
+   
     backgroundColor: cardBgColor,
     marginTop: responsiveWidth(1),
     fontSize: responsiveFontSize(1.5)
@@ -512,13 +514,13 @@ const styles = StyleSheet.create({
   checkboxtext:
   {
     fontFamily: Muli,
-    fontSize: responsiveFontSize(2),
-    color: colorGrey,
-    marginTop: responsiveWidth(1.5)
+    fontSize: responsiveFontSize(1.8),
+    color: colorBlack,
+    marginTop: responsiveWidth(1)
   },
   checkbox:
   {
-    marginLeft: responsiveWidth(-2)
+    marginLeft: responsiveWidth(-1)
   },
   dropdown:
   {

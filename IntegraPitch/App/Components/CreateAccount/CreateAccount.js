@@ -96,7 +96,7 @@ export default class CreateAccount extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
@@ -191,7 +191,7 @@ export default class CreateAccount extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
@@ -209,7 +209,7 @@ export default class CreateAccount extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
@@ -325,7 +325,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: responsiveWidth(10)
+    marginTop: responsiveWidth(9)
   },
   headertext:
   {
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
     color: colorGrey,
-    marginVertical: responsiveWidth(3),
+    marginVertical: responsiveWidth(2),
     fontWeight: 'bold'
 
   },
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    height: responsiveHeight(7),
+    
     backgroundColor: cardBgColor,
     marginTop: responsiveWidth(1),
     fontSize: responsiveFontSize(1.5),
@@ -365,14 +365,14 @@ const styles = StyleSheet.create({
   checkboxtext:
   {
     fontFamily: Muli,
-    fontSize: responsiveFontSize(2),
-    color: colorGrey,
-    marginTop: responsiveWidth(1.5)
+    fontSize: responsiveFontSize(1.8),
+    color: colorBlack,
+    marginTop: responsiveWidth(1)
   },
   checkbox:
   {
 
-    marginLeft: responsiveWidth(-2),
+    marginLeft: responsiveWidth(-1),
     //backgroundColor:colorGrey
   },
   button:
