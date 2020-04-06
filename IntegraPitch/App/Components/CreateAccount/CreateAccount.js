@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, CheckBox, Modal, FlatList } from 'react-native';
+import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button, TextInput } from 'react-native-paper';
+import { Icon, CheckBox } from 'react-native-elements';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, bgColor, cardBgColor,headerColor } from '../../Globals/colors';
-//import { Dropdown } from 'react-native-material-dropdown';
-// import ModalDropdown from 'react-native-modal-dropdown';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, bgColor, cardBgColor, headerColor } from '../../Globals/colors';
 import DropdownMenu from 'react-native-dropdown-menu';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DatePicker from 'react-native-datepicker'
@@ -19,7 +18,7 @@ export default class CreateAccount extends Component {
     nickname: '',
     portfolio: '',
     interests: '',
-
+    checked: false,
     setSelectedValue: '',
     modalVisible: false,
     category: [
@@ -67,6 +66,7 @@ export default class CreateAccount extends Component {
     })
     this.setState({ category: array }, () => this.setState({ modalVisible: false }));
   }
+
   render() {
 
 
@@ -97,7 +97,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                   text: colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -157,7 +157,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                   text: colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -175,7 +175,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                   text: colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -192,7 +192,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                   text: colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -205,18 +205,18 @@ export default class CreateAccount extends Component {
                 onChangeText={interests => this.setState({ interests })}
                 value={this.state.interests}
                 underlineColorAndroid='transparent'
-                multiline={true}
                 theme={{
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                   text: colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
               />
+
               <TouchableOpacity style={{
-                height: responsiveHeight(7),
+                height: responsiveHeight(9),
                 flexDirection: 'row', width: responsiveWidth(88),
                 alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between',
                 marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1),
@@ -231,16 +231,12 @@ export default class CreateAccount extends Component {
                 </Text>
                 <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />
               </TouchableOpacity>
-
-              <View style={{ flexDirection: 'row' }}>
-                <CheckBox style={styles.checkbox}
-
-                  borderColor={colorGrey}
-                  value={this.state.checked}
-                  onValueChange={() => this.setState({ checked: !this.state.checked })}
-                />
-                <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
-              </View>
+              <CheckBox title=' Subscribe to our newsletter'
+                containerStyle={styles.checkbox}
+                textStyle={styles.checkboxtext}
+                checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                checked={this.state.checked}
+                onPress={() => this.setState({ checked: !this.state.checked })} />
               <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttontext}>Sign Up</Text>
               </TouchableOpacity>
@@ -283,10 +279,10 @@ export default class CreateAccount extends Component {
                       <Text style={{ marginLeft: responsiveWidth(2), color: item.flag ? colorBlack : colorGrey }}>
                         {item.name}
                       </Text>
-                      <CheckBox style={{}}
+                      {/* <CheckBox style={{}}
                         value={item.flag}
                         onValueChange={() => { this.modalStateChange(index) }}
-                      />
+                      /> */}
                     </TouchableOpacity>
                   )
                 }}></FlatList>
@@ -304,7 +300,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: bgColor
   },
- 
+
   header: {
     backgroundColor: colorGrey,
     flexDirection: 'row',
@@ -335,13 +331,13 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     width: responsiveWidth(92),
-    marginTop:responsiveHeight(2),
-    marginBottom:responsiveHeight(2),
-    borderRadius:responsiveWidth(1),
-    paddingStart:responsiveWidth(2),
-    paddingEnd:responsiveWidth(2),
+    marginTop: responsiveHeight(2),
+    marginBottom: responsiveHeight(2),
+    borderRadius: responsiveWidth(1),
+    paddingStart: responsiveWidth(2),
+    paddingEnd: responsiveWidth(2),
     alignSelf: 'center',
-     backgroundColor:cardBgColor
+    backgroundColor: cardBgColor
   },
   text:
   {
@@ -356,7 +352,7 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    
+
     backgroundColor: cardBgColor,
     marginTop: responsiveWidth(1),
     fontSize: responsiveFontSize(1.5),
@@ -365,14 +361,16 @@ const styles = StyleSheet.create({
   checkboxtext:
   {
     fontFamily: Muli,
-    fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
+    fontSize: responsiveFontSize(2),
+    color: colorGrey,
     marginTop: responsiveWidth(1)
   },
   checkbox:
   {
 
-    marginLeft: responsiveWidth(-1),
+    marginLeft: responsiveWidth(-1.5),
+    backgroundColor: 'transparent',
+    borderWidth: 0
     //backgroundColor:colorGrey
   },
   button:
@@ -399,7 +397,7 @@ const styles = StyleSheet.create({
     borderWidth: responsiveWidth(.3),
     borderRadius: responsiveWidth(1),
     borderColor: colorGrey,
-    height: responsiveHeight(7),
+    height: responsiveHeight(9),
     marginTop: responsiveWidth(2.5),
     justifyContent: 'center'
   },
