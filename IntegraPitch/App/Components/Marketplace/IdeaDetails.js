@@ -57,7 +57,7 @@ export default class Marketplace extends Component {
                     )
                   }} />
               </View>
-              <Text style={styles.ideaTextStyle1} textBreakStrategy={'highQuality'}>SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.</Text>
+              <Text style={styles.ideaTextStyle1} textBreakStrategy={'highQuality'}>SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.SimpleText is the native text editor for the Apple classic Mac OS.</Text>
               <View style={styles.ideaButtonParentContainer2}>
                 <TouchableOpacity style={styles.ideabuttonChildContainer2}>
                   <Text style={styles.ideabuttonTextStyle2}>TECH</Text>

@@ -111,7 +111,7 @@ export default class ProposalOffer extends Component {
                                 Send an offer to the creator of
                         </Text>
                             <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.statustextinput}
+                                {/* <TextInput style={styles.statustextinput}
                                     placeholder={'STATUS'}
                                     mode={'outlined'}
                                     selectionColor={colorWhite}
@@ -126,7 +126,10 @@ export default class ProposalOffer extends Component {
                                             text:colorWhite
                                         }
                                     }}
-                                />
+                                /> */}
+                                <View style={styles.statustext}>
+                                    <Text style={{fontSize:responsiveFontSize(1.8),color:colorWhite}}>Status</Text>
+                                </View>
                                 <Text style={styles.ideatext}>
                                     Idea Title
                             </Text>
@@ -150,7 +153,7 @@ export default class ProposalOffer extends Component {
                                 theme={{
                                     colors: {
                                         placeholder: colorGrey,
-                                        primary: colorGrey,
+                                        primary: colorBlack,
                                         underlineColor: 'transparent',
                                         text:colorWhite
                                     }
@@ -200,7 +203,7 @@ export default class ProposalOffer extends Component {
                                     theme={{
                                         colors: {
                                             placeholder: colorGrey,
-                                            primary: colorGrey,
+                                            primary: colorBlack,
                                             underlineColor: 'transparent',
                                             text:colorWhite
                                         }
@@ -215,7 +218,7 @@ export default class ProposalOffer extends Component {
                                     If your proposal is not acceptable the document you uploaded will reamain your property
                             </Text>
                             </View>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('SharedIdeas')}>
                                 <Text style={styles.buttontext}>SUBMIT OFFER</Text>
                             </TouchableOpacity>
                         </View>
@@ -293,10 +296,20 @@ const styles = StyleSheet.create({
     {
         margin: 0,
         padding: 0,
-        height: responsiveHeight(6),
+       
         backgroundColor: cardBgColor,
         width: responsiveWidth(25),
         fontSize: responsiveFontSize(1.8),
+    },
+    statustext:{
+        height:responsiveHeight(5),
+        width:responsiveWidth(20),
+        borderRadius:2,
+        borderWidth:1,
+        borderColor:colorWhite,
+        justifyContent:'center',
+        alignItems:'center',
+        top:responsiveHeight(1.5)
     },
     ideatext:
     {
@@ -331,20 +344,20 @@ const styles = StyleSheet.create({
         //  height: responsiveHeight(10),
         backgroundColor: cardBgColor,
         width: responsiveWidth(88),
-        fontSize: responsiveFontSize(1.8),
+        fontSize: responsiveFontSize(1.4),
         paddingVertical: 0
     },
     percentagetextinput:
     {
         backgroundColor: cardBgColor,
         width: responsiveWidth(25),
-        height: responsiveHeight(6),
+        
         fontSize: responsiveFontSize(2),
     },
     proceedingtext:
     {
         fontFamily: Muli,
-        fontSize: responsiveFontSize(1.9),
+        fontSize: responsiveFontSize(1.6),
         color: colorGrey,
         width: responsiveWidth(50),
         marginLeft: responsiveWidth(2.5),

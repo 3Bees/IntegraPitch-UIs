@@ -110,15 +110,15 @@ export default class IdeaProposal extends Component {
                                 Type of Adjustments
                         </Text>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21}  color={colorGrey}/>
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}  color={colorBlack}/>
                                 <Text style={styles.icontext}>Functionalities</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21}color={colorGrey} />
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}color={colorBlack} />
                                 <Text style={styles.icontext}>Business Model</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21}color={colorGrey} />
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}color={colorBlack} />
                                 <Text style={styles.icontext}>Target Group</Text>
                             </View>
                             <Text style={styles.text}>Executive Summary</Text>
@@ -166,7 +166,7 @@ export default class IdeaProposal extends Component {
                                         }} />
                                 </View>
                             </View>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('AdjustProposal')}>
                                 <Text style={styles.buttontext}>SUBMIT PROPOSAL</Text>
                             </TouchableOpacity>
                         </View>
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
         backgroundColor: cardBgColor,
         width: responsiveWidth(88),
         height: '100%',
-        fontSize: responsiveFontSize(2.2),
+        fontSize: responsiveFontSize(1.8),
     },
     documentimage:
     {

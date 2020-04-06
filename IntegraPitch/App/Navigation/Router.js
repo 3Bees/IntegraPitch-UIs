@@ -1,11 +1,3 @@
-/**
-* Sample React Native App
-* https://github.com/facebook/react-native
-*
-* @format
-* @flow strict-local
-*/
-
 import React from 'react';
 import {
     // SafeAreaView,
@@ -39,7 +31,7 @@ const MainStack = createStackNavigator();
 const token = true
 const Main = () => {
     return (
-        <MainStack.Navigator initialRouteName="AuthLoading" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Start" screenOptions={{ headerShown: false }} >
 
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="Start" component={Start} />
