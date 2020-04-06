@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, ScrollView, FlatList, Modal } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, ScrollView, FlatList, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor, bgColor,headerColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor, bgColor, headerColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import { Button, TextInput } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import DatePicker from 'react-native-datepicker'
+import { Icon, CheckBox } from 'react-native-elements';
 export default class Profile extends Component {
 
   state = {
@@ -20,8 +20,10 @@ export default class Profile extends Component {
     nickname: '',
     portfolio: '',
     creator: '',
+    checked: false,
+    technologies:'',
     Imagedatasource: [],
-     documentdatasource: [] ,
+    documentdatasource: [],
     modalVisible: false,
     category: [
       {
@@ -47,7 +49,7 @@ export default class Profile extends Component {
 
     ],
     selected: 'Creator',
-    text:''
+    text: ''
   }
   imageUpload = () => {
     const options = {
@@ -142,7 +144,7 @@ export default class Profile extends Component {
   render() {
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent  />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
@@ -163,8 +165,8 @@ export default class Profile extends Component {
                   mode={'outlined'}
                   textAlign={'center'}
                   keyboardType={'email-address'}
-                  
-                 selectionColor={colorWhite}
+
+                  selectionColor={colorWhite}
                   onChangeText={email => this.setState({ email })}
                   value={this.state.email}
                   underlineColorAndroid='transparent'
@@ -172,7 +174,7 @@ export default class Profile extends Component {
                     colors: {
                       placeholder: colorGrey,
                       primary: colorBlack,
-                      text:colorWhite,
+                      text: colorWhite,
                       underlineColor: 'transparent',
                     }
                   }}
@@ -181,7 +183,7 @@ export default class Profile extends Component {
                   placeholder={'ADD PHONE'}
                   keyboardType={'numeric'}
                   mode={'outlined'}
-                 selectionColor={colorWhite}
+                  selectionColor={colorWhite}
                   onChangeText={phone => this.setState({ phone })}
                   value={this.state.phone}
                   //style={{ textAlign: '' }}
@@ -191,7 +193,7 @@ export default class Profile extends Component {
                       placeholder: colorGrey,
                       primary: colorBlack,
                       // text: 'grey',
-                      text:colorWhite,
+                      text: colorWhite,
 
                       underlineColor: 'transparent',
                     }
@@ -203,7 +205,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Name Surname'}
                 mode={'outlined'}
-               selectionColor={colorWhite}
+                selectionColor={colorWhite}
                 onChangeText={name => this.setState({ name })}
                 value={this.state.name}
                 underlineColorAndroid='transparent'
@@ -212,7 +214,7 @@ export default class Profile extends Component {
                     placeholder: colorGrey,
                     primary: colorBlack,
                     // text: 'grey',
-                    text:colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -239,7 +241,7 @@ export default class Profile extends Component {
                       borderWidth: 0,
                     },
                     dateText: {
-                      color:colorWhite,
+                      color: colorWhite,
                       fontSize: responsiveFontSize(1.8),
                       fontFamily: 'Muli-Bold',
                       numberOfLines: 1
@@ -258,7 +260,7 @@ export default class Profile extends Component {
                 placeholder={'address@mail.com'}
                 keyboardType={'email-address'}
                 mode={'outlined'}
-               selectionColor={colorWhite}
+                selectionColor={colorWhite}
                 onChangeText={mailaddress => this.setState({ mailaddress })}
                 value={this.state.mailaddress}
                 underlineColorAndroid='transparent'
@@ -266,7 +268,7 @@ export default class Profile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text:colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -275,7 +277,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Replace ID'}
                 mode={'outlined'}
-               selectionColor={colorWhite}
+                selectionColor={colorWhite}
                 onChangeText={uploadid => this.setState({ uploadid })}
                 value={this.state.uploadid}
                 underlineColorAndroid='transparent'
@@ -294,7 +296,7 @@ export default class Profile extends Component {
                 // label='Email'
                 placeholder={'Nickname'}
                 mode={'outlined'}
-               selectionColor={colorWhite}
+                selectionColor={colorWhite}
                 onChangeText={nickname => this.setState({ nickname })}
                 value={this.state.nickname}
                 underlineColorAndroid='transparent'
@@ -303,7 +305,7 @@ export default class Profile extends Component {
                     placeholder: colorGrey,
                     primary: colorBlack,
                     // text: 'grey',
-                    text:colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -321,7 +323,7 @@ export default class Profile extends Component {
                     placeholder: colorGrey,
                     primary: colorBlack,
                     // text: 'grey',
-                    text:colorWhite,
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -329,12 +331,11 @@ export default class Profile extends Component {
 
 
               <TouchableOpacity style={{
-                height: responsiveHeight(7),
+                height: responsiveHeight(9),
                 flexDirection: 'row', width: responsiveWidth(88),
                 alignSelf: 'center', alignItems: 'center',
                 justifyContent: 'space-between',
                 marginTop: responsiveHeight(1),
-                marginBottom: responsiveHeight(1),
                 borderRadius: responsiveWidth(1), borderWidth: 1,
                 borderColor: colorGrey,
               }}
@@ -349,37 +350,32 @@ export default class Profile extends Component {
               </TouchableOpacity>
               <TextInput style={styles.textinput}
                 // label='Email'
-                placeholder={'Tecnologies'}
+                placeholder={'Technologies'}
                 mode={'outlined'}
-               selectionColor={colorWhite}
-                onChangeText={interests => this.setState({ interests })}
-                value={this.state.interests}
+                selectionColor={colorWhite}
+                onChangeText={technologies => this.setState({ technologies })}
+                value={this.state.technologies}
                 underlineColorAndroid='transparent'
-                multiline={true}
                 theme={{
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text:colorWhite,
+                    // text: 'grey',
+                    text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
               />
-
-
-
-              <View style={{ flexDirection: 'row' }}>
-                <CheckBox style={styles.checkbox}
-                  value={this.state.checked}
-                  onValueChange={() => this.setState({ checked: !this.state.checked })}
-                />
-                <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
-              </View>
-
+              <CheckBox title=' Subscribe to our newsletter'
+                containerStyle={styles.checkbox}
+                textStyle={styles.checkboxtext}
+                checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                checked={this.state.checked}
+                onPress={() => this.setState({ checked: !this.state.checked })} />
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttontext}>Save</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttontext}>Save</Text>
-            </TouchableOpacity>
           </ScrollView>
         </View>
         <Modal
@@ -405,10 +401,10 @@ export default class Profile extends Component {
                       <Text style={{ marginLeft: responsiveWidth(2), color: item.flag ? colorBlack : colorGrey }}>
                         {item.name}
                       </Text>
-                      <CheckBox style={{}}
+                      {/* <CheckBox style={{}}
                         value={item.flag}
                         onValueChange={() => { this.modalStateChange(index) }}
-                      />
+                      /> */}
                     </TouchableOpacity>
                   )
                 }}></FlatList>
@@ -458,13 +454,13 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     width: responsiveWidth(92),
-    marginTop:responsiveHeight(2),
-    marginBottom:responsiveHeight(2),
-    borderRadius:responsiveWidth(1),
-    paddingStart:responsiveWidth(2),
-    paddingEnd:responsiveWidth(2),
+    marginTop: responsiveHeight(2),
+    marginBottom: responsiveHeight(2),
+    borderRadius: responsiveWidth(1),
+    paddingStart: responsiveWidth(2),
+    paddingEnd: responsiveWidth(2),
     alignSelf: 'center',
-     backgroundColor:cardBgColor
+    backgroundColor: cardBgColor
   },
   profileimage:
   {
@@ -473,7 +469,7 @@ const styles = StyleSheet.create({
     borderRadius: responsiveWidth(15),
     marginTop: responsiveWidth(1),
     alignSelf: 'center',
-    resizeMode:'stretch'
+    resizeMode: 'stretch'
 
   },
   text:
@@ -489,11 +485,11 @@ const styles = StyleSheet.create({
   {
     margin: 0,
     padding: 0,
-    
+
     backgroundColor: cardBgColor,
     width: responsiveWidth(30),
     fontSize: responsiveFontSize(1.5),
-     textAlign:'center',
+    textAlign: 'center',
   },
   emailwrapper: {
     flexDirection: 'row',
@@ -505,7 +501,7 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
 
-   
+
     backgroundColor: cardBgColor,
     marginTop: responsiveWidth(1),
     fontSize: responsiveFontSize(1.5)
@@ -514,20 +510,24 @@ const styles = StyleSheet.create({
   checkboxtext:
   {
     fontFamily: Muli,
-    fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
+    fontSize: responsiveFontSize(2),
+    color: colorGrey,
     marginTop: responsiveWidth(1)
   },
   checkbox:
   {
-    marginLeft: responsiveWidth(-1)
+
+    marginLeft: responsiveWidth(-1.5),
+    backgroundColor: 'transparent',
+    borderWidth: 0
+    //backgroundColor:colorGrey
   },
   dropdown:
   {
     borderWidth: responsiveWidth(.3),
     borderRadius: responsiveWidth(1),
     borderColor: colorGrey,
-    height: responsiveHeight(7),
+    height: responsiveHeight(9),
     backgroundColor: cardBgColor,
     marginTop: responsiveWidth(2.5),
     justifyContent: 'center'
