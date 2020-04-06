@@ -260,28 +260,28 @@ export default class Marketplace extends Component {
 
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Executive Summary</Text>
-              <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-8) }}>
+              <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-5) }}>
                 <CheckBox title='No, keep my idea only in its current state'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
                   style={{backgroundColor:bgColor}}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
                   checked={this.state.currentstate}
                   onPress={() => this.setState({ currentstate: !this.state.currentstate })} />
               </View>
-              <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-8) }}>
+              <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-5) }}>
                 <CheckBox title='Receive upgrade offers to Sketch state'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
                   checked={this.state.Sketchstate}
                   onPress={() => this.setState({ Sketchstate: !this.state.Sketchstate })} />
               </View>
-              <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-1) }}>
+              <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-5) }}>
                 <CheckBox title='Receive upgrade offers to Prototype state'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
                   checked={this.state.prototypestate}
                   onPress={() => this.setState({ prototypestate: !this.state.pr })} />
               </View>
@@ -382,7 +382,7 @@ export default class Marketplace extends Component {
                 <CheckBox title='Accept new offers'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
                   checked={this.state.acceptoffer}
                   onPress={() => this.setState({ acceptoffer: !this.state.acceptoffer })} />
               </View>
@@ -393,7 +393,7 @@ export default class Marketplace extends Component {
                 <CheckBox title="I have read and agree to Our Policy"
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
                   checked={this.state.acceptpolicy}
                   onPress={() => this.setState({ acceptpolicy: !this.state.acceptpolicy })} />
               </View>
@@ -556,7 +556,8 @@ const styles = StyleSheet.create({
   },
   checkbox:
   {
-
+    backgroundColor: 'transparent',
+    borderWidth: 0,
     marginLeft: responsiveWidth(-1)
   },
   // buttonParentContainer: {

@@ -369,7 +369,7 @@ export default class Profile extends Component {
               <CheckBox title=' Subscribe to our newsletter'
                 containerStyle={styles.checkbox}
                 textStyle={styles.checkboxtext}
-                checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
                 checked={this.state.checked}
                 onPress={() => this.setState({ checked: !this.state.checked })} />
               <TouchableOpacity style={styles.button}>
