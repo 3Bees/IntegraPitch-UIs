@@ -153,7 +153,7 @@ export default class Marketplace extends Component {
                 theme={{
                   colors: {
                     placeholder: colorGrey,
-                    primary: colorGrey,
+                    primary: colorBlack,
                     text:colorWhite,
                     underlineColor: 'transparent',
                   }
@@ -176,7 +176,7 @@ export default class Marketplace extends Component {
                   theme={{
                     colors: {
                       placeholder:colorGrey,
-                      primary: colorGrey,
+                      primary: colorBlack,
                       text:colorWhite,
                       underlineColor: 'transparent',
 
@@ -201,7 +201,7 @@ export default class Marketplace extends Component {
                   theme={{
                     colors: {
                       placeholder:colorGrey,
-                      primary: colorGrey,
+                      primary: colorBlack,
                       color: colorBlack,
                       text:colorWhite,
                       underlineColor: 'transparent',
@@ -327,7 +327,7 @@ export default class Marketplace extends Component {
                   <Text style={styles.buttonTextStyle}>Starting at</Text>
                 </TouchableOpacity> */}
 
-                <TextInput style={[{ margin:0,padding:0,height: responsiveHeight(6.5),backgroundColor:cardBgColor ,width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
+                <TextInput style={[{ margin:0,padding:0,backgroundColor:cardBgColor ,width: '29.8%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.7),left:2 }]}
                   // label='Email'
                   placeholder={'Starting at'}
                   mode={'outlined'}
@@ -349,7 +349,7 @@ export default class Marketplace extends Component {
 
                 <TouchableOpacity style={[styles.buttonChildContainer, { height: responsiveHeight(5), width: '20%', borderWidth: 0 }]} />
                 <Text style={[styles.TextInputTitleStyle, { position: 'absolute', start: responsiveWidth(50) }]} >$</Text>
-                <TextInput style={[{ height: responsiveHeight(6.5),backgroundColor:cardBgColor, width: '29%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.88) }]}
+                <TextInput style={[{ backgroundColor:cardBgColor, width: '29.8%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.7),right:2 }]}
                   // label='Email'
                   placeholder={'Full price'}
                   mode={'outlined'}
@@ -388,7 +388,7 @@ export default class Marketplace extends Component {
                 <Text style={styles.checkboxtext}>I have read and agree to<Text style={{ textDecorationLine: 'underline' }}> Our Policy</Text> </Text>
               </View>
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('OfferReceived')}>
               <Text style={styles.buttontext}>SUBMIT IDEA</Text>
             </TouchableOpacity>
 
@@ -503,8 +503,8 @@ const styles = StyleSheet.create({
     backgroundColor: cardBgColor,
     width: '100%',
     // backgroundColor:'red',
-    height: responsiveHeight(6),
-    fontSize: responsiveFontSize(2.2),
+   
+    fontSize: responsiveFontSize(1.8),
   },
   TextInputTitleStyle:
   {
@@ -538,21 +538,21 @@ const styles = StyleSheet.create({
   checkboxtext:
   {
     fontFamily: Muli,
-    fontSize: responsiveFontSize(2),
-    color: colorGrey,
-    marginTop: responsiveWidth(1.5)
+    fontSize: responsiveFontSize(1.8),
+    color: colorBlack,
+    marginTop: responsiveWidth(0.8)
   },
   checkbox:
   {
 
-    marginLeft: responsiveWidth(-2)
+    marginLeft: responsiveWidth(-1)
   },
-  buttonParentContainer: {
-    width: '100%',
-    height: responsiveHeight(8),
-    flexDirection: 'row', alignItems: 'center',
-    justifyContent: 'space-between'
-  },
+  // buttonParentContainer: {
+  //   width: '100%',
+  //   height: responsiveHeight(8),
+  //   flexDirection: 'row', alignItems: 'center',
+  //   justifyContent: 'space-between'
+  // },
   buttonChildContainer1: {
     height: '80%',
     width: '30%',

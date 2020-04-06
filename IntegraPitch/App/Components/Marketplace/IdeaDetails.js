@@ -57,7 +57,7 @@ export default class Marketplace extends Component {
                     )
                   }} />
               </View>
-              <Text style={styles.ideaTextStyle1} textBreakStrategy={'highQuality'}>SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.</Text>
+              <Text style={styles.ideaTextStyle1} textBreakStrategy={'highQuality'}>SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.SimpleText is the native text editor for the Apple classic Mac OS.</Text>
               <View style={styles.ideaButtonParentContainer2}>
                 <TouchableOpacity style={styles.ideabuttonChildContainer2}>
                   <Text style={styles.ideabuttonTextStyle2}>TECH</Text>
@@ -71,7 +71,7 @@ export default class Marketplace extends Component {
               <TouchableOpacity style={styles.ideabuttonChildContainer1}>
                 <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { backgroundColor: coloGolden }]}>
+              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { backgroundColor: coloGolden }]} onPress={()=>this.props.navigation.navigate('CreateAccount')}>
                 <Text style={[styles.ideabuttonTextStyle1, {  textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
               </TouchableOpacity>
             </View>

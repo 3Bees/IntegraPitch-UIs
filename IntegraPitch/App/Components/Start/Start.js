@@ -21,12 +21,21 @@ export default class Settings extends Component {
           <View style={{ height: responsiveHeight(20), width: responsiveWidth(100), alignItems: 'center', justifyContent: 'space-around', marginTop: responsiveHeight(10) }}>
             <TouchableOpacity style={styles.button} 
             onPress={() => {
-              console.log('Click');
-              this.props.navigation.navigate('CreateAccount')}}>  
-              <Text style={styles.buttontext}>IDEATOR'S POV</Text>
+            
+              this.props.navigation.navigate('Marketplace', {
+                user: 'idea',
+                
+              })}}>  
+              <Text style={styles.buttontext}>IDEATOR</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttontext}>BUYER'S POV</Text>
+            <TouchableOpacity style={styles.button}
+            onPress={() => {
+              
+              this.props.navigation.navigate('Marketplace', {
+                user:'buy' ,
+                
+              })}}>
+              <Text style={styles.buttontext}>BUYER</Text>
             </TouchableOpacity>
           </View>
         </View>

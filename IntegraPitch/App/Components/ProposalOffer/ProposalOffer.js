@@ -218,7 +218,7 @@ export default class ProposalOffer extends Component {
                                     If your proposal is not acceptable the document you uploaded will reamain your property
                             </Text>
                             </View>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('SharedIdeas')}>
                                 <Text style={styles.buttontext}>SUBMIT OFFER</Text>
                             </TouchableOpacity>
                         </View>
@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
     proceedingtext:
     {
         fontFamily: Muli,
-        fontSize: responsiveFontSize(1.9),
+        fontSize: responsiveFontSize(1.6),
         color: colorGrey,
         width: responsiveWidth(50),
         marginLeft: responsiveWidth(2.5),

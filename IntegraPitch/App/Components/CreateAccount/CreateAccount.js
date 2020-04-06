@@ -241,7 +241,7 @@ export default class CreateAccount extends Component {
                 />
                 <Text style={styles.checkboxtext}> Subscribe to our newsletter</Text>
               </View>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('ProposalOffer')}>
                 <Text style={styles.buttontext}>Sign Up</Text>
               </TouchableOpacity>
             </View>

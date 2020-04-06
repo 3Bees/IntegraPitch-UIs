@@ -4,13 +4,14 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor } from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor, colorBlack } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ent from 'react-native-vector-icons/Entypo'
 
 
 export default class Marketplace extends Component {
-
-  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4] }
+  
+  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4],user : this.props.route.params}
   renderHeader() {
     return (<View style={styles.buttonParentContainer}>
       <TouchableOpacity style={styles.buttonChildContainer}
@@ -27,6 +28,8 @@ export default class Marketplace extends Component {
     </View>)
   }
   render() {
+    
+    console.log(this.state.user)
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
@@ -36,9 +39,18 @@ export default class Marketplace extends Component {
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Marketplace</Text>
             </View>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('Settings')} style={{left:responsiveWidth(25),top:responsiveHeight(2.5)}}>
+            <Ionicons name="ios-settings"  size={32}/>
+            </TouchableOpacity>
           </View>
           <View style={styles.MainContainer}>
+            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
             <Text style={styles.text}>Marketplace</Text>
+            { this.state.user === 'buy' ?
+            null :  (<TouchableOpacity onPress={()=>this.props.navigation.navigate('SubmitNewIdea')} style={{top:responsiveHeight(2.5),right:responsiveWidth(2)}} >
+            <Ent name="add-to-list"  size={32} color={colorWhite}/>
+            </TouchableOpacity>)}
+            </View>
             <Text style={styles.text1}>See: all ideas</Text>
             <FlatList
               showsVerticalScrollIndicator={false}
@@ -90,7 +102,9 @@ const styles = StyleSheet.create({
     backgroundColor: coloGolden,
     flexDirection: 'row',
     width: responsiveWidth(100),
-    height: responsiveHeight(13)
+    height: responsiveHeight(13),
+    alignItems:'center',
+    justifyContent:'center'
   },
   headericon:
   {
@@ -103,16 +117,16 @@ const styles = StyleSheet.create({
   },
   headertextView:
   {
-    width: responsiveWidth(100),
+    
     // backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
+   textAlign:'center',
     marginTop: responsiveWidth(10)
   },
   headertext:
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
+    left:responsiveWidth(2),
    // color: colorWhite,
   },
   MainContainer: {

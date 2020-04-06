@@ -46,8 +46,8 @@ export default class Marketplace extends Component {
                   <View style={styles.ideaMainCard} key={index}>
                     <View style={styles.ideastatusContainer}>
                       <Text style={styles.text}>Idea title</Text>
-                      <TouchableOpacity style={styles.statusButtonContainer}
-                        onPress={() => this.props.navigation.navigate('OfferReceived')}>
+                      <TouchableOpacity style={styles.statusButtonContainer}>
+                       
                         <Text style={[styles.ideaStatusbuttonTextStyle2, {}]}>Status</Text>
                       </TouchableOpacity>
                     </View>
@@ -63,7 +63,8 @@ export default class Marketplace extends Component {
                         <Text style={[styles.ideabuttonTextStyle, {}]}>Reject</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.ideaButtonChildContainer1}
-                        >
+                       onPress={() => this.props.navigation.navigate('IdeaProposal')}>
+                        
                         <Text style={[styles.ideabuttonTextStyle, { color: colorBlack, fontSize: responsiveFontSize(2.2) }]}>NEW PROPOSAL</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.ideaButtonChildContainer}>

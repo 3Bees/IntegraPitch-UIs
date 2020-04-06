@@ -47,7 +47,7 @@ export default class Settings extends Component {
               <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ?colorGrey :  cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false }, () => this.props.navigation.navigate('CreateAccount'))}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ?colorGrey :  cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false }, )}>
             <Text style={[styles.titleTextStyle2,{ color:flag2 ?  colorBlack:colorGrey }]}>
                 {'Documents'}
               </Text>

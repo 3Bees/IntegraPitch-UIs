@@ -108,15 +108,15 @@ export default class AdjustProposal extends Component {
                                 Reasons For Rejection
                         </Text>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21} color={colorGrey} />
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)} color={colorBlack} />
                                 <Text style={styles.icontext}>Reason 1</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21} color={colorGrey}/>
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)} color={colorBlack}/>
                                 <Text style={styles.icontext}>Reason 2</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={21}color={colorGrey} />
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}color={colorBlack} />
                                 <Text style={styles.icontext}>Reason 3</Text>
                             </View>
                             <Text style={styles.text}>New Compromise</Text>
@@ -163,7 +163,7 @@ export default class AdjustProposal extends Component {
                                         }} />
                                 </View>
                             </View>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Marketplace')}>
                                 <Text style={styles.buttontext}>SUBMIT NEW PROPOSAL</Text>
                             </TouchableOpacity>
                         </View>
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
         backgroundColor: cardBgColor,
         width: responsiveWidth(88),
         height: '100%',
-        fontSize: responsiveFontSize(2.2),
+        fontSize: responsiveFontSize(1.8),
     },
     documentimage:
     {
