@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor,Muli,MuliBold ,colorBlack} from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor,Muli,MuliBold ,colorBlack, headerColor} from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
@@ -49,7 +49,7 @@ export default class OfferReceived extends Component {
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-                            <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
+                            <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>Offers Received</Text>
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     {
         fontWeight: 'bold',
         fontSize: responsiveFontSize(2.2),
-        color: colorBlack,
+        color: headerColor,
     },
     body:
     {
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
 
         fontSize: responsiveFontSize(2.5),
         fontFamily: Muli,
-        color: colorBlack,
+        color: headerColor,
 
     },
     daystext:

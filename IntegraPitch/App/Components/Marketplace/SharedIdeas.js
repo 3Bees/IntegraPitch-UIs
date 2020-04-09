@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize, responsiveScreenFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack} from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack,headerColor} from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -26,7 +26,7 @@ export default class Marketplace extends Component {
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-              <Ionicons name={'ios-arrow-back'} size={28} />
+              <Ionicons name={'ios-arrow-back'} size={28} color={headerColor} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Shared Ideas</Text>
@@ -65,7 +65,7 @@ export default class Marketplace extends Component {
                       <TouchableOpacity style={styles.ideaButtonChildContainer1}
                        onPress={() => this.props.navigation.navigate('IdeaProposal')}>
                         
-                        <Text style={[styles.ideabuttonTextStyle, { color: colorBlack, fontSize: responsiveFontSize(2.2) }]}>NEW PROPOSAL</Text>
+                        <Text style={[styles.ideabuttonTextStyle, { color: headerColor, fontSize: responsiveFontSize(2.2) }]}>NEW PROPOSAL</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.ideaButtonChildContainer}>
                         <AntDesign name={'checkcircleo'} color={colorGrey} size={28} />
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-   // color: colorWhite,
+    color: headerColor,
   },
 
   MainContainer: {

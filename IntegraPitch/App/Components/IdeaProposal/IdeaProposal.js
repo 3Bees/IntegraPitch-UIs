@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, CheckBox, FlatList } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold, bgColor } from '../../Globals/colors';
+import { colorWhite, colorGrey, colorBlack, cardBgColor, Muli, MuliBold, bgColor,headerColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button, TextInput } from 'react-native-paper';
@@ -94,7 +94,7 @@ export default class IdeaProposal extends Component {
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-                            <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
+                            <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>
@@ -110,15 +110,15 @@ export default class IdeaProposal extends Component {
                                 Type of Adjustments
                         </Text>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}  color={colorBlack}/>
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}  color={colorGrey}/>
                                 <Text style={styles.icontext}>Functionalities</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}color={colorBlack} />
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}color={colorGrey} />
                                 <Text style={styles.icontext}>Business Model</Text>
                             </View>
                             <View style={styles.iconview}>
-                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}color={colorBlack} />
+                                <Ionicons name={'ios-square-outline'} size={responsiveFontSize(3)}color={colorGrey} />
                                 <Text style={styles.icontext}>Target Group</Text>
                             </View>
                             <Text style={styles.text}>Executive Summary</Text>
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     {
         fontWeight: 'bold',
         fontSize: responsiveFontSize(2.2),
-        color: colorBlack,
+        color: headerColor,
     },
     MainContainer: {
         width: responsiveWidth(92),
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     icontext:
     {
         fontFamily: Muli,
-       // color: colorGrey,
+        color: 'grey',
         fontSize: responsiveFontSize(2),
         width: responsiveWidth(50),
         marginLeft: responsiveHeight(2),
@@ -301,7 +301,8 @@ const styles = StyleSheet.create({
         width: responsiveWidth(25),
         height: responsiveHeight(10),
         borderRadius: responsiveWidth(1)
-    }, button:
+    },
+     button:
     {
         width: responsiveWidth(60),
         alignSelf: 'center',
@@ -315,7 +316,7 @@ const styles = StyleSheet.create({
     buttontext:
     {
         fontFamily: Muli,
-       // color: colorWhite,
+        color: headerColor,
         fontSize: responsiveFontSize(2.5)
 
     },

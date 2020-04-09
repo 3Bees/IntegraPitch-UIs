@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack} from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack,headerColor} from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -25,7 +25,7 @@ export default class Marketplace extends Component {
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-              <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
+              <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Idea details</Text>
@@ -59,12 +59,12 @@ export default class Marketplace extends Component {
               </View>
               <Text style={styles.ideaTextStyle1} textBreakStrategy={'highQuality'}>SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.SimpleText is the native text editor for the Apple classic Mac OS.</Text>
               <View style={styles.ideaButtonParentContainer2}>
-                <TouchableOpacity style={styles.ideabuttonChildContainer2}>
+                <View style={styles.ideabuttonChildContainer2}>
                   <Text style={styles.ideabuttonTextStyle2}>TECH</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.ideabuttonChildContainer2}>
+                </View>
+                <View style={styles.ideabuttonChildContainer2}>
                   <Text style={styles.ideabuttonTextStyle2}>$126</Text>
-                </TouchableOpacity>
+                </View>
               </View>
             </View>
             <View style={styles.ideaButtonParentContainer1}>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-   // color: colorWhite,
+    color: headerColor,
   },
   statusContainer: {
     flexDirection: 'row',
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-   // color: colorWhite,
+    color: headerColor,
   },
   ideaButtonParentContainer2: {
     height: responsiveHeight(5),
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
   {
     // fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-   // color: colorWhite,
+    color: headerColor,
   },
 });
 

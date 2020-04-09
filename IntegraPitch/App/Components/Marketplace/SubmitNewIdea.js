@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList, ScrollView, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, Muli, MuliBold, colorBlack } from '../../Globals/colors';
+import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, Muli, MuliBold, colorBlack,headerColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TextInput, Title } from 'react-native-paper';
@@ -137,7 +137,7 @@ export default class Marketplace extends Component {
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-              <Ionicons name={'ios-arrow-back'} color={colorBlack} size={28} />
+              <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
               <Text style={styles.headertext}>Idea Submission</Text>
@@ -265,7 +265,7 @@ export default class Marketplace extends Component {
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
                   style={{backgroundColor:bgColor}}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
                   checked={this.state.currentstate}
                   onPress={() => this.setState({ currentstate: !this.state.currentstate })} />
               </View>
@@ -273,7 +273,7 @@ export default class Marketplace extends Component {
                 <CheckBox title='Receive upgrade offers to Sketch state'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
                   checked={this.state.Sketchstate}
                   onPress={() => this.setState({ Sketchstate: !this.state.Sketchstate })} />
               </View>
@@ -281,7 +281,7 @@ export default class Marketplace extends Component {
                 <CheckBox title='Receive upgrade offers to Prototype state'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
                   checked={this.state.prototypestate}
                   onPress={() => this.setState({ prototypestate: !this.state.pr })} />
               </View>
@@ -382,7 +382,7 @@ export default class Marketplace extends Component {
                 <CheckBox title='Accept new offers'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
                   checked={this.state.acceptoffer}
                   onPress={() => this.setState({ acceptoffer: !this.state.acceptoffer })} />
               </View>
@@ -393,7 +393,7 @@ export default class Marketplace extends Component {
                 <CheckBox title="I have read and agree to Our Policy"
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
+                  checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
                   checked={this.state.acceptpolicy}
                   onPress={() => this.setState({ acceptpolicy: !this.state.acceptpolicy })} />
               </View>
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-    // color: colorWhite,
+   color: headerColor,
   },
   MainContainer: {
     width: responsiveWidth(92),
@@ -550,15 +550,15 @@ const styles = StyleSheet.create({
   checkboxtext:
   {
     fontFamily: Muli,
-    fontSize: responsiveFontSize(1.8),
-    color: colorBlack,
-    marginTop: responsiveWidth(0.8)
+    fontSize: responsiveFontSize(1.9),
+    color: 'grey',
+    marginTop: responsiveWidth(-1)
   },
   checkbox:
   {
     backgroundColor: 'transparent',
     borderWidth: 0,
-    marginLeft: responsiveWidth(-1)
+    marginLeft: responsiveWidth(-0.5)
   },
   // buttonParentContainer: {
   //   width: '100%',
@@ -597,7 +597,7 @@ const styles = StyleSheet.create({
   buttontext:
   {
     fontFamily: Muli,
-    // color: colorWhite,
+     color: headerColor,
     fontSize: responsiveFontSize(2.5)
 
   },
