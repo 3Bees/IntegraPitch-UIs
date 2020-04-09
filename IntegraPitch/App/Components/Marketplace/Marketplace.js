@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor, colorBlack } from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor, colorBlack, headerColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Ent from 'react-native-vector-icons/Entypo'
 
@@ -40,7 +40,7 @@ export default class Marketplace extends Component {
               <Text style={styles.headertext}>Marketplace</Text>
             </View>
             <TouchableOpacity onPress={()=>this.props.navigation.navigate('Settings')} style={{left:responsiveWidth(25),top:responsiveHeight(2.5)}}>
-            <Ionicons name="ios-settings"  size={32}/>
+            <Ionicons name="ios-settings" color={headerColor}size={32}/>
             </TouchableOpacity>
           </View>
           <View style={styles.MainContainer}>
@@ -76,12 +76,12 @@ export default class Marketplace extends Component {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.ideaButtonParentContainer2}>
-                      <TouchableOpacity style={styles.ideabuttonChildContainer2}>
+                      <View style={styles.ideabuttonChildContainer2}>
                         <Text style={styles.ideabuttonTextStyle2}>TECH</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity style={styles.ideabuttonChildContainer2}>
+                      </View>
+                      <View style={styles.ideabuttonChildContainer2}>
                         <Text style={styles.ideabuttonTextStyle2}>$126</Text>
-                      </TouchableOpacity>
+                      </View>
                     </View>
                   </TouchableOpacity>
                 )
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
     left:responsiveWidth(2),
-   // color: colorWhite,
+    color: headerColor,
   },
   MainContainer: {
     width: responsiveWidth(92),
@@ -153,13 +153,16 @@ const styles = StyleSheet.create({
   buttonParentContainer: {
     width: '100%',
     height: responsiveHeight(8),
+   // backgroundColor:'red',
     flexDirection: 'row',
      alignItems: 'center',
+    // marginHorizontal:responsiveWidth(1),
     justifyContent: 'space-between'
   },
   buttonChildContainer: {
     height: '80%',
     width: '30%',
+    marginHorizontal:responsiveWidth(1),
     borderRadius: responsiveWidth(1),
     borderWidth: 1,
     borderColor: coloGolden,
@@ -222,7 +225,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-    //color: colorWhite,
+    color: headerColor,
   },
   ideaButtonParentContainer2: {
     height: responsiveHeight(5),
@@ -245,6 +248,6 @@ const styles = StyleSheet.create({
   {
     // fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
-    color: 'black',
+    color: headerColor,
   },
 });

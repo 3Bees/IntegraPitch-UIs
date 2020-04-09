@@ -1,57 +1,118 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, FlatList } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, ScrollView, FlatList, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import { Button, TextInput } from 'react-native-paper';
-import { Icon, CheckBox } from 'react-native-elements';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, bgColor, cardBgColor, headerColor } from '../../Globals/colors';
-import DropdownMenu from 'react-native-dropdown-menu';
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { colorWhite, colorGrey, colorBlack, Muli, MuliBold, cardBgColor, bgColor, headerColor } from '../../Globals/colors';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Button, TextInput } from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
 import DatePicker from 'react-native-datepicker'
-import { ScrollView } from 'react-native-gesture-handler';
-export default class CreateAccount extends Component {
+import { Icon, CheckBox } from 'react-native-elements';
+export default class CreateProfile extends Component {
+
   state = {
+    email: '',
+    phone: '',
     name: '',
     dob: '',
     mailaddress: '',
     uploadid: '',
     nickname: '',
     portfolio: '',
-    interests: '',
+    creator: '',
     checked: false,
-    setSelectedValue: '',
+    technologies:'',
+    Imagedatasource: [],
+    documentdatasource: [],
     modalVisible: false,
     category: [
       {
-        name: 'Option 1',
+        name: 'Creator',
         flag: true
       },
       {
-        name: 'Option 2',
-        flag: false
+        name: 'Designer',
+        flag: true
       },
       {
-        name: 'Option 3',
-        flag: false
-      },
-      {
-        name: 'Option 4',
-        flag: false
-      },
-      {
-        name: 'Option 5',
+        name: 'Buyer',
         flag: false
       },
 
     ],
-    selected: 'I am a…',
+    selected: 'Creator',
     text: ''
   }
-  componentDidMount = async () => {
-    setTimeout(() => {
-      // this.props.navigation.navigate('Auth');
-    }, 3000);
+  imageUpload = () => {
+    const options = {
+      title: 'Select Image',
+
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = { uri: response.uri };
+        let { Imagedatasource } = this.state
+        Imagedatasource.push(source)
+        this.setState({ Imagedatasource });
+      }
+    });
+  }
+
+  documentUpload = async () => {
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.pdf],
+      });
+      let { documentdatasource } = this.state
+      documentdatasource.push(res)
+      this.setState({ documentdatasource });
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        // User cancelled the picker, exit any dialogs or menus and move on
+      } else {
+        throw err;
+      }
+    }
   };
+  documentUpload1 = () => {
+    const options = {
+      title: 'Select Image',
+
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = { uri: response.uri };
+        let array = []
+        array.push(source)
+        console.log(array)
+        this.setState({ documentdatasource: array });
+      }
+    });
+  }
   async modalStateChange(index) {
     let array = this.state.category
 
@@ -66,28 +127,75 @@ export default class CreateAccount extends Component {
     })
     this.setState({ category: array }, () => this.setState({ modalVisible: false }));
   }
+  componentDidMount = async () => {
 
+    setTimeout(() => {
+      // this.props.navigation.navigate('Auth');
+    }, 3000);
+  };
   render() {
-
-
     return (
       <CustomSafeAreaView>
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
         <View style={styles.container}>
-          <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
           <View style={styles.header}>
-            <TouchableOpacity style={styles.headericon}>
+            <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
               <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
-              <Text style={styles.headertext}>Create Account</Text>
+              <Text style={styles.headertext}>Profile</Text>
             </View>
           </View>
           <ScrollView style={styles.MainContainer} showsVerticalScrollIndicator={false}>
             <View style={styles.body}>
+              <TouchableOpacity onPress={() => this.imageUpload()} style={styles.profileimage}>
+                <Image source={require('../../Assets/add.png')} style={styles.profileimage} ></Image>
+              </TouchableOpacity>
+              <View style={styles.emailwrapper}>
+                <TextInput style={styles.emailtextinput}
+                  placeholder={'ADD EMAIL'}
+                  mode={'outlined'}
+                  textAlign={'center'}
+                  keyboardType={'email-address'}
+
+                  selectionColor={colorWhite}
+                  onChangeText={email => this.setState({ email })}
+                  value={this.state.email}
+                  underlineColorAndroid='transparent'
+                  theme={{
+                    colors: {
+                      placeholder: colorGrey,
+                      primary: colorBlack,
+                      text: colorWhite,
+                      underlineColor: 'transparent',
+                    }
+                  }}
+                />
+                <TextInput style={styles.emailtextinput}
+                  placeholder={'ADD PHONE'}
+                  keyboardType={'numeric'}
+                  mode={'outlined'}
+                  selectionColor={colorWhite}
+                  onChangeText={phone => this.setState({ phone })}
+                  value={this.state.phone}
+                  //style={{ textAlign: '' }}
+                  underlineColorAndroid='transparent'
+                  theme={{
+                    colors: {
+                      placeholder: colorGrey,
+                      primary: colorBlack,
+                      // text: 'grey',
+                      text: colorWhite,
+
+                      underlineColor: 'transparent',
+                    }
+                  }}
+                />
+              </View>
               <Text style={styles.text}>Internal profile</Text>
               <TextInput style={styles.textinput}
                 // label='Email'
-                placeholder={'Full Name'}
+                placeholder={'Name Surname'}
                 mode={'outlined'}
                 selectionColor={colorWhite}
                 onChangeText={name => this.setState({ name })}
@@ -97,43 +205,37 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
+                    // text: 'grey',
                     text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
               />
-              <View style={[styles.dropdown, { alignItems: 'center', justifyContent: 'flex-start', backgroundColor: cardBgColor, }]}>
+              <View style={styles.dropdown}>
                 <DatePicker
-
+                  style={{ width: '40%', marginLeft: responsiveWidth(-3) }}
                   date={this.state.date}
                   mode="date"
                   androidMode='spinner'
                   placeholder="DD-MM-YYYY"
-                  placeholderTextColor={"grey"}
                   format='DD-MM-YYYY'
                   confirmBtnText="Confirm"
                   cancelBtnText="Cancel"
                   minuteInterval={10}
                   customStyles={{
-
                     placeholderText: {
                       color: colorGrey,
                       fontSize: responsiveFontSize(1.6),
                     },
                     dateInput: {
-                      marginStart: 15,
-                      // backgroundColor:'red',
-                      width: '100%',
-                      alignItems: 'flex-start',
                       height: '100%',
+                      width: '100%',
                       borderWidth: 0,
                     },
-
                     dateText: {
-                      color: 'black',
+                      color: colorWhite,
                       fontSize: responsiveFontSize(1.8),
                       fontFamily: 'Muli-Bold',
-                      textAlign: 'center',
                       numberOfLines: 1
                     },
                   }}
@@ -147,7 +249,25 @@ export default class CreateAccount extends Component {
               </View>
               <TextInput style={styles.textinput}
                 // label='Email'
-                placeholder={'Upload ID'}
+                placeholder={'address@mail.com'}
+                keyboardType={'email-address'}
+                mode={'outlined'}
+                selectionColor={colorWhite}
+                onChangeText={mailaddress => this.setState({ mailaddress })}
+                value={this.state.mailaddress}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorBlack,
+                    text: colorWhite,
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Replace ID'}
                 mode={'outlined'}
                 selectionColor={colorWhite}
                 onChangeText={uploadid => this.setState({ uploadid })}
@@ -158,6 +278,7 @@ export default class CreateAccount extends Component {
                     placeholder: colorGrey,
                     primary: colorBlack,
                     text: colorWhite,
+                    // text: 'grey',
                     underlineColor: 'transparent',
                   }
                 }}
@@ -175,6 +296,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
+                    // text: 'grey',
                     text: colorWhite,
                     underlineColor: 'transparent',
                   }
@@ -192,53 +314,58 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
-                    underlineColor: 'transparent',
-                  }
-                }}
-              />
-              <TextInput style={styles.textinput}
-                // label='Email'
-                placeholder={'Categories Of Interest'}
-                mode={'outlined'}
-                selectionColor={colorWhite}
-                onChangeText={interests => this.setState({ interests })}
-                value={this.state.interests}
-                underlineColorAndroid='transparent'
-                theme={{
-                  colors: {
-                    placeholder: colorGrey,
-                    primary: colorBlack,
+                    // text: 'grey',
                     text: colorWhite,
                     underlineColor: 'transparent',
                   }
                 }}
               />
 
+
               <TouchableOpacity style={{
                 height: responsiveHeight(9),
                 flexDirection: 'row', width: responsiveWidth(88),
-                alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between',
-                marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1),
-                borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey, backgroundColor: cardBgColor,
+                alignSelf: 'center', alignItems: 'center',
+                justifyContent: 'space-between',
+                marginTop: responsiveHeight(1),
+                borderRadius: responsiveWidth(1), borderWidth: 1,
+                borderColor: colorGrey,
               }}
                 onPress={() => {
                   this.setState({ modalVisible: true });
                 }}
               >
-                <Text style={{ marginLeft: responsiveWidth(4), color: colorGrey }}>
+                <Text style={{ marginLeft: responsiveWidth(4), color: colorWhite }}>
                   {this.state.selected}
                 </Text>
                 <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />
               </TouchableOpacity>
+              <TextInput style={styles.textinput}
+                // label='Email'
+                placeholder={'Technologies'}
+                mode={'outlined'}
+                selectionColor={colorWhite}
+                onChangeText={technologies => this.setState({ technologies })}
+                value={this.state.technologies}
+                underlineColorAndroid='transparent'
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorBlack,
+                    // text: 'grey',
+                    text: colorWhite,
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
               <CheckBox title=' Subscribe to our newsletter'
                 containerStyle={styles.checkbox}
                 textStyle={styles.checkboxtext}
-                checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
+                checkedColor={colorGrey} size={25} uncheckedColor={headerColor}
                 checked={this.state.checked}
                 onPress={() => this.setState({ checked: !this.state.checked })} />
               <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttontext}>Sign Up</Text>
+                <Text style={styles.buttontext}>Save</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -251,15 +378,8 @@ export default class CreateAccount extends Component {
           transparent={true}
 
         >
-          <View style={{
-            flex: 1, justifyContent: 'center', alignItems: 'center',
-            backgroundColor: 'rgba(0,0,0,.8)'
-          }}>
-            <View style={{
-              backgroundColor: cardBgColor, height: responsiveHeight(30),
-              width: responsiveWidth(90), alignSelf: 'center',
-              borderRadius: responsiveWidth(1),
-            }}>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,.8)' }}>
+            <View style={{ backgroundColor: cardBgColor, height: responsiveHeight(30), width: responsiveWidth(90), alignSelf: 'center', borderRadius: responsiveWidth(1), }}>
               <FlatList
                 showsVerticalScrollIndicator={false}
                 style={{ marginBottom: responsiveHeight(1) }}
@@ -267,13 +387,7 @@ export default class CreateAccount extends Component {
                 keyExtractor={(item, index) => index}
                 renderItem={({ item, index }) => {
                   return (
-                    <TouchableOpacity style={{
-                      borderBottomWidth: .4,
-                      borderBottomColor: colorGrey, marginTop: responsiveHeight(1),
-                      height: responsiveHeight(6), width: '95%',
-                      alignSelf: 'center', flexDirection: 'row', alignItems: 'center',
-                      justifyContent: 'space-between',
-                    }}
+                    <TouchableOpacity style={{ borderBottomWidth: .4, borderBottomColor: colorGrey, marginTop: responsiveHeight(1), height: responsiveHeight(6), width: '95%', alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}
                       onPress={() => this.modalStateChange(index)}
                     >
                       <Text style={{ marginLeft: responsiveWidth(2), color: item.flag ? colorBlack : colorGrey }}>
@@ -294,15 +408,15 @@ export default class CreateAccount extends Component {
     );
   }
 }
-
+const listBgColor = '#ececec'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: bgColor
   },
-
   header: {
     backgroundColor: colorGrey,
+
     flexDirection: 'row',
     width: responsiveWidth(100),
     height: responsiveHeight(13)
@@ -310,9 +424,10 @@ const styles = StyleSheet.create({
   headericon:
   {
     width: responsiveWidth(15),
-    //backgroundColor: 'red',
+    // backgroundColor: 'red',
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
+    paddingLeft: responsiveWidth(5),
     marginTop: responsiveWidth(10)
   },
   headertextView:
@@ -321,11 +436,11 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: responsiveWidth(9)
+    marginTop: responsiveWidth(10)
   },
   headertext:
   {
-    fontFamily: MuliBold,
+    fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
     color: headerColor,
   },
@@ -339,24 +454,50 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: cardBgColor
   },
+  profileimage:
+  {
+    height: responsiveHeight(12),
+    width: responsiveHeight(12),
+    borderRadius: responsiveWidth(15),
+    marginTop: responsiveWidth(1),
+    alignSelf: 'center',
+    resizeMode: 'stretch'
+
+  },
   text:
   {
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
-    color: colorGrey,
-    marginVertical: responsiveWidth(2),
+    color: colorWhite,
+    marginVertical: responsiveWidth(3),
     fontWeight: 'bold'
 
-  }, 
-  textinput:
+  },
+  emailtextinput:
   {
     margin: 0,
     padding: 0,
 
     backgroundColor: cardBgColor,
-    marginTop: responsiveWidth(1),
+    width: responsiveWidth(30),
     fontSize: responsiveFontSize(1.5),
-    // backgroundColor:'red',
+    textAlign: 'center',
+  },
+  emailwrapper: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: "space-around",
+  },
+  textinput:
+  {
+    margin: 0,
+    padding: 0,
+
+
+    backgroundColor: cardBgColor,
+    marginTop: responsiveWidth(1),
+    fontSize: responsiveFontSize(1.5)
+    //borderColor:'black'
   },
   checkboxtext:
   {
@@ -373,15 +514,26 @@ const styles = StyleSheet.create({
     borderWidth: 0
     //backgroundColor:colorGrey
   },
+  dropdown:
+  {
+    borderWidth: responsiveWidth(.3),
+    borderRadius: responsiveWidth(1),
+    borderColor: colorGrey,
+    height: responsiveHeight(9),
+    backgroundColor: cardBgColor,
+    marginTop: responsiveWidth(2.5),
+    justifyContent: 'center'
+  },
   button:
   {
-    width: responsiveWidth(60),
+    width: responsiveWidth(70),
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colorGrey,
     height: responsiveHeight(7),
-    marginVertical: responsiveWidth(4),
+    marginTop: responsiveWidth(2),
+    marginBottom: responsiveWidth(2),
     borderRadius: responsiveWidth(1)
   },
   buttontext:
@@ -391,23 +543,6 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.5)
 
   },
-  dropdown:
-  {
-    flexDirection: 'row',
-    borderWidth: responsiveWidth(.3),
-    borderRadius: responsiveWidth(1),
-    borderColor: colorGrey,
-    height: responsiveHeight(9),
-    marginTop: responsiveWidth(2.5),
-    justifyContent: 'center'
-  },
-  text1:
-  {
-    color: colorGrey,
-    fontFamily: Muli,
-    marginLeft: responsiveWidth(4.5),
-    fontSize: responsiveFontSize(2)
 
-  }
-})
+});
 
