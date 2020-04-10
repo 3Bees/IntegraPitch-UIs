@@ -34,7 +34,7 @@ import SubmitNewIdea from '../Components/Marketplace/SubmitNewIdea'
 import Start from '../Components/Start/Start'
 import MoreTabs from '../Components/MoreTabs/MoreTabs'
 import Notifications from '../Components/Notifications/Notifications'
-//import Chats from '../Components/Chats/Chats'
+import Chats from '../Components/Chats/Chats'
 import CustomDrawer from './CustomDrawer'
 import WebView from './WebView'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -50,7 +50,7 @@ const AppTabNavigator = createBottomTabNavigator();
 const Main = () => {
     return (
 
-        <MainStack.Navigator initialRouteName="Tab" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Chat" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="Tab" component={Tab} />
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="Start" component={Start} />
@@ -66,7 +66,7 @@ const Main = () => {
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
             <MainStack.Screen name="SubmitNewIdea" component={SubmitNewIdea} />
             <MainStack.Screen name="Notifications" component={Notifications} />
-            {/* <MainStack.Screen name="Chats" component={Chats} /> */}
+             <MainStack.Screen name="Chats" component={Chats} /> 
             <MainStack.Screen name="SettingProfile" component={Profile} />
             <MainStack.Screen name="WebView" component={WebView} />
         </MainStack.Navigator>
