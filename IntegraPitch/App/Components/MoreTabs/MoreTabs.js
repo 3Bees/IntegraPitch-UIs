@@ -81,7 +81,7 @@ export default class MoreTabs extends Component {
                             <Ionicons name={'ios-arrow-forward'} style={styles.icons} size={responsiveWidth(6)} color={colorGrey} />
                         </TouchableOpacity>
                         <View style={{ borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC' }}></View>
-                        <TouchableOpacity style={styles.titleContainer2} onPress={() => { this.setState({ modalVisibleStart: true })}}>
+                        <TouchableOpacity style={styles.titleContainer2} onPress={() => { this.setState({ modalVisibleStart: true }) }}>
                             <MaterialComunityIcons name={'logout-variant'} style={styles.icon} size={responsiveWidth(6)} color={colorGrey} />
                             <Text style={styles.titleTextStyle2}>
                                 {'Logout'}
@@ -90,6 +90,28 @@ export default class MoreTabs extends Component {
                         </TouchableOpacity>
                         <View style={{ borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC' }}></View>
                     </View>
+                    <Modal visible={this.state.modalVisibleStart}
+                        transparent={true}
+                        overlayBackgroundColor='rgba(0,0,0,0.9)'
+                        onTouchOutside={() => {
+                            this.setState({ modalVisibleStart: false });
+                        }} >
+                        <View>
+
+                            <ModalContent style={styles.modalview}>
+                                <Text style={styles.modaltext}> Are you sure you want to logout?</Text>
+                                <View style={styles.modalbuttonview}>
+                                    <TouchableOpacity style={styles.modalbutton} onPress={() => {this.setState({ modalVisibleStart: false }); }}>
+                                        <Text style={styles.modalbuttontext}>Cancel</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={styles.modalbutton1}>
+                                        <Text style={styles.modalbuttontext}>Logout</Text>
+                                    </TouchableOpacity>
+
+                                </View>
+                            </ModalContent>
+                        </View>
+                    </Modal>
                 </View>
             </CustomSafeAreaView>
         );
@@ -179,6 +201,52 @@ const styles = StyleSheet.create({
         width: responsiveWidth(10)
 
 
+    },
+    modalview:
+    {
+        width: responsiveWidth(65),
+        height: responsiveHeight(20),
+        alignSelf: 'center'
+    },
+    modaltext:
+    {
+        width: '95%',
+        fontSize: responsiveFontSize(1.7),
+        color: colorGrey,
+        alignSelf: 'center',
+        // backgroundColor:'red'
+    },
+    modalbuttonview:
+    {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+
+
+    },
+    modalbutton:
+    {
+        width: responsiveWidth(25),
+        backgroundColor: 'grey',
+        height: responsiveHeight(7),
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: responsiveWidth(5),
+        borderRadius: responsiveWidth(1)
+    },
+    modalbutton1:
+    {
+        width: responsiveWidth(25),
+        backgroundColor: colorGrey,
+        height: responsiveHeight(7),
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: responsiveWidth(5),
+        borderRadius: responsiveWidth(1)
+    },
+    modalbuttontext:
+    {
+        fontSize: responsiveFontSize(1.8),
+        color: '#fff'
     }
 
 });

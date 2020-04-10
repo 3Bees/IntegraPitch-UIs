@@ -30,6 +30,8 @@ import History from '../Components/Marketplace/History'
 import SubmitNewIdea from '../Components/Marketplace/SubmitNewIdea'
 import Start from '../Components/Start/Start'
 import MoreTabs from '../Components/MoreTabs/MoreTabs'
+import Notifications from '../Components/Notifications/Notifications'
+import Chats from '../Components/Chats/Chats'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 console.disableYellowBox = true
@@ -38,7 +40,7 @@ const MainStack = createStackNavigator();
 const token = true
 const Main = () => {
     return (
-        <MainStack.Navigator initialRouteName="Marketplace" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Chats" screenOptions={{ headerShown: false }} >
 
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="Start" component={Start} />
@@ -53,6 +55,9 @@ const Main = () => {
             <MainStack.Screen name="IdeaDetails" component={IdeaDetails} />
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
             <MainStack.Screen name="SubmitNewIdea" component={SubmitNewIdea} />
+            <MainStack.Screen name="Notifications" component={Notifications} />
+            <MainStack.Screen name="Chats" component={Chats} />
+
         </MainStack.Navigator>
     );
 
@@ -78,7 +83,7 @@ const Tab = () => {
 
 
                 // You can return any component that you like here!
-                return<Entypo name={iconName} size={size} color={color} />;
+                return <Entypo name={iconName} size={size} color={color} />;
             },
         })}
             tabBarOptions={{
