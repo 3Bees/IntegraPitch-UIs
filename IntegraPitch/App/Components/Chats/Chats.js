@@ -1,20 +1,20 @@
 import React from 'react'
-import { GiftedChat } from 'react-native-gifted-chat'
+import {
+  Platform, FlatList,
+  StyleSheet, ScrollView, SafeAreaView, Text, View, StatusBar, Image, ImageBackground, Modal,
+  TextInput, TouchableOpacity
+} from 'react-native';
+import { GiftedChat, Bubble, MessageText, MessageContainer } from 'react-native-gifted-chat'
+export default class Chats extends React.Component {
 
-class Chats extends React.Component {
-  state = {
-  
-  }
   constructor(props) {
     super(props);
-    this.state = {  }
-  }
-  componentDidMount() {
-    this.setState({
+    this.state = {
       messages: [
         {
           _id: 1,
           text: 'Hello developer',
+
           createdAt: new Date(),
           user: {
             _id: 2,
@@ -23,7 +23,10 @@ class Chats extends React.Component {
           },
         },
       ],
-    })
+    }
+  }
+  componentDidMount() {
+
   }
 
   onSend(messages = []) {
