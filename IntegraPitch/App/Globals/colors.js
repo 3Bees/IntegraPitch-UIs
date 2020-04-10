@@ -11,5 +11,5 @@ export const colorGrey = coloGolden
 export const bgColor = '#ebeff2'
 //export const cardBgColor = 'rgba(65,65,65,65)'
 export const cardBgColor = '#fff'
-export const listBgColor = '#b4b4b4'
+export const listBgColor = '#b4b4b4' 
 export const headerColor='white'

@@ -20,8 +20,9 @@ export default class History extends Component {
                 <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
                 <View style={styles.container}>
                     <View style={styles.header}>
-                        <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
-                            <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
+                        <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.openDrawer()}
+                        >
+                            <Ionicons name="md-menu" color={headerColor} size={responsiveWidth(9)} />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>
