@@ -4,7 +4,7 @@ import {
   StyleSheet, ScrollView, SafeAreaView, Text, View, StatusBar, Image, ImageBackground, Modal,
   TextInput, TouchableOpacity
 } from 'react-native';
-import { GiftedChat, Bubble, MessageText, MessageContainer } from 'react-native-gifted-chat'
+import { GiftedChat, } from 'react-native-gifted-chat'
 export default class Chats extends React.Component {
 
   constructor(props) {

@@ -50,7 +50,7 @@ const AppTabNavigator = createBottomTabNavigator();
 const Main = () => {
     return (
 
-        <MainStack.Navigator initialRouteName="Chat" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Chats" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="Tab" component={Tab} />
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="Start" component={Start} />
@@ -66,7 +66,7 @@ const Main = () => {
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
             <MainStack.Screen name="SubmitNewIdea" component={SubmitNewIdea} />
             <MainStack.Screen name="Notifications" component={Notifications} />
-             <MainStack.Screen name="Chats" component={Chats} /> 
+            <MainStack.Screen name="Chats" component={Chats} />
             <MainStack.Screen name="SettingProfile" component={Profile} />
             <MainStack.Screen name="WebView" component={WebView} />
         </MainStack.Navigator>
