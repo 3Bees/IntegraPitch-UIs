@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity,Share, StatusBar,Linking } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
@@ -20,6 +20,30 @@ export default class MoreTabs extends Component {
         this.setState({ modalVisible: visible });
         this.setState({ modalVisibleStart: visible });
     }
+    share = async () => {
+        try {
+            const result = await Share.share({
+                title: "Medius",
+                message:
+                    'Hi, I am using this awesome app you should also try this app. ',
+                url: 'google.com'
+            });
+
+            if (result.action === Share.sharedAction) {
+                console.log(result.activityType);
+
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    }
 
     render() {
 
@@ -28,8 +52,10 @@ export default class MoreTabs extends Component {
                 <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
                 <View style={styles.container}>
                     <View style={styles.header}>
-                        <TouchableOpacity style={styles.headericon} onPress={() => { }}>
-                            <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
+                        <TouchableOpacity style={styles.headericon} 
+                        onPress={() => this.props.navigation.openDrawer()}
+                        >
+                        <Ionicons name="md-menu" color={headerColor} size={responsiveWidth(9)}  />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>More</Text>
@@ -49,7 +75,9 @@ export default class MoreTabs extends Component {
                             <Ionicons name={'ios-arrow-forward'} style={styles.icons} size={responsiveWidth(6)} color={colorGrey} />
                         </TouchableOpacity>
                         <View style={{ borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC' }}></View>
-                        <TouchableOpacity style={styles.titleContainer2}>
+                        <TouchableOpacity style={styles.titleContainer2}
+                        onPress={() => { Linking.openURL('mailto:testing@mailinator.com?subject=Medius,') }}
+                        >
                             <MaterialComunityIcons name={'email-variant'} style={styles.icon} size={responsiveWidth(6)} color={colorGrey} />
                             <Text style={styles.titleTextStyle2}>
                                 {'Contact Us'}
@@ -65,7 +93,9 @@ export default class MoreTabs extends Component {
                             <Ionicons name={'ios-arrow-forward'} style={styles.icons} size={responsiveWidth(6)} color={colorGrey} />
                         </TouchableOpacity>
                         <View style={{ borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC' }}></View>
-                        <TouchableOpacity style={styles.titleContainer2}>
+                        <TouchableOpacity style={styles.titleContainer2}
+                        onPress={() => this.share()} 
+                        >
                             <MaterialIcons name={'share'} size={responsiveWidth(6)} style={styles.icon} color={colorGrey} />
                             <Text style={styles.titleTextStyle2}>
                                 {'Invite Friends'}
@@ -73,7 +103,9 @@ export default class MoreTabs extends Component {
                             <Ionicons name={'ios-arrow-forward'} style={styles.icons} size={responsiveWidth(6)} color={colorGrey} />
                         </TouchableOpacity>
                         <View style={{ borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC' }}></View>
-                        <TouchableOpacity style={styles.titleContainer2}>
+                        <TouchableOpacity style={styles.titleContainer2}
+                        onPress={() => { this.props.navigation.navigate('WebView', { uri: 'https://play.google.com/store/apps/details?id=com.whatsapp' }) }}
+                        >
                             <MaterialIcons name={'star-half'} size={responsiveWidth(7)} style={styles.icon} color={colorGrey} />
                             <Text style={styles.titleTextStyle2}>
                                 {'Rate Us'}
@@ -155,7 +187,7 @@ const styles = StyleSheet.create({
 
     },
     MainContainer: {
-        width: responsiveWidth(92),
+        width: responsiveWidth(90),
         alignSelf: 'center',
     },
     titleContainer: {
@@ -171,9 +203,11 @@ const styles = StyleSheet.create({
     },
     titleContainer2: {
         height: responsiveHeight(6),
-        width: responsiveWidth(100),
-        paddingEnd: responsiveWidth(4),
-        paddingStart: responsiveWidth(2.5),
+        width: '100%',
+        alignSelf:'center',
+        // backgroundColor:'red',
+        // paddingEnd: responsiveWidth(4),
+        // paddingStart: responsiveWidth(2.5),
         marginTop: responsiveWidth(2),
         alignSelf: 'center',
         flexDirection: 'row',
@@ -185,7 +219,7 @@ const styles = StyleSheet.create({
         // fontWeight: "bold",
         color: colorWhite,
         marginLeft: responsiveWidth(1),
-        width: responsiveWidth(80)
+        width: responsiveWidth(75)
     },
     text:
     {

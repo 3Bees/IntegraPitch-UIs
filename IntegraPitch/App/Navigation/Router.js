@@ -1,19 +1,22 @@
-import React from 'react';
-import {
-    // SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, Image, StyleSheet, Text, View, ScrollView, SafeAreaView, StatusBar, TouchableOpacity, ActivityIndicator } from 'react-native';
+
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import EvilIcons from 'react-native-vector-icons/EvilIcons'
+import { colorWhite, colorBlack, lightBlack } from '../Globals/colors';
+
+
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
+
 import AuthLoading from '../Components/AuthLoading/AuthLoading';
 import CreateAccount from '../Components/CreateAccount/CreateAccount';
 import Settings from '../Components/Settings/Settings';
@@ -32,16 +35,23 @@ import Start from '../Components/Start/Start'
 import MoreTabs from '../Components/MoreTabs/MoreTabs'
 import Notifications from '../Components/Notifications/Notifications'
 import Chats from '../Components/Chats/Chats'
+import CustomDrawer from './CustomDrawer'
+import WebView from './WebView'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
+
+
 
 console.disableYellowBox = true
 
+const Drawer = createDrawerNavigator();
 const MainStack = createStackNavigator();
-const token = true
+const AppTabNavigator = createBottomTabNavigator();
 const Main = () => {
     return (
-        <MainStack.Navigator initialRouteName="Chats" screenOptions={{ headerShown: false }} >
 
+        <MainStack.Navigator initialRouteName="Tab" screenOptions={{ headerShown: false }} >
+            <MainStack.Screen name="Tab" component={Tab} />
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="Start" component={Start} />
             <MainStack.Screen name="CreateAccount" component={CreateAccount} />
@@ -51,26 +61,26 @@ const Main = () => {
             <MainStack.Screen name="ProposalOffer" component={ProposalOffer} />
             <MainStack.Screen name="IdeaProposal" component={IdeaProposal} />
             <MainStack.Screen name="AdjustProposal" component={AdjustProposal} />
-            <MainStack.Screen name="Marketplace" component={Marketplace} />
+            {/* <MainStack.Screen name="Marketplace" component={Marketplace} /> */}
             <MainStack.Screen name="IdeaDetails" component={IdeaDetails} />
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
             <MainStack.Screen name="SubmitNewIdea" component={SubmitNewIdea} />
             <MainStack.Screen name="Notifications" component={Notifications} />
             <MainStack.Screen name="Chats" component={Chats} />
 
+            <MainStack.Screen name="SettingProfile" component={Profile} />
+            <MainStack.Screen name="WebView" component={WebView} />
         </MainStack.Navigator>
     );
 
 }
-const AppTabNavigator = createBottomTabNavigator();
+
 
 const Tab = () => {
     return (
-
         <AppTabNavigator.Navigator screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
-
                 if (route.name === 'Home') {
                     iconName = focused ? 'home' : 'home';
                 } else if (route.name === 'History') {
@@ -92,11 +102,11 @@ const Tab = () => {
             }}>
 
 
-            <AppTabNavigator.Screen name="Home" component={Main} />
+            <AppTabNavigator.Screen name="Home" component={Marketplace} />
             <AppTabNavigator.Screen name="History" component={History} />
             <AppTabNavigator.Screen name="Profile" component={Profile} />
             <AppTabNavigator.Screen name="More" component={MoreTabs} />
-            {/* <Main /> */}
+
         </AppTabNavigator.Navigator>
 
 
@@ -108,14 +118,15 @@ export default App = () => {
     return (
         <SafeAreaProvider >
             <NavigationContainer>
-                <Tab />
+                <Drawer.Navigator initialRouteName="Main"
+                    drawerContent={props => <CustomDrawer {...props} />}
+                    drawerStyle={{
+                        backgroundColor: '#fff',
+                        width: responsiveWidth(70),
+                    }}>
+                    <Drawer.Screen name="Main" component={Main} />
+                </Drawer.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>
     );
 }
-
-const styles = StyleSheet.create({
-
-});
-
-

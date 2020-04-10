@@ -16,6 +16,9 @@ export default class Profile extends Component {
     state = {
         Imagedatasource: [],
     }
+    componentDidMount() {
+        // console.log(this.props.route);
+    }
     imageUpload = () => {
         const options = {
             title: 'Select Image',
@@ -51,10 +54,23 @@ export default class Profile extends Component {
                 <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
                 <View style={styles.container}>
                     <View style={styles.header}>
-                        <TouchableOpacity style={styles.headericon} onPress={() => { }}>
-                            <FontAwesome5 name={'user-edit'} color={headerColor} size={28} />
+                        {this.props.route.name === 'Profile' ?
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.openDrawer()}
+                                style={{ left: responsiveWidth(5), top: responsiveHeight(5) }}>
+                                <Ionicons name="md-menu" color={headerColor} size={responsiveWidth(9)} />
+                            </TouchableOpacity>
+                            :  <TouchableOpacity
+                            onPress={() => this.props.navigation.goBack()}
+                            style={{ left: responsiveWidth(5), top: responsiveHeight(5) }}>
+                            <Ionicons name={'ios-arrow-back'}  color={headerColor} size={responsiveWidth(7)} />
+                        </TouchableOpacity>}
+                        <TouchableOpacity
+                            style={{ right: responsiveWidth(5), top: responsiveHeight(5) }}>
+                            <FontAwesome5 name={'user-edit'} color={headerColor} size={responsiveWidth(7)} />
                         </TouchableOpacity>
                     </View>
+
                     <View style={styles.MainContainer}>
                         <TouchableOpacity onPress={() => this.imageUpload()} style={styles.profileimage}>
                             <Image source={require('../../Assets/girl.jpg')} style={styles.profileimage} ></Image>
@@ -113,17 +129,19 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: colorGrey,
         width: responsiveWidth(100),
-        height: responsiveHeight(20)
+        height: responsiveHeight(20),
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     headericon:
     {
-        width: responsiveWidth(15),
-        // backgroundColor: 'red',
-        justifyContent: 'center',
-        // alignItems: 'center',
-        paddingLeft: responsiveWidth(5),
-        marginTop: responsiveWidth(10),
-        marginLeft:responsiveWidth(80)
+        // width: responsiveWidth(15),
+        // // backgroundColor: 'red',
+        // justifyContent: 'center',
+        // // alignItems: 'center',
+        // paddingLeft: responsiveWidth(5),
+        // marginTop: responsiveWidth(10),
+        // marginLeft: responsiveWidth(80)
     },
 
     MainContainer: {
@@ -143,7 +161,7 @@ const styles = StyleSheet.create({
     {
         alignSelf: 'center',
         fontFamily: MuliBold,
-        fontWeight:'bold',
+        fontWeight: 'bold',
         fontSize: responsiveFontSize(3.2),
         marginTop: responsiveWidth(-7),
         color: colorGrey
@@ -179,7 +197,7 @@ const styles = StyleSheet.create({
     },
     titleTextStyle2: {
         fontSize: responsiveFontSize(2.5),
-         fontWeight: "bold",
+        fontWeight: "bold",
         color: colorWhite,
         marginLeft: responsiveWidth(1),
         width: responsiveWidth(80)

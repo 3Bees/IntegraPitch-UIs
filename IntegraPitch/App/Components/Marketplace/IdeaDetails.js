@@ -34,7 +34,7 @@ export default class Marketplace extends Component {
           <ScrollView style={styles.MainContainer}>
             <View style={styles.statusContainer}>
               <TouchableOpacity style={styles.statusButtonContainer}
-              onPress={() => this.props.navigation.navigate('SharedIdeas')}
+              // onPress={() => this.props.navigation.navigate('SharedIdeas')}
               >
                 <Text style={[styles.ideabuttonTextStyle2, { color: colorWhite }]}>Status</Text>
               </TouchableOpacity>

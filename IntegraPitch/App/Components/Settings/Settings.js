@@ -11,19 +11,18 @@ export default class Settings extends Component {
 
   state = { flag1: false, flag2: true, flag3: false }
   componentDidMount = async () => {
+    console.log(this.props.route);
 
-    setTimeout(() => {
-      // this.props.navigation.navigate('Auth');
-    }, 3000);
   };
   render() {
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent  />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
         <View style={styles.container}>
           <View style={styles.header}>
-            <TouchableOpacity style={styles.headericon} onPress={() =>{}}>
+            <TouchableOpacity style={styles.headericon}
+              onPress={() => this.props.navigation.goBack()}>
               <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>
@@ -36,29 +35,28 @@ export default class Settings extends Component {
                 {'Settings'}
               </Text>
             </View>
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? colorGrey : cardBgColor }]} 
-            activeOpacity={0} 
-            onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('Profile'))}>
-              
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? colorGrey : cardBgColor }]}
+              activeOpacity={0}
+              onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('SettingProfile'))}>
 
-              <Text style={[styles.titleTextStyle2,{ color:flag1 ?  headerColor :colorGrey}]}>
+              <Text style={[styles.titleTextStyle2, { color: flag1 ? headerColor : colorGrey }]}>
                 {'Profile'}
               </Text>
-              <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} color={flag1 ?headerColor:colorGrey }/>
+              <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} color={flag1 ? headerColor : colorGrey} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ?colorGrey :  cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false }, )}>
-            <Text style={[styles.titleTextStyle2,{ color:flag2 ?  headerColor:colorGrey }]}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag2 ? colorGrey : cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: true, flag3: false })}>
+              <Text style={[styles.titleTextStyle2, { color: flag2 ? headerColor : colorGrey }]}>
                 {'Documents'}
               </Text>
-              <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} color={flag2 ?headerColor:colorGrey } />
+              <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} color={flag2 ? headerColor : colorGrey} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag3 ? colorGrey : cardBgColor  }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: false, flag3: true })}>
-              <Text style={[styles.titleTextStyle2,{ color:flag3 ?   headerColor:colorGrey }]}>
+            <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag3 ? colorGrey : cardBgColor }]} activeOpacity={0} onPress={() => this.setState({ flag1: false, flag2: false, flag3: true })}>
+              <Text style={[styles.titleTextStyle2, { color: flag3 ? headerColor : colorGrey }]}>
                 {'Preferences'}
               </Text>
-              <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)}  color={flag3 ?headerColor:colorGrey }/>
+              <Ionicons name={'ios-arrow-forward'} size={responsiveWidth(6)} color={flag3 ? headerColor : colorGrey} />
             </TouchableOpacity>
 
           </View>
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     justifyContent: 'center',
     // alignItems: 'center',
-    paddingLeft:responsiveWidth(5),
+    paddingLeft: responsiveWidth(5),
     marginTop: responsiveWidth(10)
   },
   headertextView:
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
     color: headerColor,
-    
+
   },
   MainContainer: {
     width: responsiveWidth(92),
@@ -117,7 +115,7 @@ const styles = StyleSheet.create({
   titleTextStyle: {
     fontSize: responsiveFontSize(3.4),
     fontWeight: "bold",
-    color:colorWhite
+    color: colorWhite
   },
   titleContainer2: {
     height: responsiveHeight(6),
@@ -132,7 +130,7 @@ const styles = StyleSheet.create({
   titleTextStyle2: {
     fontSize: responsiveFontSize(2.5),
     // fontWeight: "bold",
-    color:colorWhite
+    color: colorWhite
   }
 
 });
