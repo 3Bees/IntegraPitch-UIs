@@ -225,17 +225,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center', alignItems: 'flex-end',
     marginBottom: 2
   },
-  inputContainer3: {
-    // backgroundColor: 'white',
 
-    width: '87%', height: '90%',
-    justifyContent: 'center',
-  },
-  inputStyle: {
-    // backgroundColor: 'white',
-    height: '100%', padding: 5,
-    fontSize: responsiveFontSize(2)
-  },
+ 
   forgotContainer: {
     height: responsiveHeight(6),
     width: '53%',
@@ -295,20 +286,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  container1: {
-    height: responsiveHeight(100),
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    flexDirection: 'row',
-    // backgroundColor: "red",
-  },
-  welcome: {
-    fontSize: responsiveFontSize(2.4),
-    textAlign: 'center',
-    fontFamily: 'Montserrat-Regular'
-  },
+
+
   sbuttonstyle: {
     height: responsiveHeight(8),
     width: responsiveHeight(8),
