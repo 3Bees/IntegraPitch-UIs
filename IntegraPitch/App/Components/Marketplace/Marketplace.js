@@ -24,7 +24,7 @@ export default class Marketplace extends Component {
     categoryArray: [
       { name: 'category 1', flag: false },
       { name: 'category 2', flag: false },
-      { name: 'category 3', flag: false },
+      { name: 'category 3', flag: false }, 
       { name: 'category 4', flag: false },
       { name: 'category 5', flag: false },
     ],
