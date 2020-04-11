@@ -67,7 +67,7 @@ export default class Marketplace extends Component {
                         
                         <Text style={[styles.ideabuttonTextStyle, { color: headerColor, fontSize: responsiveFontSize(2.2) }]}>NEW PROPOSAL</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.ideaButtonChildContainer}>
+                      <TouchableOpacity style={styles.ideaButtonChildContainer}  onPress={() => this.props.navigation.navigate('Chats')}>
                         <AntDesign name={'checkcircleo'} color={colorGrey} size={28} />
                         <Text style={[styles.ideabuttonTextStyle, {}]}>Accept</Text>
                       </TouchableOpacity>

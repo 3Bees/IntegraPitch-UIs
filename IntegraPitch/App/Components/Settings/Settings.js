@@ -37,7 +37,7 @@ export default class Settings extends Component {
             </View>
             <TouchableOpacity style={[styles.titleContainer2, { backgroundColor: flag1 ? colorGrey : cardBgColor }]}
               activeOpacity={0}
-              onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('SettingProfile'))}>
+              onPress={() => this.setState({ flag1: true, flag2: false, flag3: false }, () => this.props.navigation.navigate('CreateProfile'))}>
 
               <Text style={[styles.titleTextStyle2, { color: flag1 ? headerColor : colorGrey }]}>
                 {'Profile'}
