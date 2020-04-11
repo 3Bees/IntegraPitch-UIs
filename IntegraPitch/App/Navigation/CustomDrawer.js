@@ -66,14 +66,14 @@ export default class CustomDrawer extends Component {
                         {'History'}
                     </Text>
                 </TouchableOpacity>
-                <View style={styles.line} /> 
+                <View style={styles.line} />
                 <TouchableOpacity style={styles.contentContainer} activeOpacity={.5}
-                    onPress={() => this.props.navigation.navigate('Profile')}
-                >
+                    onPress={() => this.props.navigation.navigate('Profile')}>
                     <Text style={styles.contentTextStyle}>
                         {'Profile'}
                     </Text>
                 </TouchableOpacity>
+                <View style={styles.line} />
                 <View style={styles.line} />
                 <TouchableOpacity style={styles.contentContainer} activeOpacity={.5}
                     onPress={() => this.props.navigation.navigate('Notifications')}
