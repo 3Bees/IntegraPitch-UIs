@@ -35,6 +35,7 @@ import Start from '../Components/Start/Start'
 import MoreTabs from '../Components/MoreTabs/MoreTabs'
 import Notifications from '../Components/Notifications/Notifications'
 import Chats from '../Components/Chats/Chats'
+import Login from '../Components/Login/Login'
 import CustomDrawer from './CustomDrawer'
 import WebView from './WebView'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -50,7 +51,7 @@ const AppTabNavigator = createBottomTabNavigator();
 const Main = () => {
     return (
 
-        <MainStack.Navigator initialRouteName="Chats" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="Tab" component={Tab} />
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="Start" component={Start} />
@@ -68,6 +69,7 @@ const Main = () => {
             <MainStack.Screen name="Notifications" component={Notifications} />
             <MainStack.Screen name="Chats" component={Chats} />
             <MainStack.Screen name="SettingProfile" component={Profile} />
+            <MainStack.Screen name="Login" component={Login} />
             <MainStack.Screen name="WebView" component={WebView} />
         </MainStack.Navigator>
     );
