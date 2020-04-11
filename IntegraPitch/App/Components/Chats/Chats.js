@@ -5,6 +5,8 @@ import {
   TextInput, TouchableOpacity
 } from 'react-native';
 import { GiftedChat, InputToolbar, Send, Actions, ActionsProps } from 'react-native-gifted-chat'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack,headerColor} from '../../Globals/colors';
 
 import { Icon } from 'react-native-elements'
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
@@ -62,7 +64,7 @@ export default class Chats extends React.Component {
         containerStyle={{ borderWidth: 0 }}
       >
         <View style={{ marginRight: 5, marginBottom: 12.5, }}>
-          <Icon name="send" type="material-community" size={responsiveWidth(6)} color={Colors.appColor1} />
+          <Icon name="send" type="material-community" size={responsiveWidth(6)} color={colorGrey} />
           {/* <Text style={[AppStyles.h5, { color: '#FFFF', fontFamily: FontFamily.appTextBold, marginHorizontal: 7.5, marginVertical: 5 }]}>Send</Text> */}
         </View>
       </Send>
@@ -99,7 +101,7 @@ export default class Chats extends React.Component {
     };
     return (
       <Actions {...props} options={options} >
-        <Icon name="camera" type="material-community" size={responsiveWidth(6)} color={Colors.appColor1} />
+        <Icon name="camera" type="material-community" size={responsiveWidth(6)} color={colorGrey} />
       </Actions>
     );
   };
@@ -107,6 +109,14 @@ export default class Chats extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
+        <View style={styles.header}>
+            <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
+              <Ionicons name={'ios-arrow-back'} size={28} color={headerColor} />
+            </TouchableOpacity>
+            <View style={styles.headertextView}>
+              <Text style={styles.headertext}>Chat</Text>
+            </View>
+          </View>
         <View style={[styles.compContainer, { alignItems: 'center' }]}>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: responsiveHeight(2) }}>
             <Image source={require('../../Assets/user1.jpg')} style={{ height: responsiveHeight(6), width: responsiveHeight(6), borderRadius: responsiveHeight(3) }} />
@@ -114,7 +124,7 @@ export default class Chats extends React.Component {
             <Image source={require('../../Assets/user3.jpg')} style={{ height: responsiveHeight(6), width: responsiveHeight(6), borderRadius: responsiveHeight(3) }} />
           </View>
           <View>
-            <Text style={[styles.textRegular, styles.textGrey, { marginTop: 10 }]}>{'chatStarted'} 2 min {'ago'}</Text>
+            <Text style={[styles.textRegular, styles.textGrey, { marginTop: 10 }]}>{'Chat started'} 2 min {'ago'}</Text>
           </View>
         </View>
         <GiftedChat
@@ -140,8 +150,38 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.appBgColor1
   },
+  header: {
+    backgroundColor: colorGrey,
+
+    flexDirection: 'row',
+    width: responsiveWidth(100),
+    height: responsiveHeight(13)
+  },
+  headericon:
+  {
+    width: responsiveWidth(15),
+    // backgroundColor: 'red',
+    justifyContent: 'center',
+    // alignItems: 'center',
+    paddingLeft: responsiveWidth(5),
+    marginTop: responsiveWidth(10)
+  },
+  headertextView:
+  {
+    width: responsiveWidth(70),
+    // backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: responsiveWidth(10)
+  },
+  headertext:
+  {
+    fontWeight: 'bold',
+    fontSize: responsiveFontSize(2.2),
+    color: headerColor,
+  },
   textRegular: {
-    fontSize: responsiveFontSize(2),
+    fontSize: responsiveFontSize(1.6),
     color: Colors.appTextColor1,
   },
   textMedium: {

@@ -41,7 +41,7 @@ export default class CustomDrawer extends Component {
                                 <Text style={styles.prfileTextStyle1}>
                                     {'User Name'}
                                 </Text>
-                                <AntDesign name={'checkcircle'} size={responsiveWidth(6)} color={colorWhite} />
+                                <AntDesign name={'checkcircle'} size={responsiveWidth(6)} color={colorWhite} style={{left:responsiveWidth(1)}} />
                             </View>
                             <Text style={styles.prfileTextStyle2}>
                                 {'user@gmail.com'}
@@ -74,7 +74,7 @@ export default class CustomDrawer extends Component {
                     </Text>
                 </TouchableOpacity>
                 <View style={styles.line} />
-                <View style={styles.line} />
+                
                 <TouchableOpacity style={styles.contentContainer} activeOpacity={.5}
                     onPress={() => this.props.navigation.navigate('Notifications')}
                 >
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     profileRightTextContainer1: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        
     },
     prfileTextStyle1: {
         fontSize: responsiveFontSize(2.3),

@@ -75,7 +75,7 @@ export default class CreateAccount extends Component {
         <View style={styles.container}>
           <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
           <View style={styles.header}>
-            <TouchableOpacity style={styles.headericon}>
+            <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
               <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
             </TouchableOpacity>
             <View style={styles.headertextView}>

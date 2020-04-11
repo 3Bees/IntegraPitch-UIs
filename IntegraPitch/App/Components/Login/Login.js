@@ -126,12 +126,7 @@ export default class Login extends Component {
             <View style={styles.buttonContainer}>
               <Button labelStyle={styles.buttonTextStyle} uppercase={false} mode="contained"
                 onPress={async () => {
-                  try {
-                    await this.setState({ isLoading: true });
-                    await this.LogIn(this.props)
-                  } catch (error) {
-                    console.log('Error ', error)
-                  }
+                  this.props.navigation.navigate('Tab')
 
                 }}
                 style={styles.buttonStyle}
@@ -147,11 +142,11 @@ export default class Login extends Component {
               <Text style={styles.textStyle1}>
                 Don't have an account?
                            </Text>
-              <TouchableOpacity onPress={() => { }}>
+              <TouchableOpacity onPress={() => {this.props.navigation.navigate("CreateAccount") }}>
                 <Text
 
                   style={styles.textStyle2}>
-                  {' '}{'create new account'}
+                  {' '}{'Register'}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -211,7 +206,7 @@ const styles = StyleSheet.create({
   inputTitle: {
     // backgroundColor: colorWhite,
     fontSize: responsiveFontSize(1.8),
-    fontFamily: 'Montserrat-Regular',
+    
   },
   inputContainer2: {
     height: '55%', width: '98%',
@@ -237,7 +232,7 @@ const styles = StyleSheet.create({
   },
   forgotText: {
     fontSize: responsiveFontSize(1.8),
-    fontFamily: 'Montserrat-Bold',
+   
   },
   buttonContainer: {
     height: responsiveHeight(8),
@@ -254,7 +249,7 @@ const styles = StyleSheet.create({
   },
   buttonTextStyle: {
     color: '#fff',
-    fontFamily: 'Montserrat-Regular',
+    
     fontSize: responsiveFontSize(2)
   },
   mainContainer: {
@@ -273,11 +268,12 @@ const styles = StyleSheet.create({
   },
   textStyle1: {
     fontSize: responsiveFontSize(1.7),
-    fontFamily: 'Montserrat-Regular'
+   
   },
   textStyle2: {
     fontSize: responsiveFontSize(1.7),
-    color: theamColor, fontFamily: 'Montserrat-Bold'
+    color: colorGrey, 
+    fontWeight:'bold'
   },
   siconContainer: {
     height: responsiveHeight(10),

@@ -51,7 +51,7 @@ const AppTabNavigator = createBottomTabNavigator();
 const Main = () => {
     return (
 
-        <MainStack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="AuthLoading" screenOptions={{ headerShown: false }} >
             <MainStack.Screen name="Tab" component={Tab} />
             <MainStack.Screen name="AuthLoading" component={AuthLoading} />
             <MainStack.Screen name="Start" component={Start} />
@@ -62,7 +62,7 @@ const Main = () => {
             <MainStack.Screen name="ProposalOffer" component={ProposalOffer} />
             <MainStack.Screen name="IdeaProposal" component={IdeaProposal} />
             <MainStack.Screen name="AdjustProposal" component={AdjustProposal} />
-            {/* <MainStack.Screen name="Marketplace" component={Marketplace} /> */}
+            <MainStack.Screen name="Marketplace" component={Marketplace} /> 
             <MainStack.Screen name="IdeaDetails" component={IdeaDetails} />
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
             <MainStack.Screen name="SubmitNewIdea" component={SubmitNewIdea} />
