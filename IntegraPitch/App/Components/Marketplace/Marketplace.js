@@ -107,7 +107,7 @@ export default class Marketplace extends Component {
                       >
                         <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.ideabuttonChildContainer1}>
+                      <TouchableOpacity style={styles.ideabuttonChildContainer1} onPress={()=>this.props.navigation.navigate('ProposalOffer')}>
                         <Text style={styles.ideabuttonTextStyle1}>CONTRIBUTE</Text>
                       </TouchableOpacity>
                     </View>

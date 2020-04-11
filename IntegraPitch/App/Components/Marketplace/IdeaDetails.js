@@ -1,16 +1,17 @@
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList,Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack,headerColor} from '../../Globals/colors';
+import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack,headerColor,Muli} from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
+import {  TextInput } from 'react-native-paper';
 
 export default class Marketplace extends Component {
 
-  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4, 1, 2, 4] }
+  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4, 1, 2, 4] ,visible: false,}
   componentDidMount = async () => {
 
     setTimeout(() => {
@@ -68,15 +69,56 @@ export default class Marketplace extends Component {
               </View>
             </View>
             <View style={styles.ideaButtonParentContainer1}>
-              <TouchableOpacity style={styles.ideabuttonChildContainer1}>
+              <TouchableOpacity style={styles.ideabuttonChildContainer1} onPress={() => this.setState({ visible: true })}>
                 <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.ideabuttonChildContainer1, {marginBottom:responsiveHeight(1) }]}>
+              <TouchableOpacity style={[styles.ideabuttonChildContainer1, {marginBottom:responsiveHeight(1) }]} onPress={()=>this.props.navigation.navigate('ProposalOffer')}>
                 <Text style={[styles.ideabuttonTextStyle1, {  textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
         </View>
+        <Modal
+          visible={this.state.visible}
+          transparent={true}
+        >
+          <View style={styles.modalParentContainer}>
+            <View style={styles.modalChildContainer} >
+              <View style={styles.inputContainer}>
+                <TextInput
+                  mode={'outlined'}
+                  // label={'old Password'}
+                  labelStyle={styles.inputTitle}
+                  placeholder='Amount'
+                  value={this.state.placebid}
+                  selectionColor={colorWhite}
+                  placeholderTextColor={'gray'}
+                  keyboardType={'number-pad'}
+                  onChangeText={text => this.setState({ placebid: text })}
+                  theme={{
+                    colors: {
+                      placeholder: colorGrey,
+                      primary: colorBlack,
+                      text: colorWhite,
+                      underlineColor: 'transparent',
+                    }
+                  }}
+                />
+              </View>
+              <Button labelStyle={styles.modalbuttonTextStyle}
+                uppercase={false} mode="contained"
+                onPress={async () => { this.setState({ visible: false }) }}
+
+                style={[styles.inputContainer, { backgroundColor: colorWhite, borderRadius: 5, justifyContent: 'center', alignItems: 'center' }]}
+                contentStyle={{ height: '100%' }}
+              >
+                {'Place your bid'}
+
+              </Button>
+            </View>
+          </View>
+        </Modal>
+
       </CustomSafeAreaView>
     );
   }
@@ -256,6 +298,36 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     fontSize: responsiveFontSize(1.8),
     color: headerColor,
+  },
+  modalParentContainer: {
+    height: responsiveHeight(100),
+    width: responsiveWidth(100),
+    backgroundColor: "rgba(0,0,0,0.6)"
+    , justifyContent: 'center'
+  },
+  modalChildContainer: {
+    height: responsiveHeight(30),
+    width: responsiveWidth(90),
+    backgroundColor: '#fff',
+    alignSelf: 'center',
+    borderRadius: 5,
+    justifyContent: 'space-evenly'
+  },
+  inputContainer: {
+
+    height: responsiveHeight(8),
+    width: responsiveWidth(80),
+    alignSelf: 'center'
+  },
+  inputTitle: {
+    // backgroundColor: colorWhite,
+    fontSize: responsiveFontSize(1.8),
+    fontFamily: Muli,
+  },
+  modalbuttonTextStyle: {
+    fontSize: responsiveFontSize(2.4),
+    fontFamily: Muli
+    , color: '#fff'
   },
 });
 
