@@ -199,7 +199,7 @@ export default class ProposalOffer extends Component {
                                     onChangeText={percentageText => this.setState({ percentageText })}
                                     value={this.state.percentageText}
                                     underlineColorAndroid='transparent'
-                                    multiline={true}
+                                    // multiline={true}
                                     theme={{
                                         colors: {
                                             placeholder: colorGrey,
@@ -351,7 +351,10 @@ const styles = StyleSheet.create({
     {
         backgroundColor: cardBgColor,
         width: responsiveWidth(25),
-        
+        // paddingVertical: 0,
+        // margin: 0,
+        // padding: 0,
+        // paddingStart:0,
         fontSize: responsiveFontSize(2),
     },
     proceedingtext:

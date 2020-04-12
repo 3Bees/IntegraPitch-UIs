@@ -46,10 +46,10 @@ export default class Login extends Component {
 
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor={colorWhite} barStyle="light-content" />
+        <StatusBar backgroundColor={bgColor} barStyle="dark-content" />
         <View style={{ flex: 1, backgroundColor: bgColor }}  >
           <View style={styles.imageContainer}>
-            <Image style={styles.imageStyle} source={require('../../Assets/splash.jpg')} />
+            <Image style={styles.imageStyle} source={require('../../Assets/integra_trnsprnt.png')} />
           </View>
           {Divider(responsiveHeight(5))}
           <KeyboardAvoidingView style={styles.mainContainer} behavior="padding" enabled>

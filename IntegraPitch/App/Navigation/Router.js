@@ -62,7 +62,7 @@ const Main = () => {
             <MainStack.Screen name="ProposalOffer" component={ProposalOffer} />
             <MainStack.Screen name="IdeaProposal" component={IdeaProposal} />
             <MainStack.Screen name="AdjustProposal" component={AdjustProposal} />
-            <MainStack.Screen name="Marketplace" component={Marketplace} /> 
+            <MainStack.Screen name="Marketplace" component={Marketplace} />
             <MainStack.Screen name="IdeaDetails" component={IdeaDetails} />
             <MainStack.Screen name="SharedIdeas" component={SharedIdeas} />
             <MainStack.Screen name="SubmitNewIdea" component={SubmitNewIdea} />
@@ -121,6 +121,8 @@ export default App = () => {
             <NavigationContainer>
                 <Drawer.Navigator initialRouteName="Main"
                     drawerContent={props => <CustomDrawer {...props} />}
+                    statusBarAnimation={'slide'}
+                    hideStatusBar={false}
                     drawerStyle={{
                         backgroundColor: '#fff',
                         width: responsiveWidth(70),

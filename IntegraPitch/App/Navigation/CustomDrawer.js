@@ -16,6 +16,7 @@ import { colorWhite, colorBlack, lightBlack } from '../Globals/colors';
 import { ListItem, Avatar } from 'react-native-elements';
 
 
+
 export default class CustomDrawer extends Component {
 
     constructor(props) {
@@ -38,10 +39,10 @@ export default class CustomDrawer extends Component {
                         onPress={() => this.props.navigation.navigate('Profile')}
                         >
                             <View style={styles.profileRightTextContainer1}>
-                                <Text style={styles.prfileTextStyle1}>
+                                <Text style={styles.prfileTextStyle1} numberOfLines={1}>
                                     {'User Name'}
                                 </Text>
-                                <AntDesign name={'checkcircle'} size={responsiveWidth(6)} color={colorWhite} style={{left:responsiveWidth(1)}} />
+                                <AntDesign name={'checkcircle'} size={responsiveWidth(6)} color={'#fff'} style={{left:responsiveWidth(0)}} />
                             </View>
                             <Text style={styles.prfileTextStyle2}>
                                 {'user@gmail.com'}
@@ -121,31 +122,29 @@ export default class CustomDrawer extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colorWhite
+        backgroundColor: '#ffffff'
     },
     profileMainContainer: {
         height: responsiveHeight(25),
         width: '100%',
-        backgroundColor: '#f6f6f6',
+        backgroundColor:colorWhite //'#f6f6f6',
     },
     profileContainer: {
         height: responsiveHeight(12),
-        width: responsiveWidth(66),
+        width: '90%',
         // backgroundColor: 'green',
         alignSelf: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
-    },
+    }, 
     profileLeftContainer: {
         height: responsiveHeight(9),
         width: responsiveHeight(9),
-        justifyContent: 'center',
-        alignItems: 'center',
         borderRadius: responsiveHeight(6),
         backgroundColor: '#eaeaea',
         borderWidth: 1.5,
-        borderColor: colorBlack
+        borderColor: '#fff'
     },
     profileRightContainer: {
         height: responsiveHeight(9),
@@ -156,11 +155,14 @@ const styles = StyleSheet.create({
     profileRightTextContainer1: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent:'space-between'
         
     },
     prfileTextStyle1: {
         fontSize: responsiveFontSize(2.3),
         fontWeight: '900',
+        width:'85%',
+
         color: colorBlack
     },
     prfileTextStyle2: {
@@ -176,21 +178,21 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         height: responsiveHeight(7.5),
-        width: responsiveWidth(58),
-        backgroundColor: colorWhite,
+        width: '80%',
+        backgroundColor: '#fff',
         alignSelf: 'center',
         justifyContent: 'center'
     },
     contentTextStyle: {
         fontSize: responsiveFontSize(2.2),
         fontWeight: '900',
-        color: '#fff'
+        color: colorBlack
     },
     line: {
         marginTop: responsiveHeight(.1),
         marginBottom: responsiveHeight(.1),
         height: responsiveHeight(.1),
-        width: '90%',
+        width: '80%',
         alignSelf: 'center',
         backgroundColor: '#d1d1d1'
     }

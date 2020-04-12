@@ -1,17 +1,17 @@
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList,Modal } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden,colorGrey,bgColor,cardBgColor,listBgColor ,colorBlack,headerColor,Muli} from '../../Globals/colors';
+import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, colorBlack, headerColor, Muli } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
-import {  TextInput } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 
 export default class Marketplace extends Component {
 
-  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4, 1, 2, 4] ,visible: false,}
+  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4, 1, 2, 4], visible: false, }
   componentDidMount = async () => {
 
     setTimeout(() => {
@@ -22,7 +22,7 @@ export default class Marketplace extends Component {
     const { flag1, flag2, flag3 } = this.state
     return (
       <CustomSafeAreaView>
-        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent  />
+        <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
@@ -72,8 +72,8 @@ export default class Marketplace extends Component {
               <TouchableOpacity style={styles.ideabuttonChildContainer1} onPress={() => this.setState({ visible: true })}>
                 <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.ideabuttonChildContainer1, {marginBottom:responsiveHeight(1) }]} onPress={()=>this.props.navigation.navigate('ProposalOffer')}>
-                <Text style={[styles.ideabuttonTextStyle1, {  textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
+              <TouchableOpacity style={[styles.ideabuttonChildContainer1, { marginBottom: responsiveHeight(1) }]} onPress={() => this.props.navigation.navigate('ProposalOffer')}>
+                <Text style={[styles.ideabuttonTextStyle1, { textDecorationLine: 'underline', textDecorationStyle: 'double' }]} >CONTRIBUTE</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -83,6 +83,13 @@ export default class Marketplace extends Component {
           transparent={true}
         >
           <View style={styles.modalParentContainer}>
+            <View style={styles.modalCloseContainer}>
+              <TouchableOpacity style={{marginBottom:responsiveHeight(2)}}
+            onPress={()=>this.setState({ visible:false  })}
+             >
+                <Ionicons name={'ios-close'} color={headerColor} size={responsiveWidth(12)} />
+              </TouchableOpacity>
+            </View>
             <View style={styles.modalChildContainer} >
               <View style={styles.inputContainer}>
                 <TextInput
@@ -170,18 +177,18 @@ const styles = StyleSheet.create({
     width: responsiveWidth(18),
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor:coloGolden,
+    borderColor: coloGolden,
     marginEnd: responsiveWidth(2)
   },
   MainContainer: {
     width: responsiveWidth(92),
-    marginTop:responsiveHeight(1),
-    marginBottom:responsiveHeight(2),
-    borderRadius:responsiveWidth(1),
-    paddingStart:responsiveWidth(2),
-    paddingEnd:responsiveWidth(2),
+    marginTop: responsiveHeight(1),
+    marginBottom: responsiveHeight(2),
+    borderRadius: responsiveWidth(1),
+    paddingStart: responsiveWidth(2),
+    paddingEnd: responsiveWidth(2),
     alignSelf: 'center',
-   backgroundColor:cardBgColor
+    backgroundColor: cardBgColor
   },
   text:
   {
@@ -229,7 +236,7 @@ const styles = StyleSheet.create({
     paddingStart: responsiveWidth(4),
     paddingEnd: responsiveWidth(4),
     borderWidth: 1,
-    borderColor:colorGrey,
+    borderColor: colorGrey,
     borderRadius: responsiveWidth(1),
     marginBottom: responsiveHeight(2)
   },
@@ -252,7 +259,7 @@ const styles = StyleSheet.create({
     color: colorWhite,
     marginTop: responsiveHeight(1),
     marginBottom: responsiveHeight(1),
-    
+
   },
   ideaButtonParentContainer1: {
 
@@ -288,10 +295,10 @@ const styles = StyleSheet.create({
     width: '20%',
     borderRadius: responsiveWidth(1),
     backgroundColor: '#8B0000',
-   // backgroundColor: listBgColor,
+    // backgroundColor: listBgColor,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom:responsiveWidth(5)
+    marginBottom: responsiveWidth(5)
   },
   ideabuttonTextStyle2:
   {
@@ -329,6 +336,7 @@ const styles = StyleSheet.create({
     fontFamily: Muli
     , color: '#fff'
   },
+  modalCloseContainer:{ width:responsiveWidth(90),alignSelf:'center',justifyContent:'center',alignItems:'flex-end' },
 });
 
 

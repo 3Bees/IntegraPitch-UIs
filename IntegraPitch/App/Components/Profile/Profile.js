@@ -60,11 +60,11 @@ export default class Profile extends Component {
                                 style={{ left: responsiveWidth(5), top: responsiveHeight(5) }}>
                                 <Ionicons name="md-menu" color={headerColor} size={responsiveWidth(9)} />
                             </TouchableOpacity>
-                            :  <TouchableOpacity
-                            onPress={() => this.props.navigation.goBack()}
-                            style={{ left: responsiveWidth(5), top: responsiveHeight(5) }}>
-                            <Ionicons name={'ios-arrow-back'}  color={headerColor} size={responsiveWidth(7)} />
-                        </TouchableOpacity>}
+                            : <TouchableOpacity
+                                onPress={() => this.props.navigation.goBack()}
+                                style={{ left: responsiveWidth(5), top: responsiveHeight(5) }}>
+                                <Ionicons name={'ios-arrow-back'} color={headerColor} size={responsiveWidth(7)} />
+                            </TouchableOpacity>}
                         <TouchableOpacity
                             style={{ right: responsiveWidth(5), top: responsiveHeight(5) }}>
                             <FontAwesome5 name={'user-edit'} color={headerColor} size={responsiveWidth(7)} />
@@ -89,30 +89,44 @@ export default class Profile extends Component {
                             <MaterialIcons name={'event-available'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
                             <View>
                                 <Text style={[styles.titleTextStyle2]}>
-                                    {'Availability'}
+                                    {'Biography'}
                                 </Text>
                                 <Text style={styles.titleTextbottom}>
-                                    Mange your daily/weekly availability
+                                    Mange your  biography
                             </Text>
                             </View>
-                            <Ionicons name={'ios-arrow-forward'} style={styles.icons} size={responsiveWidth(7.5)} color={colorGrey} />
-                        </TouchableOpacity>
 
-                        <View style={{ borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC', marginTop: responsiveWidth(3) }}></View>
+                        </TouchableOpacity>
+                        <View style={styles.line} />
+
                         <TouchableOpacity style={styles.titleContainer2}>
                             <MaterialIcons name={'event-available'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
                             <View>
                                 <Text style={[styles.titleTextStyle2]}>
-                                    {'Travel loacation and costs'}
+                                    {'Specialities'}
                                 </Text>
                                 <Text style={styles.titleTextbottom}>
-                                    Mange your location
+                                    Mange your specialities
                             </Text>
                             </View>
-                            <Ionicons name={'ios-arrow-forward'} style={styles.icons} size={responsiveWidth(7.5)} color={colorGrey} />
+
                         </TouchableOpacity>
 
-                        <View style={{ borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC', marginTop: responsiveWidth(3) }}></View>
+                        <View style={styles.line} />
+                        <TouchableOpacity style={styles.titleContainer2}>
+                            <MaterialIcons name={'event-available'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
+                            <View>
+                                <Text style={[styles.titleTextStyle2]}>
+                                    {'Previous Works'}
+                                </Text>
+                                <Text style={styles.titleTextbottom}>
+                                    Mange your previous works
+                            </Text>
+                            </View>
+
+                        </TouchableOpacity>
+
+                        <View style={styles.line} />
 
                     </View>
                 </View>
@@ -226,7 +240,8 @@ const styles = StyleSheet.create({
     icons:
     {
         marginTop: responsiveWidth(1)
-    }
+    },
+    line: { borderWidth: responsiveWidth(.1), borderColor: '#DCDCDC', marginTop: responsiveWidth(3) }
 
 });
 

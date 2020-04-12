@@ -12,19 +12,45 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ent from 'react-native-vector-icons/Entypo'
 import DatePicker from 'react-native-datepicker'
 import { Button, TextInput } from 'react-native-paper';
+import ImageView from 'react-native-image-view';
 export default class Marketplace extends Component {
 
   state = {
     flag1: false, flag2: true,
-    flag3: false, datasource: [1, 2, 4],
+    imagesVisibile: false,
+    flag3: false,
+     datasource: [
+      {
+        source: require('../../Assets/idea2.png'),
+        height:responsiveHeight(50),
+        width:responsiveWidth(90),
+        
+        
+      },
+      {
+        source: require('../../Assets/idea2.png'),
+        height:responsiveHeight(50),
+        width:responsiveWidth(90),
+      },
+      {
+        source: require('../../Assets/idea2.png'),
+        height:responsiveHeight(50),
+        width:responsiveWidth(90),
+      },
+      {
+        source: require('../../Assets/idea2.png'),
+        height:responsiveHeight(50),
+        width:responsiveWidth(90),
+      },
+    ],
     user: this.props.route.params,
     visible: false,
     placebid: '',
-    searchVisible:false,
+    searchVisible: false,
     categoryArray: [
       { name: 'category 1', flag: false },
       { name: 'category 2', flag: false },
-      { name: 'category 3', flag: false }, 
+      { name: 'category 3', flag: false },
       { name: 'category 4', flag: false },
       { name: 'category 5', flag: false },
     ],
@@ -99,7 +125,9 @@ export default class Marketplace extends Component {
                     onPress={() => this.props.navigation.navigate('IdeaDetails')}
                   >
                     <Text style={styles.ideaTextStyle}>Idea title</Text>
-                    <Image style={styles.ideaImageStyle} source={require('../../Assets/idea2.png')} />
+                    <TouchableOpacity width={'100%'} onPress={() => this.setState({ imagesVisibile: true })}>
+                      <Image style={styles.ideaImageStyle} source={item.source} />
+                    </TouchableOpacity>
                     <Text style={styles.ideaTextStyle1} numberOfLines={3} textBreakStrategy={'highQuality'}>SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes.SimpleText is the native text editor for the Apple classic Mac OS. SimpleText allows editing including text formatting, fonts, and sizes. </Text>
                     <View style={styles.ideaButtonParentContainer1}>
                       <TouchableOpacity style={styles.ideabuttonChildContainer1}
@@ -107,7 +135,7 @@ export default class Marketplace extends Component {
                       >
                         <Text style={styles.ideabuttonTextStyle1}>BUY/BID</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.ideabuttonChildContainer1} onPress={()=>this.props.navigation.navigate('ProposalOffer')}>
+                      <TouchableOpacity style={styles.ideabuttonChildContainer1} onPress={() => this.props.navigation.navigate('ProposalOffer')}>
                         <Text style={styles.ideabuttonTextStyle1}>CONTRIBUTE</Text>
                       </TouchableOpacity>
                     </View>
@@ -171,9 +199,9 @@ export default class Marketplace extends Component {
         {/* Search Modal */}
 
         <CustomModal isVisible={this.state.searchVisible}>
-          
+
           <View style={styles.ModalContainer}>
-            
+
             <View style={styles.modalChildContainer1}>
               <View style={{ width: '90%', paddingHorizontal: responsiveWidth(5) }}>
                 <Text style={[styles.modalTextStyle1, {}]}>{'Filter'}</Text>
@@ -197,10 +225,10 @@ export default class Marketplace extends Component {
                 renderItem={({ item, index }) => {
                   return (
                     <TouchableOpacity style={styles.categoryContainer}>
-                    <Text style={styles.categoryTextStyle}>
-                      {item.name}
-                    </Text>
-                  </TouchableOpacity>
+                      <Text style={styles.categoryTextStyle}>
+                        {item.name}
+                      </Text>
+                    </TouchableOpacity>
                   )
                 }}>
               </FlatList>
@@ -280,7 +308,34 @@ export default class Marketplace extends Component {
           </View>
         </CustomModal>
 
+        <ImageView
+          images={this.state.datasource}
+          animationType="fade"
+          imageIndex={0}
+          
+          isVisible={this.state.imagesVisibile}
+          onClose={() => { this.setState({ imagesVisibile: false }) }}
+          glideAlways
+          // onImageChange= {(n)=>console.log(n)}
+          renderFooter={(currentImage) => {
+            console.log(currentImage)
+            return(
+            <View style={styles.footer}>
+              <Text style={styles.footerText}>{currentImage.title}</Text>
+              <TouchableOpacity
+                style={styles.footerButton}
+                onPress={() => { }}>
+                <Text style={styles.footerText}>♥</Text>
+                <Text style={[styles.footerText, { marginLeft: 7 }]}>
+                  {currentImage.title}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        }
 
+
+        />
       </CustomSafeAreaView>
     );
   }
@@ -499,7 +554,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: responsiveWidth(100),
     height: responsiveHeight(50),
-    marginTop:responsiveHeight(52),
+    marginTop: responsiveHeight(52),
     borderTopLeftRadius: responsiveWidth(10),
     borderTopRightRadius: responsiveWidth(10)
   },
@@ -588,6 +643,29 @@ const styles = StyleSheet.create({
     marginEnd: responsiveWidth(2),
     borderRadius: responsiveWidth(6), marginTop: responsiveHeight(1)
   },
-  categoryTextStyle: { paddingStart: responsiveWidth(2), paddingEnd: responsiveWidth(2), fontSize: responsiveFontSize(1.8), color: colorWhite },
+  categoryTextStyle: {
+    paddingStart: responsiveWidth(2),
+    paddingEnd: responsiveWidth(2),
+    fontSize: responsiveFontSize(1.8), color: colorWhite
+  },
+  footer: {
+    width: responsiveWidth(100),
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+},
+footerButton: {
+    flexDirection: 'row',
+    marginLeft: 15,
+},
+footerText: {
+    fontSize: 16,
+    color: '#FFF',
+    textAlign: 'center',
+},
 
 });

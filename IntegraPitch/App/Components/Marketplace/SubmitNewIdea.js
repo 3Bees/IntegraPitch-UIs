@@ -332,11 +332,8 @@ export default class Marketplace extends Component {
 
               <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
                 <Text style={[styles.TextInputTitleStyle, { position: 'absolute', left: responsiveWidth(5) }]} >$</Text>
-                {/* <TouchableOpacity style={[styles.buttonChildContainer, { height: responsiveHeight(7), width: '30%' }]}>
-                  <Text style={styles.buttonTextStyle}>Starting at</Text>
-                </TouchableOpacity> */}
-
-                <TextInput style={[{ margin:0,padding:0,backgroundColor:cardBgColor ,width: '29.8%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.7),left:2 }]}
+                <TextInput 
+                style={{  backgroundColor:cardBgColor ,width: '29.8%', fontSize: responsiveFontSize(1.7),left:2,}}
                   // label='Email'
                   placeholder={'Starting at'}
                   mode={'outlined'}
@@ -344,7 +341,6 @@ export default class Marketplace extends Component {
                   onChangeText={interests => this.setState({ interests })}
                   value={this.state.interests}
                   underlineColorAndroid='transparent'
-                  multiline={true}
                   theme={{
                     colors: {
                       placeholder: colorGrey,
@@ -358,7 +354,7 @@ export default class Marketplace extends Component {
 
                 <TouchableOpacity style={[styles.buttonChildContainer, { height: responsiveHeight(5), width: '20%', borderWidth: 0 }]} />
                 <Text style={[styles.TextInputTitleStyle, { position: 'absolute', start: responsiveWidth(50) }]} >$</Text>
-                <TextInput style={[{ backgroundColor:cardBgColor, width: '29.8%', margin: 0, padding: 0, fontSize: responsiveFontSize(1.7),right:2 }]}
+                <TextInput style={[{ backgroundColor:cardBgColor, width: '29.8%', fontSize: responsiveFontSize(1.7),right:2 }]}
                   // label='Email'
                   placeholder={'Full price'}
                   mode={'outlined'}
@@ -366,7 +362,7 @@ export default class Marketplace extends Component {
                   onChangeText={price => this.setState({ price })}
                   value={this.state.price}
                   underlineColorAndroid='transparent'
-                  multiline={true}
+                  // multiline={true}
                   theme={{
                     colors: {
                       placeholder: colorGrey,
