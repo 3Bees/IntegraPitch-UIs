@@ -134,7 +134,7 @@ export default class AdjustProposal extends Component {
                                             placeholder: colorGrey,
                                             primary: colorGrey,
                                             underlineColor: 'transparent',
-                                            text:colorWhite
+                                            text:colorBlack
                                         }
                                     }}
                                 />

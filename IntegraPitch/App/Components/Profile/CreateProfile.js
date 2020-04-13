@@ -21,7 +21,9 @@ export default class CreateProfile extends Component {
     portfolio: '',
     creator: '',
     checked: false,
-    technologies:'',
+    technologies: '',
+    flag1: true,
+    flag2: false,
     Imagedatasource: [],
     documentdatasource: [],
     modalVisible: false,
@@ -134,6 +136,7 @@ export default class CreateProfile extends Component {
     }, 3000);
   };
   render() {
+    const { flag1, flag2 } = this.state
     return (
       <CustomSafeAreaView>
         <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
@@ -166,7 +169,7 @@ export default class CreateProfile extends Component {
                     colors: {
                       placeholder: colorGrey,
                       primary: colorBlack,
-                      text: colorWhite,
+                      text: colorBlack,
                       underlineColor: 'transparent',
                     }
                   }}
@@ -233,7 +236,7 @@ export default class CreateProfile extends Component {
                       borderWidth: 0,
                     },
                     dateText: {
-                      color: colorWhite,
+                      color: colorBlack,
                       fontSize: responsiveFontSize(1.8),
                       fontFamily: 'Muli-Bold',
                       numberOfLines: 1
@@ -260,7 +263,7 @@ export default class CreateProfile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -277,7 +280,7 @@ export default class CreateProfile extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     // text: 'grey',
                     underlineColor: 'transparent',
                   }
@@ -297,7 +300,7 @@ export default class CreateProfile extends Component {
                     placeholder: colorGrey,
                     primary: colorBlack,
                     // text: 'grey',
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -315,7 +318,7 @@ export default class CreateProfile extends Component {
                     placeholder: colorGrey,
                     primary: colorBlack,
                     // text: 'grey',
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -332,10 +335,10 @@ export default class CreateProfile extends Component {
                 borderColor: colorGrey,
               }}
                 onPress={() => {
-                  this.setState({ modalVisible: true });
+                  this.setState({ modalVisible: true, flag1: false, flag2: true, });
                 }}
               >
-                <Text style={{ marginLeft: responsiveWidth(4), color: colorWhite }}>
+                <Text style={[{ marginLeft: responsiveWidth(4) }, { color: flag1 ? colorGrey : colorBlack }]}>
                   {this.state.selected}
                 </Text>
                 <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />

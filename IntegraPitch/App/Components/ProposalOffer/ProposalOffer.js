@@ -155,7 +155,7 @@ export default class ProposalOffer extends Component {
                                         placeholder: colorGrey,
                                         primary: colorBlack,
                                         underlineColor: 'transparent',
-                                        text:colorWhite
+                                        text:colorBlack
                                     }
                                 }}
                             />
@@ -205,7 +205,7 @@ export default class ProposalOffer extends Component {
                                             placeholder: colorGrey,
                                             primary: colorBlack,
                                             underlineColor: 'transparent',
-                                            text:colorWhite
+                                            text:colorBlack
                                         }
                                     }}
                                 />
