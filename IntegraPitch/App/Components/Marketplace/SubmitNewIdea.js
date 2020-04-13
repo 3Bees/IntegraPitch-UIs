@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, FlatList, ScrollView, Modal } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, Muli, MuliBold, colorBlack,headerColor } from '../../Globals/colors';
+import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, Muli, MuliBold, colorBlack, headerColor } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TextInput, Title } from 'react-native-paper';
@@ -13,13 +13,15 @@ import { Icon, CheckBox } from 'react-native-elements';
 export default class Marketplace extends Component {
 
   state = {
-    flag1: false, flag2: true, flag3: false, Imagedatasource: [], documentdatasource: [],
-    acceptoffer:false,
-    acceptpolicy:false,
-    currentstate:false,
-    Sketchstate:false,
-    prototypestate:false,
+    flag1: true, flag2: false, flag3: false, Imagedatasource: [], documentdatasource: [],
+    acceptoffer: false,
+    acceptpolicy: false,
+    currentstate: false,
+    Sketchstate: false,
+    prototypestate: false,
     modalVisible: false,
+    // flag1:true,
+    // flag2:false,
     category: [
       {
         name: 'categories 1',
@@ -130,7 +132,7 @@ export default class Marketplace extends Component {
     });
   }
   render() {
-    const { flag1, flag2, flag3 } = this.state
+    const { flag1, flag2, } = this.state
     return (
       <CustomSafeAreaView>
         <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
@@ -160,7 +162,7 @@ export default class Marketplace extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text:colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -181,9 +183,9 @@ export default class Marketplace extends Component {
                   multiline={true}
                   theme={{
                     colors: {
-                      placeholder:colorGrey,
+                      placeholder: colorGrey,
                       primary: colorBlack,
-                      text:colorWhite,
+                      text: colorBlack,
                       underlineColor: 'transparent',
 
                     }
@@ -206,10 +208,10 @@ export default class Marketplace extends Component {
                   multiline={true}
                   theme={{
                     colors: {
-                      placeholder:colorGrey,
+                      placeholder: colorGrey,
                       primary: colorBlack,
                       color: colorBlack,
-                      text: colorWhite,
+                      text: colorBlack,
                       underlineColor: 'transparent',
                     }
                   }} />
@@ -264,7 +266,7 @@ export default class Marketplace extends Component {
                 <CheckBox title='No, keep my idea only in its current state'
                   containerStyle={styles.checkbox}
                   textStyle={styles.checkboxtext}
-                  style={{backgroundColor:bgColor}}
+                  style={{ backgroundColor: bgColor }}
                   checkedColor={colorGrey} size={25} uncheckedColor={colorGrey}
                   checked={this.state.currentstate}
                   onPress={() => this.setState({ currentstate: !this.state.currentstate })} />
@@ -306,10 +308,10 @@ export default class Marketplace extends Component {
               <Text style={styles.TextInputTitleStyle}>Idea Category</Text>
               <TouchableOpacity style={{ height: responsiveHeight(7), flexDirection: 'row', width: '100%', alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', marginTop: responsiveHeight(1), marginBottom: responsiveHeight(1), borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey }}
                 onPress={() => {
-                  this.setState({ modalVisible: true });
+                  this.setState({ modalVisible: true,flag1: false, flag2: true });
                 }}
               >
-                <Text style={{ marginLeft: responsiveWidth(4), color: colorWhite }}>
+                <Text style={[{ marginLeft: responsiveWidth(4) }, { color: flag1 ? colorGrey : colorBlack }]}>
                   {this.state.selected}
                 </Text>
                 <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />
@@ -332,8 +334,8 @@ export default class Marketplace extends Component {
 
               <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
                 <Text style={[styles.TextInputTitleStyle, { position: 'absolute', left: responsiveWidth(5) }]} >$</Text>
-                <TextInput 
-                style={{  backgroundColor:cardBgColor ,width: '29.8%', fontSize: responsiveFontSize(1.7),left:2,}}
+                <TextInput
+                  style={{ backgroundColor: cardBgColor, width: '29.8%', fontSize: responsiveFontSize(1.7), left: 2, }}
                   // label='Email'
                   placeholder={'Starting at'}
                   mode={'outlined'}
@@ -354,7 +356,7 @@ export default class Marketplace extends Component {
 
                 <TouchableOpacity style={[styles.buttonChildContainer, { height: responsiveHeight(5), width: '20%', borderWidth: 0 }]} />
                 <Text style={[styles.TextInputTitleStyle, { position: 'absolute', start: responsiveWidth(50) }]} >$</Text>
-                <TextInput style={[{ backgroundColor:cardBgColor, width: '29.8%', fontSize: responsiveFontSize(1.7),right:2 }]}
+                <TextInput style={[{ backgroundColor: cardBgColor, width: '29.8%', fontSize: responsiveFontSize(1.7), right: 2 }]}
                   // label='Email'
                   placeholder={'Full price'}
                   mode={'outlined'}
@@ -367,7 +369,7 @@ export default class Marketplace extends Component {
                     colors: {
                       placeholder: colorGrey,
                       primary: colorGrey,
-                      // text: 'grey',
+                      text: colorBlack,
                       text: colorWhite,
                       underlineColor: 'transparent',
                     }
@@ -394,7 +396,7 @@ export default class Marketplace extends Component {
                   onPress={() => this.setState({ acceptpolicy: !this.state.acceptpolicy })} />
               </View>
             </View>
-            <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('OfferReceived')}>
+            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('OfferReceived')}>
               <Text style={styles.buttontext}>SUBMIT IDEA</Text>
             </TouchableOpacity>
 
@@ -477,7 +479,7 @@ const styles = StyleSheet.create({
   {
     fontWeight: 'bold',
     fontSize: responsiveFontSize(2.2),
-   color: headerColor,
+    color: headerColor,
   },
   MainContainer: {
     width: responsiveWidth(92),
@@ -511,7 +513,7 @@ const styles = StyleSheet.create({
     backgroundColor: cardBgColor,
     width: '100%',
     // backgroundColor:'red',
-   
+
     fontSize: responsiveFontSize(1.8),
   },
   TextInputTitleStyle:
@@ -593,7 +595,7 @@ const styles = StyleSheet.create({
   buttontext:
   {
     fontFamily: Muli,
-     color: headerColor,
+    color: headerColor,
     fontSize: responsiveFontSize(2.5)
 
   },

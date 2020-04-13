@@ -68,7 +68,7 @@ export default class Login extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: 'black',
                     underlineColor: 'transparent',
                   }
                 }}
@@ -90,7 +90,7 @@ export default class Login extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}

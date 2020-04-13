@@ -21,6 +21,8 @@ export default class CreateAccount extends Component {
     checked: false,
     setSelectedValue: '',
     modalVisible: false,
+    flag1:true,
+    flag2:false,
     category: [
       {
         name: 'Option 1',
@@ -68,7 +70,7 @@ export default class CreateAccount extends Component {
   }
 
   render() {
-
+    const { flag1, flag2} = this.state
 
     return (
       <CustomSafeAreaView>
@@ -97,7 +99,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -157,7 +159,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -175,7 +177,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -192,7 +194,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -209,7 +211,7 @@ export default class CreateAccount extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text: colorWhite,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -223,10 +225,10 @@ export default class CreateAccount extends Component {
                 borderRadius: responsiveWidth(1), borderWidth: 1, borderColor: colorGrey, backgroundColor: cardBgColor,
               }}
                 onPress={() => {
-                  this.setState({ modalVisible: true });
+                  this.setState({ modalVisible: true,flag1: false, flag2: true, });
                 }}
               >
-                <Text style={{ marginLeft: responsiveWidth(4), color: colorGrey }}>
+                <Text style={[{ marginLeft: responsiveWidth(4)}, { color: flag1 ? colorGrey : colorBlack }]}>
                   {this.state.selected}
                 </Text>
                 <Ionicons name={'md-arrow-dropdown'} color={colorGrey} size={30} style={{ marginRight: responsiveWidth(3) }} />

@@ -106,7 +106,7 @@ export default class Marketplace extends Component {
                     colors: {
                       placeholder: colorGrey,
                       primary: colorBlack,
-                      text: colorWhite,
+                      text: colorBlack,
                       underlineColor: 'transparent',
                     }
                   }}
