@@ -5,6 +5,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Button, TextInput } from 'react-native-paper'
 import { SocialIcon } from 'react-native-elements'
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView'
+import AuthLoading from '../../Components/AuthLoading/AuthLoading';
 import { theamColor, colorBlack, colorWhite, bgColor, cardBgColor, colorGrey } from '../../Globals/colors'
 
 const Divider = (height) => {
@@ -17,13 +18,18 @@ export default class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      isLoading: false,
+      isLoading: true,
     }
   }
 
 
-  async componentDidMount() {
-  }
+  
+    componentDidMount = async () => {
+      setTimeout(() => {
+        this.setState({ isLoading: false });
+      }, 2000);
+    };
+  
 
 
   showAlert = (title, message) => {
@@ -42,8 +48,8 @@ export default class Login extends Component {
 
   }
   render() {
-    const { email, password } = this.state
-
+    const { email, password, isLoading } = this.state
+    if (isLoading) { return (<AuthLoading />) }
     return (
       <CustomSafeAreaView>
         <StatusBar backgroundColor={bgColor} barStyle="dark-content" />
@@ -68,7 +74,7 @@ export default class Login extends Component {
                   colors: {
                     placeholder: colorGrey,
                     primary: colorBlack,
-                    text:colorBlack,
+                    text: colorBlack,
                     underlineColor: 'transparent',
                   }
                 }}
@@ -142,7 +148,7 @@ export default class Login extends Component {
               <Text style={styles.textStyle1}>
                 Don't have an account?
                            </Text>
-              <TouchableOpacity onPress={() => {this.props.navigation.navigate("CreateAccount") }}>
+              <TouchableOpacity onPress={() => { this.props.navigation.navigate("CreateAccount") }}>
                 <Text
 
                   style={styles.textStyle2}>
@@ -206,7 +212,7 @@ const styles = StyleSheet.create({
   inputTitle: {
     // backgroundColor: colorWhite,
     fontSize: responsiveFontSize(1.8),
-    
+
   },
   inputContainer2: {
     height: '55%', width: '98%',
@@ -221,7 +227,7 @@ const styles = StyleSheet.create({
     marginBottom: 2
   },
 
- 
+
   forgotContainer: {
     height: responsiveHeight(6),
     width: '53%',
@@ -232,7 +238,7 @@ const styles = StyleSheet.create({
   },
   forgotText: {
     fontSize: responsiveFontSize(1.8),
-   
+
   },
   buttonContainer: {
     height: responsiveHeight(8),
@@ -249,7 +255,7 @@ const styles = StyleSheet.create({
   },
   buttonTextStyle: {
     color: '#fff',
-    
+
     fontSize: responsiveFontSize(2)
   },
   mainContainer: {
@@ -268,12 +274,12 @@ const styles = StyleSheet.create({
   },
   textStyle1: {
     fontSize: responsiveFontSize(1.7),
-   
+
   },
   textStyle2: {
     fontSize: responsiveFontSize(1.7),
-    color: colorGrey, 
-    fontWeight:'bold'
+    color: colorGrey,
+    fontWeight: 'bold'
   },
   siconContainer: {
     height: responsiveHeight(10),

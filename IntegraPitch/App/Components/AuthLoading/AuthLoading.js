@@ -7,11 +7,7 @@ import { colorWhite } from '../../Globals/colors';
 
 
 export default class AuthLoading extends Component {
-  componentDidMount = async () => {
-    setTimeout(() => {
-      this.props.navigation.navigate('Login');
-    }, 2000);
-  };
+ 
   render() {
     return (
       <CustomSafeAreaView>

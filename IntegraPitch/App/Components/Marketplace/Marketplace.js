@@ -13,34 +13,35 @@ import Ent from 'react-native-vector-icons/Entypo'
 import DatePicker from 'react-native-datepicker'
 import { Button, TextInput } from 'react-native-paper';
 import ImageView from 'react-native-image-view';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 export default class Marketplace extends Component {
 
   state = {
     flag1: false, flag2: true,
     imagesVisibile: false,
     flag3: false,
-     datasource: [
+    datasource: [
       {
         source: require('../../Assets/idea2.png'),
-        height:responsiveHeight(50),
-        width:responsiveWidth(90),
-        
-        
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
+
+
       },
       {
         source: require('../../Assets/idea2.png'),
-        height:responsiveHeight(50),
-        width:responsiveWidth(90),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
       },
       {
         source: require('../../Assets/idea2.png'),
-        height:responsiveHeight(50),
-        width:responsiveWidth(90),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
       },
       {
         source: require('../../Assets/idea2.png'),
-        height:responsiveHeight(50),
-        width:responsiveWidth(90),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
       },
     ],
     user: this.props.route.params,
@@ -60,7 +61,8 @@ export default class Marketplace extends Component {
       { name: '400-600$', flag: false },
       { name: '600-800$', flag: false },
       { name: '800-1000$', flag: false },
-    ]
+    ],
+    multiSliderValue: [0, 1500]
 
 
   }
@@ -79,10 +81,16 @@ export default class Marketplace extends Component {
       </TouchableOpacity>
     </View>)
   }
+  multiSliderValuesChange = values => {
+    console.log(values)
+    this.setState({
+      multiSliderValue: values,
+    });
+  };
   render() {
 
     console.log(this.state.user)
-    const { flag1, flag2, flag3, searchVisible } = this.state
+    const { flag1, flag2, flag3, searchVisible, multiSliderValue } = this.state
     return (
       <CustomSafeAreaView>
         <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
@@ -112,6 +120,8 @@ export default class Marketplace extends Component {
             </View>
 
             <Text style={styles.text1}>See: all ideas</Text>
+
+
             <FlatList
               showsVerticalScrollIndicator={false}
               ListHeaderComponent={this.renderHeader(this)}
@@ -234,26 +244,44 @@ export default class Marketplace extends Component {
               </FlatList>
             </View>
             <View style={[styles.modalDateContainer2, {}]}>
-              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(1.8) }]}>
-                {'Price'}
-              </Text>
-              <FlatList
+              <View style={{ flexDirection: 'row', alignItems: 'center',width:'100%',height:responsiveHeight(4) }}>
+                <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2) }]}>
+                  {'Price'}
+                </Text>
+                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8),color:colorBlack }]}>
+                  {'From'}
+                </Text>
+                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8), }]}>
+                  {this.state.multiSliderValue[0]}
+                </Text>
+                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8),color:colorBlack }]}>
+                  {'To'}
+                </Text>
+                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8), }]}>
+                  {this.state.multiSliderValue[1]}
+                </Text>
+              </View>
 
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                data={this.state.priceArray}
-                keyExtractor={(item, index) => index}
-                renderItem={({ item, index }) => {
-                  return (
-                    <TouchableOpacity style={styles.categoryContainer}>
-                      <Text style={styles.categoryTextStyle}>
-                        {item.name}
-                      </Text>
-                    </TouchableOpacity>
-                  )
-                }}>
-
-              </FlatList>
+              <View style={{ alignItems: 'center', justifyContent: 'center', height: responsiveHeight(5) }}>
+                <MultiSlider
+                  values={multiSliderValue}
+                  sliderLength={responsiveWidth(80)}
+                  onValuesChange={this.multiSliderValuesChange}
+                  min={0}
+                  enabledOne={true}
+                  enabledTwo={true}
+                  isMarkersSeparated={true}
+                  step={50}
+                  markerStyle={{ backgroundColor: colorWhite, height: responsiveHeight(2.5), width: responsiveHeight(2.5) }}
+                  selectedStyle={{ backgroundColor: colorBlack }}
+                  max={1500}
+                
+                //step={2}
+                //allowOverlap
+                // snapped
+                />
+              </View>
+            
             </View>
             <View style={styles.modalDateContainer3}>
               <Text style={[styles.modalTextStyle1, {}]}>{'Filter By Date'}</Text>
@@ -312,27 +340,27 @@ export default class Marketplace extends Component {
           images={this.state.datasource}
           animationType="fade"
           imageIndex={0}
-          
+
           isVisible={this.state.imagesVisibile}
           onClose={() => { this.setState({ imagesVisibile: false }) }}
           glideAlways
           // onImageChange= {(n)=>console.log(n)}
           renderFooter={(currentImage) => {
-            console.log(currentImage)
-            return(
-            <View style={styles.footer}>
-              <Text style={styles.footerText}>{currentImage.title}</Text>
-              <TouchableOpacity
-                style={styles.footerButton}
-                onPress={() => { }}>
-                <Text style={styles.footerText}>♥</Text>
-                <Text style={[styles.footerText, { marginLeft: 7 }]}>
-                  {currentImage.title}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        }
+            return (
+              <View style={styles.footer}>
+                <Text style={styles.footerText}>{currentImage.title}</Text>
+                <TouchableOpacity
+                  style={styles.footerButton}
+                  onPress={() => { }}>
+                  <Text style={styles.footerText}>♥</Text>
+                  <Text style={[styles.footerText, { marginLeft: 7 }]}>
+                    {currentImage.title}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )
+          }
+          }
 
 
         />
@@ -657,15 +685,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     paddingHorizontal: 10,
     paddingVertical: 5,
-},
-footerButton: {
+  },
+  footerButton: {
     flexDirection: 'row',
     marginLeft: 15,
-},
-footerText: {
+  },
+  footerText: {
     fontSize: 16,
     color: '#FFF',
     textAlign: 'center',
-},
+  },
 
 });
