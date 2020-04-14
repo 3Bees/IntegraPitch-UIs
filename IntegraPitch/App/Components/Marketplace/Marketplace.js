@@ -45,6 +45,7 @@ export default class Marketplace extends Component {
       },
     ],
     user: this.props.route.params,
+    
     visible: false,
     placebid: '',
     searchVisible: false,
