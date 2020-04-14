@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     {
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
-        color: colorWhite,
+        color: colorBlack,
         marginTop: responsiveWidth(2),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(2)
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
 
         fontFamily: Muli,
         fontSize: responsiveFontSize(1.9),
-        color: colorGrey,
+        color: colorBlack,
 
     },
     ideatextinput:
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
     {
         fontFamily: Muli,
         fontSize: responsiveFontSize(1.6),
-        color: colorGrey,
+        color: colorBlack,
         width: responsiveWidth(50),
         marginLeft: responsiveWidth(2.5),
         marginTop: responsiveWidth(2)

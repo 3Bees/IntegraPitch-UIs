@@ -34,6 +34,7 @@ import SubmitNewIdea from '../Components/Marketplace/SubmitNewIdea'
 import Start from '../Components/Start/Start'
 import MoreTabs from '../Components/MoreTabs/MoreTabs'
 import Notifications from '../Components/Notifications/Notifications'
+import MyProjects from '../Components/Marketplace/MyProjects'
 import Chats from '../Components/Chats/Chats'
 import Login from '../Components/Login/Login'
 import CustomDrawer from './CustomDrawer'
@@ -47,6 +48,7 @@ console.disableYellowBox = true
 
 const Drawer = createDrawerNavigator();
 const MainStack = createStackNavigator();
+const HistoryStack = createStackNavigator();
 const AppTabNavigator = createBottomTabNavigator();
 const Main = () => {
     return (
@@ -72,6 +74,16 @@ const Main = () => {
             <MainStack.Screen name="Login" component={Login} />
             <MainStack.Screen name="WebView" component={WebView} />
         </MainStack.Navigator>
+    );
+
+}
+const HisStack = () => {
+    return (
+
+        <HistoryStack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }} >
+            <MainStack.Screen name='History' component={History} />
+            <MainStack.Screen name="MyProjects" component={MyProjects} />
+        </HistoryStack.Navigator>
     );
 
 }
@@ -104,7 +116,7 @@ const Tab = () => {
 
 
             <AppTabNavigator.Screen name="Home" component={Marketplace} />
-            <AppTabNavigator.Screen name="History" component={History} />
+            <AppTabNavigator.Screen name="History" component={HisStack} />
             <AppTabNavigator.Screen name="Profile" component={Profile} />
             <AppTabNavigator.Screen name="More" component={MoreTabs} />
 

@@ -34,7 +34,7 @@ export default class Marketplace extends Component {
           </View>
 
           <View style={styles.MainContainer}>
-            <Text style={styles.text}>Collaborative ideas</Text>
+            <Text style={styles.text0}>Collaborative ideas</Text>
             <FlatList
               showsVerticalScrollIndicator={false}
               style={{ marginBottom: responsiveHeight(20) }}
@@ -125,6 +125,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop:responsiveWidth(2)
   },
+  text0:
+  {
+    fontFamily: 'Muli-Bold',
+    fontSize: responsiveFontSize(2.7),
+    color: colorBlack,
+    marginTop: responsiveHeight(2),
+    fontWeight: 'bold',
+    marginBottom: responsiveHeight(2)
+  },
   text:
   {
     fontFamily: 'Muli-Bold',
@@ -189,8 +198,8 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderRadius: responsiveWidth(1)
   },
   ideaListTextStyle: {
-    fontSize: responsiveFontSize(2),
-    color: colorWhite,
+    fontSize: responsiveFontSize(1.8),
+    color: colorBlack,
      width: '67%'
   },
   ideaButtonParentContainer: {

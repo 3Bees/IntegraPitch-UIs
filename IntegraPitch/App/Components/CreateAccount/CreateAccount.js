@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
-    color: colorGrey,
+    color: colorBlack,
     marginVertical: responsiveWidth(2),
     fontWeight: 'bold'
 
@@ -364,8 +364,8 @@ const styles = StyleSheet.create({
   {
     fontFamily: Muli,
     fontSize: responsiveFontSize(2),
-    color: colorGrey,
-    marginTop: responsiveWidth(1)
+    color: colorBlack,
+    
   },
   checkbox:
   {

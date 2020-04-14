@@ -259,9 +259,24 @@ export default class Marketplace extends Component {
                   }} />
               </View>
             </View>
+            <View style={styles.titConatiner}>
+              <Text style={styles.TextInputTitleStyle}>Idea State</Text>
+
+              <View style={styles.buttonParentContainer}>
+                <TouchableOpacity style={styles.buttonChildContainer1}>
+                  <Text style={styles.buttonTextStyle}>Row</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonChildContainer1}>
+                  <Text style={styles.buttonTextStyle}>Sketched</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonChildContainer1}>
+                  <Text style={styles.buttonTextStyle}>Prototyped</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
 
             <View style={styles.titConatiner}>
-              <Text style={styles.TextInputTitleStyle}>Executive Summary</Text>
+              <Text style={styles.TextInputTitleStyle}>Collaboration Option</Text>
               <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-5) }}>
                 <CheckBox title='No, keep my idea only in its current state'
                   containerStyle={styles.checkbox}
@@ -288,21 +303,7 @@ export default class Marketplace extends Component {
                   onPress={() => this.setState({ prototypestate: !this.state.pr })} />
               </View>
             </View>
-            <View style={styles.titConatiner}>
-              <Text style={styles.TextInputTitleStyle}>Idea State</Text>
-
-              <View style={styles.buttonParentContainer}>
-                <TouchableOpacity style={styles.buttonChildContainer1}>
-                  <Text style={styles.buttonTextStyle}>Row</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonChildContainer1}>
-                  <Text style={styles.buttonTextStyle}>Sketched</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonChildContainer1}>
-                  <Text style={styles.buttonTextStyle}>Prototyped</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+            
 
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Idea Category</Text>
@@ -333,7 +334,7 @@ export default class Marketplace extends Component {
               </View>
 
               <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: responsiveHeight(1) }}>
-                <Text style={[styles.TextInputTitleStyle, { position: 'absolute', left: responsiveWidth(5) }]} >$</Text>
+                <Text style={[styles.TextInputTitleStyle, { position: 'absolute', left: responsiveWidth(5),top:13}]} >$</Text>
                 <TextInput
                   style={{ backgroundColor: cardBgColor, width: '29.8%', fontSize: responsiveFontSize(1.7), left: 2, }}
                   // label='Email'
@@ -355,7 +356,7 @@ export default class Marketplace extends Component {
                 />
 
                 <TouchableOpacity style={[styles.buttonChildContainer, { height: responsiveHeight(5), width: '20%', borderWidth: 0 }]} />
-                <Text style={[styles.TextInputTitleStyle, { position: 'absolute', start: responsiveWidth(50) }]} >$</Text>
+                <Text style={[styles.TextInputTitleStyle, { position: 'absolute', start: responsiveWidth(50),top:13 }]} >$</Text>
                 <TextInput style={[{ backgroundColor: cardBgColor, width: '29.8%', fontSize: responsiveFontSize(1.7), right: 2 }]}
                   // label='Email'
                   placeholder={'Full price'}
@@ -502,7 +503,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.8),
-    color: colorWhite,
+    color: colorBlack,
     marginTop: responsiveHeight(2),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(1)
@@ -548,7 +549,7 @@ const styles = StyleSheet.create({
   checkboxtext:
   {
     fontFamily: Muli,
-    fontSize: responsiveFontSize(1.9),
+    fontSize: responsiveFontSize(1.7),
     color: 'grey',
     marginTop: responsiveWidth(-1)
   },

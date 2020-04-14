@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     ideatext:{
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.8),
-        color: colorWhite,
+        color: colorBlack,
         marginTop: responsiveWidth(1),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(1)

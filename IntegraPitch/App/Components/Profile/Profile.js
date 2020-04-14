@@ -65,7 +65,7 @@ export default class Profile extends Component {
                                 style={{ left: responsiveWidth(5), top: responsiveHeight(5) }}>
                                 <Ionicons name={'ios-arrow-back'} color={headerColor} size={responsiveWidth(7)} />
                             </TouchableOpacity>}
-                        <TouchableOpacity
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('CreateProfile')}
                             style={{ right: responsiveWidth(5), top: responsiveHeight(5) }}>
                             <FontAwesome5 name={'user-edit'} color={headerColor} size={responsiveWidth(7)} />
                         </TouchableOpacity>
@@ -80,13 +80,13 @@ export default class Profile extends Component {
                             Jhon Doe
                         </Text>
                         <View style={{ flexDirection: 'row', marginTop: responsiveWidth(-1), alignSelf: 'center', marginBottom: responsiveWidth(15) }}>
-                            <MaterialIcons name={'mail'} color={'grey'} style={{ marginTop: responsiveWidth(.5), marginRight: responsiveWidth(.5) }} />
+                            <MaterialIcons name={'mail'} color={'grey'} style={{ marginTop: responsiveWidth(1), marginRight: responsiveWidth(.5) }} />
                             <Text style={styles.profilebottomtext}>
                                 jhondoe@gmail.com
                         </Text>
                         </View>
                         <TouchableOpacity style={styles.titleContainer2}>
-                            <MaterialIcons name={'event-available'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
+                            <MaterialComunityIcons name={'account-details'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
                             <View>
                                 <Text style={[styles.titleTextStyle2]}>
                                     {'Biography'}
@@ -100,7 +100,7 @@ export default class Profile extends Component {
                         <View style={styles.line} />
 
                         <TouchableOpacity style={styles.titleContainer2}>
-                            <MaterialIcons name={'event-available'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
+                            <MaterialIcons name={'folder-special'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
                             <View>
                                 <Text style={[styles.titleTextStyle2]}>
                                     {'Specialities'}
@@ -114,7 +114,7 @@ export default class Profile extends Component {
 
                         <View style={styles.line} />
                         <TouchableOpacity style={styles.titleContainer2}>
-                            <MaterialIcons name={'event-available'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
+                            <MaterialComunityIcons name={'account-network'} style={styles.icon} size={responsiveWidth(7)} color={colorGrey} />
                             <View>
                                 <Text style={[styles.titleTextStyle2]}>
                                     {'Previous Works'}
@@ -199,11 +199,11 @@ const styles = StyleSheet.create({
         color: colorWhite
     },
     titleContainer2: {
-        height: responsiveHeight(6),
+    //height: responsiveHeight(6),
         width: responsiveWidth(100),
         paddingEnd: responsiveWidth(4),
         paddingStart: responsiveWidth(2.5),
-        marginTop: responsiveWidth(2),
+        //marginTop: responsiveWidth(2),
         alignSelf: 'center',
         flexDirection: 'row',
         alignItems: 'center',
