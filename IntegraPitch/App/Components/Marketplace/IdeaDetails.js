@@ -8,10 +8,52 @@ import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, c
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
+import ImageView from 'react-native-image-view';
+
 
 export default class Marketplace extends Component {
 
-  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4, 1, 2, 4], visible: false, }
+  state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4, 1, 2, 4], visible: false, imagesVisibile: false,imagesVisibile2: false,
+    datasource: [
+      {
+        source: require('../../Assets/idea2.png'),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
+
+
+      },
+    ],
+    datasource2: [
+      {
+        source: require('../../Assets/d.png'),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
+
+
+      },
+      {
+        source: require('../../Assets/d.png'),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
+
+
+      },
+      {
+        source: require('../../Assets/d.png'),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
+
+
+      },
+      {
+        source: require('../../Assets/d.png'),
+        height: responsiveHeight(50),
+        width: responsiveWidth(90),
+
+
+      },
+    ],
+  }
   componentDidMount = async () => {
 
     setTimeout(() => {
@@ -45,16 +87,23 @@ export default class Marketplace extends Component {
 
             <View style={styles.ideaMainCard} >
               <Text style={styles.ideaTextStyle}>Idea title</Text>
+              <TouchableOpacity width={'100%'} onPress={() => this.setState({ imagesVisibile: true })}>
+
               <Image style={styles.ideaImageStyle} source={require('../../Assets/idea2.png')} />
+              </TouchableOpacity>
               <View style={styles.buttonParentContainer}>
                 <FlatList
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}
-                  data={this.state.datasource}
+                  data={this.state.datasource2}
                   keyExtractor={(item, index) => index}
                   renderItem={({ item, index }) => {
                     return (
+                      <TouchableOpacity width={'100%'} onPress={() => this.setState({ imagesVisibile2: true })}>
+
                       <Image style={styles.buttonChildContainer} source={require('../../Assets/d.png')} />
+                      </TouchableOpacity>
+
                     )
                   }} />
               </View>
@@ -83,14 +132,15 @@ export default class Marketplace extends Component {
           transparent={true}
         >
           <View style={styles.modalParentContainer}>
+            
+            <View style={styles.modalChildContainer} >
             <View style={styles.modalCloseContainer}>
-              <TouchableOpacity style={{marginBottom:responsiveHeight(2)}}
+              <TouchableOpacity
             onPress={()=>this.setState({ visible:false  })}
              >
-                <Ionicons name={'ios-close'} color={headerColor} size={responsiveWidth(12)} />
+                <Ionicons name={'ios-close'} color={colorGrey} size={responsiveWidth(12)} />
               </TouchableOpacity>
             </View>
-            <View style={styles.modalChildContainer} >
               <View style={styles.inputContainer}>
                 <TextInput
                   mode={'outlined'}
@@ -116,7 +166,7 @@ export default class Marketplace extends Component {
                 uppercase={false} mode="contained"
                 onPress={async () => { this.setState({ visible: false }) }}
 
-                style={[styles.inputContainer, { backgroundColor: colorWhite, borderRadius: 5, justifyContent: 'center', alignItems: 'center' }]}
+                style={[styles.inputContainer, { backgroundColor: colorWhite, borderRadius: 5, justifyContent: 'center',marginTop:responsiveHeight(3), alignItems: 'center' }]}
                 contentStyle={{ height: '100%' }}
               >
                 {'Place your bid'}
@@ -125,6 +175,63 @@ export default class Marketplace extends Component {
             </View>
           </View>
         </Modal>
+
+        
+        <ImageView
+          images={this.state.datasource}
+          animationType="fade"
+          imageIndex={0}
+
+          isVisible={this.state.imagesVisibile}
+          onClose={() => { this.setState({ imagesVisibile: false }) }}
+          glideAlways
+          // onImageChange= {(n)=>console.log(n)}
+          renderFooter={(currentImage) => {
+            return (
+              <View style={styles.footer}>
+                <Text style={styles.footerText}>{currentImage.title}</Text>
+                <TouchableOpacity
+                  style={styles.footerButton}
+                  onPress={() => { }}>
+                  <Text style={[styles.footerText, { marginLeft: 7 }]}>
+                    {currentImage.title}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )
+          }
+          }
+
+
+        />
+        <ImageView
+          images={this.state.datasource2}
+          animationType="fade"
+          imageIndex={0}
+
+          isVisible={this.state.imagesVisibile2}
+          onClose={() => { this.setState({ imagesVisibile2: false }) }}
+          glideAlways
+          // onImageChange= {(n)=>console.log(n)}
+          renderFooter={(currentImage) => {
+            return (
+              <View style={styles.footer}>
+                <Text style={styles.footerText}>{currentImage.title}</Text>
+                <TouchableOpacity
+                  style={styles.footerButton}
+                  onPress={() => { }}>
+                  <Text style={[styles.footerText, { marginLeft: 7 }]}>
+                    {currentImage.title}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )
+          }
+          }
+
+
+        />
+
 
       </CustomSafeAreaView>
     );
@@ -194,7 +301,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.7),
-    color: colorWhite,
+    color: colorBlack,
     // marginTop: responsiveHeight(2),
     // marginBottom: responsiveHeight(.5)
   },
@@ -256,7 +363,7 @@ const styles = StyleSheet.create({
   ideaTextStyle1:
   {
     fontSize: responsiveFontSize(1.8),
-    color: colorWhite,
+    color: colorBlack,
     marginTop: responsiveHeight(1),
     marginBottom: responsiveHeight(1),
 
@@ -318,7 +425,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignSelf: 'center',
     borderRadius: 5,
-    justifyContent: 'space-evenly'
+    
   },
   inputContainer: {
 
@@ -336,7 +443,26 @@ const styles = StyleSheet.create({
     fontFamily: Muli
     , color: '#fff'
   },
-  modalCloseContainer:{ width:responsiveWidth(90),alignSelf:'center',justifyContent:'center',alignItems:'flex-end' },
+  modalCloseContainer:{ width:responsiveWidth(80),alignSelf:'center',justifyContent:'center',alignItems:'flex-end', },
+  footer: {
+    width: responsiveWidth(100),
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  footerButton: {
+    flexDirection: 'row',
+    marginLeft: 15,
+  },
+  footerText: {
+    fontSize: 16,
+    color: '#FFF',
+    textAlign: 'center',
+  },
 });
 
 

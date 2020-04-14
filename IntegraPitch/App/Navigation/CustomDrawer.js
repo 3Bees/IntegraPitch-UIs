@@ -42,7 +42,7 @@ export default class CustomDrawer extends Component {
                                 <Text style={styles.prfileTextStyle1} numberOfLines={1}>
                                     {'User Name'}
                                 </Text>
-                                <AntDesign name={'checkcircle'} size={responsiveWidth(6)} color={'#fff'} style={{left:responsiveWidth(0)}} />
+                                <AntDesign name={'checkcircle'} size={responsiveWidth(6)} color={'#fff'} style={{right:responsiveWidth(4)}} />
                             </View>
                             <Text style={styles.prfileTextStyle2}>
                                 {'user@gmail.com'}
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     profileRightTextContainer1: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent:'space-between'
+       
         
     },
     prfileTextStyle1: {

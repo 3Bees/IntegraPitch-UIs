@@ -4,14 +4,35 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar, Image, F
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Button } from 'react-native-paper';
 import CustomSafeAreaView from '../CustomComponents/CustomSafeAreaView';
-import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, colorBlack, headerColor } from '../../Globals/colors';
+import { colorWhite, coloGolden, colorGrey, bgColor, cardBgColor, listBgColor, colorBlack, headerColor,Muli,MuliBold } from '../../Globals/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Ent from 'react-native-vector-icons/Entypo'
 
 
-export default class History extends Component {
+export default class MyProjects extends Component {
 
-    state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4], user: this.props.route.params }
+    state = { flag1: false, flag2: true, flag3: false, datasource: [1, 2, 4], user: this.props.route.params,
+        data2: [
+            {
+                text: '',
+                image: '',
+                Percentage: "10%",
+                days: '10d ago'
+            },
+            {
+                text: '', 
+                image: '',
+                Percentage: "10%",
+                days: '10d ago'
+            },
+            {
+                text: '',
+                image: '',
+                Percentage: "10%",
+                days: '12d ago'
+            },
+       
+        ] }
 
     render() {
 
@@ -20,38 +41,29 @@ export default class History extends Component {
                 <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
                 <View style={styles.container}>
                     <View style={styles.header}>
-                        <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.openDrawer()}
-                        >
-                            <Ionicons name="md-menu" color={headerColor} size={responsiveWidth(9)} />
+                    <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
+                            <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
                         </TouchableOpacity>
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>
-                                History
+                                My Projects
                             </Text>
                         </View>
                     </View>
                     <View style={styles.MainContainer}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={styles.text}>History</Text>
+                            <Text style={styles.text}>My Projects</Text>
                         </View>
-                        <View style={{flexDirection:'row'}}>
-                        <Text style={styles.text1}>See: </Text>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('MyProjects')}>
-                            <Text style={{fontWeight:'bold',top:2}}>
-                            My Active Projects
-                            </Text>
-                        </TouchableOpacity>
-                       
-                        </View>
+                        
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             ListFooterComponentStyle={{ backgroundColor: 'red', marginBottom: 10 }}
-                            style={{ marginBottom: responsiveHeight(22) }}
+                            style={{ marginBottom: responsiveHeight(19.7) }}
                             data={this.state.datasource}
                             keyExtractor={(item, index) => index}
                             renderItem={({ item, index }) => {
                                 return (
-                                    <TouchableOpacity style={styles.ideaMainCard} key={index}
+                                    <View style={styles.ideaMainCard} key={index}
                                         onPress={() => this.props.navigation.navigate('IdeaDetails')}
                                     >
                                         <Text style={styles.ideaTextStyle}>Idea title</Text>
@@ -65,7 +77,35 @@ export default class History extends Component {
                                                 <Text style={styles.ideabuttonTextStyle2}>$126</Text>
                                             </View>
                                         </View>
-                                    </TouchableOpacity>
+                                        <Text style={styles.text}>Offers Received</Text>
+                        <FlatList showsScrollIndicator='false'
+                            data={this.state.data2}
+                            keyExtractor={(item, index) => index}
+                            renderItem={({ item }) => {
+                                return (
+                                    <View style={styles.cardview}>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Image source={require('../../Assets/girl.jpg')} style={styles.cardimage} >
+                                            </Image>
+                                            <Text style={styles.ideatext}>
+                                                Reasons described by the collaborator behind the idea.....
+                                </Text>
+                                            <View>
+                                                <View style={styles.countview}>
+                                                    <Text style={styles.counttext}>
+                                                        {item.Percentage}
+                                                    </Text>
+                                                </View>
+                                                <Text style={styles.daystext}>
+                                                    {item.days}
+                                                </Text>
+                                            </View>
+                                        </View>
+                                    </View>
+
+                                )
+                            }} />
+                                    </View>
                                 )
                             }}></FlatList>
                     </View>
@@ -119,7 +159,7 @@ const styles = StyleSheet.create({
     {
         fontFamily: 'Muli-Bold',
         fontSize: responsiveFontSize(2.7),
-        color: colorBlack,
+        color: colorWhite,
         marginTop: responsiveHeight(2),
         fontWeight: 'bold',
         marginBottom: responsiveHeight(.5)
@@ -127,9 +167,9 @@ const styles = StyleSheet.create({
     text1:
     {
         fontFamily: 'Muli-Bold',
-        fontSize: responsiveFontSize(1.8),
-        color: colorBlack,
-        marginBottom: responsiveHeight(1.5)
+        fontSize: responsiveFontSize(1.5),
+        color: colorWhite,
+        marginBottom: responsiveHeight(1)
     },
     buttonParentContainer: {
         width: '100%',
@@ -163,7 +203,7 @@ const styles = StyleSheet.create({
         paddingEnd: responsiveWidth(4),
         // borderWidth: 1,
         borderRadius: responsiveWidth(1),
-        marginBottom: responsiveHeight(2)
+        // marginBottom: responsiveHeight(2)
     },
     ideaImageStyle: {
         width: '100%', height: responsiveHeight(20),
@@ -182,7 +222,7 @@ const styles = StyleSheet.create({
     ideaTextStyle1:
     {
         fontSize: responsiveFontSize(1.8),
-        color: colorBlack,
+        color: colorWhite,
         marginTop: responsiveHeight(1),
         marginBottom: responsiveHeight(1),
     },
@@ -231,4 +271,67 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(1.8),
         color: headerColor,
     },
+     text:
+    {
+        fontFamily: MuliBold,
+        fontSize: responsiveFontSize(2.7),
+        color: colorWhite,
+        marginVertical: responsiveWidth(3),
+        fontWeight: 'bold',
+        marginBottom: responsiveWidth(2)
+
+    },
+    cardview:
+    {
+        width: '100%',
+        height: responsiveHeight(10),
+        backgroundColor: cardBgColor,
+         marginVertical:responsiveWidth(1),
+        borderRadius: responsiveWidth(1)
+    },
+    cardimage:
+    {
+        height: responsiveHeight(9),
+       // marginVertical: responsiveWidth(2),
+        width: "25%",
+        borderRadius: responsiveWidth(1),
+        marginRight: responsiveWidth(2)
+    },
+    ideatext:
+    {
+        width: '50%',
+        fontSize: responsiveFontSize(1.8),
+        fontFamily: Muli,
+        color:colorWhite,
+        marginVertical: responsiveWidth(2)
+
+    },
+    countview:
+    {
+        width: responsiveWidth(17),
+        height: responsiveHeight(5.5),
+        marginVertical: responsiveWidth(1),
+        marginTop:responsiveWidth(5),
+        backgroundColor: colorGrey,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: responsiveWidth(1)
+    },
+    counttext:
+    {
+
+        fontSize: responsiveFontSize(2.5),
+        fontFamily: Muli,
+        color: headerColor,
+
+    },
+    daystext:
+    {
+        fontSize: responsiveFontSize(1.2),
+        fontFamily: Muli,
+        marginLeft: responsiveWidth(4.5),
+        marginTop: responsiveWidth(1),
+        color:coloGolden
+    }
+
 });

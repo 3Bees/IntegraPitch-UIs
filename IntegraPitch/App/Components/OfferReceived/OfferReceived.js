@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     {
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
-        color: colorWhite,
+        color: colorBlack,
         marginVertical: responsiveWidth(3),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(2)
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
         width: '50%',
         fontSize: responsiveFontSize(1.8),
         fontFamily: Muli,
-        color:colorWhite,
+        color:colorBlack,
         marginVertical: responsiveWidth(2)
 
     },

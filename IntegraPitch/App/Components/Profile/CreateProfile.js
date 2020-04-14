@@ -364,7 +364,7 @@ export default class CreateProfile extends Component {
               <CheckBox title=' Subscribe to our newsletter'
                 containerStyle={styles.checkbox}
                 textStyle={styles.checkboxtext}
-                checkedColor={colorGrey} size={25} uncheckedColor={headerColor}
+                checkedColor={colorGrey} size={25} uncheckedColor={colorBlack}
                 checked={this.state.checked}
                 onPress={() => this.setState({ checked: !this.state.checked })} />
               <TouchableOpacity style={styles.button}>
@@ -471,7 +471,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: MuliBold,
     fontSize: responsiveFontSize(2.7),
-    color: colorWhite,
+    color: colorBlack,
     marginVertical: responsiveWidth(3),
     fontWeight: 'bold'
 
@@ -506,7 +506,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: Muli,
     fontSize: responsiveFontSize(2),
-    color: colorGrey,
+    color: colorBlack,
     marginTop: responsiveWidth(1)
   },
   checkbox:

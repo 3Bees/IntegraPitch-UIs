@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     {
         fontFamily: MuliBold,
         fontSize: responsiveFontSize(2.7),
-        color: colorWhite,
+        color: colorBlack,
         marginTop: responsiveWidth(2),
         fontWeight: 'bold',
         marginBottom: responsiveWidth(2)

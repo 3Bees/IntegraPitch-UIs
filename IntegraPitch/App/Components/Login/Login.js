@@ -195,13 +195,12 @@ const styles = StyleSheet.create({
     height: responsiveHeight(25),
     width: responsiveWidth(100),
     // backgroundColor: 'red', 
-    justifyContent: 'flex-end',
     alignItems: 'center',
 
   },
   imageStyle: {
-    height: '80%',
-    width: responsiveWidth(70),
+    height: '100%',
+    width: '100%',
 
   },
   inputContainer: {

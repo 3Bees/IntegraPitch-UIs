@@ -170,7 +170,15 @@ export default class Marketplace extends Component {
           transparent={true}
         >
           <View style={styles.modalParentContainer}>
+            
             <View style={styles.modalChildContainer} >
+            <View style={styles.modalCloseContainer}>
+              <TouchableOpacity
+            onPress={()=>this.setState({ visible:false  })}
+             >
+                <Ionicons name={'ios-close'} color={colorGrey} size={responsiveWidth(12)} />
+              </TouchableOpacity>
+            </View>
               <View style={styles.inputContainer}>
                 <TextInput
                   mode={'outlined'}
@@ -196,7 +204,7 @@ export default class Marketplace extends Component {
                 uppercase={false} mode="contained"
                 onPress={async () => { this.setState({ visible: false }) }}
 
-                style={[styles.inputContainer, { backgroundColor: colorWhite, borderRadius: 5, justifyContent: 'center', alignItems: 'center' }]}
+                style={[styles.inputContainer, { backgroundColor: colorWhite, borderRadius: 5, justifyContent: 'center',marginTop:responsiveHeight(3), alignItems: 'center' }]}
                 contentStyle={{ height: '100%' }}
               >
                 {'Place your bid'}
@@ -352,7 +360,6 @@ export default class Marketplace extends Component {
                 <TouchableOpacity
                   style={styles.footerButton}
                   onPress={() => { }}>
-                  <Text style={styles.footerText}>♥</Text>
                   <Text style={[styles.footerText, { marginLeft: 7 }]}>
                     {currentImage.title}
                   </Text>
@@ -414,7 +421,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(2.7),
-    color: colorWhite,
+    color: colorBlack,
     marginTop: responsiveHeight(2),
     fontWeight: 'bold',
     marginBottom: responsiveHeight(.5)
@@ -423,7 +430,7 @@ const styles = StyleSheet.create({
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.5),
-    color: colorWhite,
+    color: colorBlack,
     marginBottom: responsiveHeight(1)
   },
   buttonParentContainer: {
@@ -494,7 +501,7 @@ const styles = StyleSheet.create({
   ideaTextStyle1:
   {
     fontSize: responsiveFontSize(1.8),
-    color: colorWhite,
+    color: colorBlack,
     marginTop: responsiveHeight(1),
     marginBottom: responsiveHeight(1),
   },
@@ -558,7 +565,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignSelf: 'center',
     borderRadius: 5,
-    justifyContent: 'space-evenly'
+    
   },
   inputContainer: {
 
@@ -597,12 +604,12 @@ const styles = StyleSheet.create({
   modalTextStyle1: {
     fontFamily: 'Gilroy-Bold',
     fontSize: responsiveFontSize(2.4),
-    color: colorWhite
+    color: colorBlack
   },
   modalLine: {
     height: responsiveHeight(.4),
     width: responsiveWidth(5),
-    backgroundColor: colorWhite,
+    backgroundColor: colorBlack,
     marginTop: responsiveHeight(.3)
   },
   modalDateContainer: {
@@ -695,5 +702,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
     textAlign: 'center',
   },
-
+  modalCloseContainer:{ width:responsiveWidth(80),alignSelf:'center',justifyContent:'center',alignItems:'flex-end', },
 });
