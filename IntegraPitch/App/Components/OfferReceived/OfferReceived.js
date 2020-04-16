@@ -63,7 +63,7 @@ export default class OfferReceived extends Component {
                             keyExtractor={(item, index) => index}
                             renderItem={({ item }) => {
                                 return (
-                                    <View style={styles.cardview}>
+                                    <TouchableOpacity style={styles.cardview} onPress={()=>this.props.navigation.navigate('IdeaDetails')}>
                                         <View style={{ flexDirection: 'row' }}>
                                             <Image source={require('../../Assets/girl.jpg')} style={styles.cardimage} >
                                             </Image>
@@ -81,7 +81,7 @@ export default class OfferReceived extends Component {
                                                 </Text>
                                             </View>
                                         </View>
-                                    </View>
+                                    </TouchableOpacity>
 
                                 )
                             }} />

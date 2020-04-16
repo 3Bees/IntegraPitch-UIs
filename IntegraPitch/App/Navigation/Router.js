@@ -53,7 +53,7 @@ const AppTabNavigator = createBottomTabNavigator();
 const Main = () => {
     return (
 
-        <MainStack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }} >
+        <MainStack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false,gestureEnabled: false }} >
             <MainStack.Screen name="Tab" component={Tab} />
             {/* <MainStack.Screen name="AuthLoading" component={AuthLoading} /> */}
             <MainStack.Screen name="Start" component={Start} />

@@ -36,8 +36,8 @@ export default class History extends Component {
                         </View>
                         <View style={{flexDirection:'row'}}>
                         <Text style={styles.text1}>See: </Text>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('MyProjects')}>
-                            <Text style={{fontWeight:'bold',top:2}}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('MyProjects')} style={{backgroundColor:colorGrey, height:responsiveHeight(3.5),width:responsiveWidth(40),borderRadius:5}}>
+                            <Text style={{fontWeight:'bold',top:responsiveHeight(0.1),color:'white',textAlign:'center'}}>
                             My Active Projects
                             </Text>
                         </TouchableOpacity>
@@ -46,7 +46,7 @@ export default class History extends Component {
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             ListFooterComponentStyle={{ backgroundColor: 'red', marginBottom: 10 }}
-                            style={{ marginBottom: responsiveHeight(22) }}
+                            style={{ marginBottom: responsiveHeight(22),marginTop:2 }}
                             data={this.state.datasource}
                             keyExtractor={(item, index) => index}
                             renderItem={({ item, index }) => {
@@ -125,9 +125,9 @@ const styles = StyleSheet.create({
         marginBottom: responsiveHeight(.5)
     },
     text1:
-    {
+    {   
         fontFamily: 'Muli-Bold',
-        fontSize: responsiveFontSize(1.8),
+        fontSize: responsiveFontSize(2.2),
         color: colorBlack,
         marginBottom: responsiveHeight(1.5)
     },

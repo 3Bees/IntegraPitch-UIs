@@ -233,7 +233,7 @@ export default class Marketplace extends Component {
             <View height={responsiveHeight(1)} />
 
             <View style={[styles.modalDateContainer2, {}]}>
-              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(1.8) }]}>
+              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>
                 {'Category'}
               </Text>
               <FlatList
@@ -254,19 +254,19 @@ export default class Marketplace extends Component {
             </View>
             <View style={[styles.modalDateContainer2, {}]}>
               <View style={{ flexDirection: 'row', alignItems: 'center',width:'100%',height:responsiveHeight(4) }}>
-                <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2) }]}>
+                <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>
                   {'Price'}
                 </Text>
-                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8),color:colorBlack }]}>
+                <Text style={[styles.modalTextStyle1, { marginLeft:responsiveWidth(4), width:responsiveWidth(10),fontSize: responsiveFontSize(1.8),color:colorBlack }]}>
                   {'From'}
                 </Text>
-                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8), }]}>
+                <Text style={[styles.modalTextStyle1, { marginLeft:responsiveWidth(4), width:responsiveWidth(10),fontSize: responsiveFontSize(1.8), }]}>
                   {this.state.multiSliderValue[0]}
                 </Text>
-                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8),color:colorBlack }]}>
+                <Text style={[styles.modalTextStyle1, { marginLeft:responsiveWidth(4), width:responsiveWidth(10),fontSize: responsiveFontSize(1.8),color:colorBlack }]}>
                   {'To'}
                 </Text>
-                <Text style={[styles.modalTextStyle1, {  marginLeft:responsiveWidth(10),fontSize: responsiveFontSize(1.8), }]}>
+                <Text style={[styles.modalTextStyle1, { marginLeft:responsiveWidth(4), width:responsiveWidth(10),fontSize: responsiveFontSize(1.8), }]}>
                   {this.state.multiSliderValue[1]}
                 </Text>
               </View>
