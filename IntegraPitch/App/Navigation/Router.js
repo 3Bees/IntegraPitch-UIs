@@ -73,20 +73,13 @@ const Main = () => {
             <MainStack.Screen name="SettingProfile" component={Profile} />
             <MainStack.Screen name="Login" component={Login} />
             <MainStack.Screen name="WebView" component={WebView} />
+            <MainStack.Screen name='History' component={History} />
+
         </MainStack.Navigator>
     );
 
 }
-const HisStack = () => {
-    return (
 
-        <HistoryStack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }} >
-            <MainStack.Screen name='History' component={History} />
-            <MainStack.Screen name="MyProjects" component={MyProjects} />
-        </HistoryStack.Navigator>
-    );
-
-}
 
 
 const Tab = () => {
@@ -96,7 +89,7 @@ const Tab = () => {
                 let iconName;
                 if (route.name === 'Home') {
                     iconName = focused ? 'home' : 'home';
-                } else if (route.name === 'History') {
+                } else if (route.name === 'MyProjects') {
                     iconName = focused ? 'chevron-with-circle-down' : 'chevron-with-circle-down';
                 } else if (route.name === 'Profile') {
                     iconName = focused ? 'user' : 'user';
@@ -116,7 +109,7 @@ const Tab = () => {
 
 
             <AppTabNavigator.Screen name="Home" component={Marketplace} />
-            <AppTabNavigator.Screen name="History" component={HisStack} />
+            <AppTabNavigator.Screen name="MyProjects" component={MyProjects} />
             <AppTabNavigator.Screen name="Profile" component={Profile} />
             <AppTabNavigator.Screen name="More" component={MoreTabs} />
 

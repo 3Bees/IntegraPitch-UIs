@@ -41,9 +41,9 @@ export default class MyProjects extends Component {
                 <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
                 <View style={styles.container}>
                     <View style={styles.header}>
-                    <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
+                    {/* <TouchableOpacity style={styles.headericon} onPress={() => this.props.navigation.goBack()}>
                             <Ionicons name={'ios-arrow-back'} color={headerColor} size={28} />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <View style={styles.headertextView}>
                             <Text style={styles.headertext}>
                                 My Projects
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     },
     headertextView:
     {
-        width: responsiveWidth(70),
+        width: responsiveWidth(100),
         // backgroundColor: 'red',
         justifyContent: 'center',
         alignItems: 'center',
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: responsiveFontSize(2.2),
         color: headerColor,
+        textAlign:'center'
     },
     MainContainer: {
         width: responsiveWidth(92),

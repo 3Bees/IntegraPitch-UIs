@@ -34,7 +34,7 @@ export default class History extends Component {
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={styles.text}>History</Text>
                         </View>
-                        <View style={{flexDirection:'row'}}>
+                        {/* <View style={{flexDirection:'row'}}>
                         <Text style={styles.text1}>See: </Text>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('MyProjects')} style={{backgroundColor:colorGrey, height:responsiveHeight(3.5),width:responsiveWidth(40),borderRadius:5}}>
                             <Text style={{fontWeight:'bold',top:responsiveHeight(0.1),color:'white',textAlign:'center'}}>
@@ -42,7 +42,7 @@ export default class History extends Component {
                             </Text>
                         </TouchableOpacity>
                        
-                        </View>
+                        </View> */}
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             ListFooterComponentStyle={{ backgroundColor: 'red', marginBottom: 10 }}

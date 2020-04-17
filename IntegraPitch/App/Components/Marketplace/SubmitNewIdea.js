@@ -46,6 +46,9 @@ export default class Marketplace extends Component {
 
     ],
     selected: 'Choose categories...',
+    rowbtn:false,
+    skbtn:false,
+    prbtn:false
   }
   async modalStateChange(index) {
     let array = this.state.category
@@ -130,6 +133,21 @@ export default class Marketplace extends Component {
         this.setState({ documentdatasource: array });
       }
     });
+  }
+  togglebtn1 = () => {
+    this.setState({rowbtn:true})
+    this.setState({skbtn:false})
+    this.setState({prbtn:false})
+  }
+  togglebtn2 = () => {
+    this.setState({rowbtn:false})
+    this.setState({skbtn:true})
+    this.setState({prbtn:false})
+  }
+  togglebtn3 = () => {
+    this.setState({rowbtn:false})
+    this.setState({skbtn:false})
+    this.setState({prbtn:true})
   }
   render() {
     const { flag1, flag2, } = this.state
@@ -263,14 +281,14 @@ export default class Marketplace extends Component {
               <Text style={styles.TextInputTitleStyle}>Idea State</Text>
 
               <View style={styles.buttonParentContainer}>
-                <TouchableOpacity style={styles.buttonChildContainer1}>
-                  <Text style={styles.buttonTextStyle}>Row</Text>
+                <TouchableOpacity style={this.state.rowbtn ?styles.buttonChildContainer2: styles.buttonChildContainer1} onPress={()=>this.togglebtn1()}>
+                  <Text style={ this.state.rowbtn ?styles.buttonTextStyle1: styles.buttonTextStyle}>Row</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonChildContainer1}>
-                  <Text style={styles.buttonTextStyle}>Sketched</Text>
+                <TouchableOpacity style={this.state.skbtn ?styles.buttonChildContainer2: styles.buttonChildContainer1} onPress={()=>this.togglebtn2()}>
+                  <Text style={this.state.skbtn ?styles.buttonTextStyle1: styles.buttonTextStyle}>Sketched</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonChildContainer1}>
-                  <Text style={styles.buttonTextStyle}>Prototyped</Text>
+                <TouchableOpacity style={this.state.prbtn ?styles.buttonChildContainer2: styles.buttonChildContainer1} onPress={()=>this.togglebtn3()}>
+                  <Text style={this.state.prbtn ?styles.buttonTextStyle1: styles.buttonTextStyle}>Prototyped</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -571,6 +589,15 @@ const styles = StyleSheet.create({
     borderColor: coloGolden,
     borderRadius: responsiveWidth(1),
     borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonChildContainer2: {
+    height: '80%',
+    width: '30%',
+    borderColor: colorBlack,
+    borderRadius: responsiveWidth(1),
+    borderWidth: 2.2,
     alignItems: 'center',
     justifyContent: 'center'
   },

@@ -56,6 +56,12 @@ export default class Marketplace extends Component {
       { name: 'category 4', flag: false },
       { name: 'category 5', flag: false },
     ],
+   StatusArray: [
+      { name: 'Status 1', flag: false },
+      { name: 'Status 2', flag: false },
+      { name: 'Status 3', flag: false },
+     
+    ],
     priceArray: [
       { name: '100-200$', flag: false },
       { name: '200-400$', flag: false },
@@ -234,7 +240,7 @@ export default class Marketplace extends Component {
 
             <View style={[styles.modalDateContainer2, {}]}>
               <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>
-                {'Category'}
+                {'Filter By Category'}
               </Text>
               <FlatList
                 horizontal={true}
@@ -252,7 +258,27 @@ export default class Marketplace extends Component {
                 }}>
               </FlatList>
             </View>
-            <View style={[styles.modalDateContainer2, {}]}>
+            <View style={[styles.modalDateContainer2, {marginTop:5}]}>
+              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>
+                {'Filter By Status'}
+              </Text>
+              <FlatList
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                data={this.state.StatusArray}
+                keyExtractor={(item, index) => index}
+                renderItem={({ item, index }) => {
+                  return (
+                    <TouchableOpacity style={styles.categoryContainer}>
+                      <Text style={styles.categoryTextStyle}>
+                        {item.name}
+                      </Text>
+                    </TouchableOpacity>
+                  )
+                }}>
+              </FlatList>
+            </View>
+            <View style={[styles.modalDateContainer2, {marginTop:5}]}>
               <View style={{ flexDirection: 'row', alignItems: 'center',width:'100%',height:responsiveHeight(4) }}>
                 <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>
                   {'Price'}
@@ -271,7 +297,7 @@ export default class Marketplace extends Component {
                 </Text>
               </View>
 
-              <View style={{ alignItems: 'center', justifyContent: 'center', height: responsiveHeight(5) }}>
+              <View style={{ alignItems: 'center', justifyContent: 'center', height: responsiveHeight(5),}}>
                 <MultiSlider
                   values={multiSliderValue}
                   sliderLength={responsiveWidth(80)}
@@ -293,7 +319,7 @@ export default class Marketplace extends Component {
             
             </View>
             <View style={styles.modalDateContainer3}>
-              <Text style={[styles.modalTextStyle1, {}]}>{'Filter By Date'}</Text>
+              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>{'Filter By Date'}</Text>
               <TouchableOpacity activeOpacity={.5} style={styles.datebuttonStyle}>
                 <AntDesign name={'calendar'} color={'#fff'} size={responsiveWidth(4.5)} />
                 <DatePicker
@@ -589,8 +615,8 @@ const styles = StyleSheet.create({
   ModalContainer: {
     backgroundColor: '#fff',
     width: responsiveWidth(100),
-    height: responsiveHeight(50),
-    marginTop: responsiveHeight(52),
+    height: responsiveHeight(60),
+    marginTop: responsiveHeight(46),
     borderTopLeftRadius: responsiveWidth(10),
     borderTopRightRadius: responsiveWidth(10)
   },
@@ -682,7 +708,7 @@ const styles = StyleSheet.create({
   categoryTextStyle: {
     paddingStart: responsiveWidth(2),
     paddingEnd: responsiveWidth(2),
-    fontSize: responsiveFontSize(1.8), color: colorWhite
+    fontSize: responsiveFontSize(1.6), color: colorWhite
   },
   footer: {
     width: responsiveWidth(100),
