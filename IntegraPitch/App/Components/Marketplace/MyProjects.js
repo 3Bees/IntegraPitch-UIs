@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     {
         fontFamily: 'Muli-Bold',
         fontSize: responsiveFontSize(2.7),
-        color: colorWhite,
+        color: colorBlack,
         marginTop: responsiveHeight(2),
         fontWeight: 'bold',
         marginBottom: responsiveHeight(.5)
@@ -272,16 +272,7 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(1.8),
         color: headerColor,
     },
-     text:
-    {
-        fontFamily: MuliBold,
-        fontSize: responsiveFontSize(2.7),
-        color: colorWhite,
-        marginVertical: responsiveWidth(3),
-        fontWeight: 'bold',
-        marginBottom: responsiveWidth(2)
-
-    },
+    
     cardview:
     {
         width: '100%',

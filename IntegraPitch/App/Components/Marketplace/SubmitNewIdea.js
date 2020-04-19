@@ -292,7 +292,7 @@ export default class Marketplace extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-
+                  { this.state.prbtn ? null:(
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Collaboration Option</Text>
               <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-5) }}>
@@ -304,6 +304,7 @@ export default class Marketplace extends Component {
                   checked={this.state.currentstate}
                   onPress={() => this.setState({ currentstate: !this.state.currentstate })} />
               </View>
+              { this.state.skbtn ? null:(
               <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-5) }}>
                 <CheckBox title='Receive upgrade offers to Sketch state'
                   containerStyle={styles.checkbox}
@@ -312,6 +313,7 @@ export default class Marketplace extends Component {
                   checked={this.state.Sketchstate}
                   onPress={() => this.setState({ Sketchstate: !this.state.Sketchstate })} />
               </View>
+              )}
               <View style={{ flexDirection: 'row', width: '100%', marginBottom: responsiveWidth(-5) }}>
                 <CheckBox title='Receive upgrade offers to Prototype state'
                   containerStyle={styles.checkbox}
@@ -321,7 +323,7 @@ export default class Marketplace extends Component {
                   onPress={() => this.setState({ prototypestate: !this.state.pr })} />
               </View>
             </View>
-            
+                  )}
 
             <View style={styles.titConatiner}>
               <Text style={styles.TextInputTitleStyle}>Idea Category</Text>
@@ -415,7 +417,7 @@ export default class Marketplace extends Component {
                   onPress={() => this.setState({ acceptpolicy: !this.state.acceptpolicy })} />
               </View>
             </View>
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('OfferReceived')}>
+            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('MyProjects')}>
               <Text style={styles.buttontext}>SUBMIT IDEA</Text>
             </TouchableOpacity>
 

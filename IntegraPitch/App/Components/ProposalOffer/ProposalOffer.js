@@ -218,7 +218,7 @@ export default class ProposalOffer extends Component {
                                     If your proposal is not acceptable the document you uploaded will reamain your property
                             </Text>
                             </View>
-                            <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('SharedIdeas')}>
+                            <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('MyProjects')}>
                                 <Text style={styles.buttontext}>SUBMIT OFFER</Text>
                             </TouchableOpacity>
                         </View>
