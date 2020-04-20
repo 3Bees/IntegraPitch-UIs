@@ -50,11 +50,17 @@ export default class Marketplace extends Component {
     placebid: '',
     searchVisible: false,
     categoryArray: [
-      { name: 'category 1', flag: false },
-      { name: 'category 2', flag: false },
-      { name: 'category 3', flag: false },
-      { name: 'category 4', flag: false },
-      { name: 'category 5', flag: false },
+      { name: 'Medicine', flag: false },
+      { name: 'Technology', flag: false },
+      { name: 'Automobile', flag: false },
+      { name: 'Communication', flag: false },
+      { name: 'Tools and equipment', flag: false },
+      { name: 'Letriture', flag: false },
+      { name: 'Home and kitchen', flag: false },
+      { name: 'Marketing', flag: false },
+      { name: 'Entertainment', flag: false },
+      { name: 'Outdoor', flag: false },
+
     ],
    StatusArray: [
       { name: 'Status 1', flag: false },
@@ -78,13 +84,13 @@ export default class Marketplace extends Component {
       <TouchableOpacity style={styles.buttonChildContainer}
       // onPress={() => this.props.navigation.navigate('SubmitNewIdea')}
       >
-        <Text style={styles.buttonTextStyle}>Row</Text>
+        <Text style={styles.buttonTextStyle1}>Row</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonChildContainer}>
-        <Text style={styles.buttonTextStyle}>Sketched</Text>
+        <Text style={styles.buttonTextStyle1}>Sketched</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonChildContainer}>
-        <Text style={styles.buttonTextStyle}>Prototyped</Text>
+        <Text style={styles.buttonTextStyle1}>Prototyped</Text>
       </TouchableOpacity>
     </View>)
   }
@@ -237,9 +243,28 @@ export default class Marketplace extends Component {
               </TouchableOpacity>
             </View>
             <View height={responsiveHeight(1)} />
+            <View style={styles.inputContainer2}>
+              <TextInput
+                mode={'outlined'}
+                label={'Search by keyword'}
+                labelStyle={styles.inputTitle}
+                placeholder='Enter Keyword'
+              
+                placeholderTextColor={'gray'}
+               
+                theme={{
+                  colors: {
+                    placeholder: colorGrey,
+                    primary: colorBlack,
+                    text: colorBlack,
+                    underlineColor: 'transparent',
+                  }
+                }}
+              />
+            </View>
 
             <View style={[styles.modalDateContainer2, {}]}>
-              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>
+              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold',bottom:responsiveHeight(1) }]}>
                 {'Filter By Category'}
               </Text>
               <FlatList
@@ -259,7 +284,7 @@ export default class Marketplace extends Component {
               </FlatList>
             </View>
             <View style={[styles.modalDateContainer2, {marginTop:5}]}>
-              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold' }]}>
+              <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold',bottom:responsiveHeight(1) }]}>
                 {'Filter By Status'}
               </Text>
               <FlatList
@@ -358,6 +383,8 @@ export default class Marketplace extends Component {
               </TouchableOpacity>
 
             </View>
+            <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold',marginLeft:'5%'}]}>{'Sort By'}</Text>
+
             <View style={styles.modalDateContainer4}>
               <TouchableOpacity activeOpacity={.5} style={styles.datebuttonStyle1}>
                 <Text style={styles.dropDownTextStyle}>{'Buy Now'}</Text>
@@ -365,10 +392,28 @@ export default class Marketplace extends Component {
               <TouchableOpacity activeOpacity={.5} style={styles.datebuttonStyle1}>
                 <Text style={styles.dropDownTextStyle}>{'Accept offer '}</Text>
               </TouchableOpacity>
+              <TouchableOpacity activeOpacity={.5} style={styles.datebuttonStyle1}>
+                <Text style={styles.dropDownTextStyle}>{'Ending Soon'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity activeOpacity={.5} style={styles.datebuttonStyle1}>
+                <Text style={styles.dropDownTextStyle}>{'Newly Listed'}</Text>
+              </TouchableOpacity>
+
+            </View>
+            <View style={styles.buttonContainer}>
+              <Button labelStyle={styles.buttonTextStyle} uppercase={false} mode="contained"
+                onPress={() => this.setState({ searchVisible: false })}
+                style={styles.buttonStyle}
+                contentStyle={{ height: '100%' }}
+              >
+                {'Apply'}
+
+              </Button>
 
             </View>
 
           </View>
+
         </CustomModal>
 
         <ImageView
@@ -496,7 +541,7 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(1.6),
     color: colorWhite,
   },
-  buttonTextStyle:
+  buttonTextStyle1:
   {
     fontFamily: 'Muli-Bold',
     fontSize: responsiveFontSize(1.8),
@@ -600,6 +645,13 @@ const styles = StyleSheet.create({
     width: responsiveWidth(80),
     alignSelf: 'center'
   },
+  inputContainer2: {
+
+    height: responsiveHeight(8),
+    width: responsiveWidth(80),
+    marginLeft:'5%',marginBottom:responsiveHeight(2)
+    
+  },
   inputTitle: {
     // backgroundColor: colorWhite,
     fontSize: responsiveFontSize(1.8),
@@ -611,12 +663,16 @@ const styles = StyleSheet.create({
     , color: '#fff'
   },
   ///Search Container
+  inputTitle: {
+    // backgroundColor: colorWhite,
+    fontSize: responsiveFontSize(1.8),
 
+  },
   ModalContainer: {
     backgroundColor: '#fff',
     width: responsiveWidth(100),
-    height: responsiveHeight(60),
-    marginTop: responsiveHeight(46),
+    height: responsiveHeight(75),
+    marginTop: responsiveHeight(25),
     borderTopLeftRadius: responsiveWidth(10),
     borderTopRightRadius: responsiveWidth(10)
   },
@@ -663,9 +719,10 @@ const styles = StyleSheet.create({
 
   },
   dropDownTextStyle: {
-    fontSize: responsiveFontSize(2),
+    fontSize: responsiveFontSize(1.5),
     fontFamily: 'Gilroy-Bold',
-    color: colorWhite
+    color: colorWhite,
+    textAlign:'center'
   },
   datebuttonStyle: {
     height: '90%',
@@ -677,8 +734,8 @@ const styles = StyleSheet.create({
     borderRadius: responsiveWidth(7)
   },
   datebuttonStyle1: {
-    height: '90%',
-    width: responsiveWidth(28),
+    height: '80%',
+    width: responsiveWidth(21),
     backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -703,7 +760,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center', borderWidth: 1,
     borderColor: colorWhite, height: responsiveHeight(5),
     marginEnd: responsiveWidth(2),
-    borderRadius: responsiveWidth(6), marginTop: responsiveHeight(1)
+    borderRadius: responsiveWidth(6), marginTop: responsiveHeight(1),
+    bottom:responsiveHeight(1),
   },
   categoryTextStyle: {
     paddingStart: responsiveWidth(2),
@@ -730,4 +788,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalCloseContainer:{ width:responsiveWidth(80),alignSelf:'center',justifyContent:'center',alignItems:'flex-end', },
+  buttonContainer: {
+    height: responsiveHeight(8),
+    width: '50%',
+    // marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf:'center',
+    marginTop:5
+  },
+  buttonStyle: {
+    height: '90%', width: '100%',
+    justifyContent: 'center',
+    backgroundColor: colorWhite,
+    borderRadius: 5
+  },
+  buttonTextStyle: {
+    color: '#fff',
+
+    fontSize: responsiveFontSize(2)
+  },
 });
