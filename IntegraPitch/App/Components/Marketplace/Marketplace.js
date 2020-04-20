@@ -230,7 +230,9 @@ export default class Marketplace extends Component {
         {/* Search Modal */}
 
         <CustomModal isVisible={this.state.searchVisible}>
-
+          <View style={{backgroundColor: 'rgba(0,0,0,0.2)',
+    flex: 1,
+    justifyContent: 'flex-end',}}>
           <View style={styles.ModalContainer}>
 
             <View style={styles.modalChildContainer1}>
@@ -242,7 +244,7 @@ export default class Marketplace extends Component {
                 <Ionicons name={'md-close'} color={colorWhite} size={responsiveWidth(9)} />
               </TouchableOpacity>
             </View>
-            <View height={responsiveHeight(1)} />
+            <View height={responsiveHeight(0.5)} />
             <View style={styles.inputContainer2}>
               <TextInput
                 mode={'outlined'}
@@ -262,7 +264,7 @@ export default class Marketplace extends Component {
                 }}
               />
             </View>
-
+            <View height={responsiveHeight(0.5)} />
             <View style={[styles.modalDateContainer2, {}]}>
               <Text style={[styles.modalTextStyle1, { fontSize: responsiveFontSize(2),fontWeight:'bold',bottom:responsiveHeight(1) }]}>
                 {'Filter By Category'}
@@ -413,7 +415,7 @@ export default class Marketplace extends Component {
             </View>
 
           </View>
-
+          </View>
         </CustomModal>
 
         <ImageView
@@ -671,8 +673,7 @@ const styles = StyleSheet.create({
   ModalContainer: {
     backgroundColor: '#fff',
     width: responsiveWidth(100),
-    height: responsiveHeight(75),
-    marginTop: responsiveHeight(25),
+    height: '78%',
     borderTopLeftRadius: responsiveWidth(10),
     borderTopRightRadius: responsiveWidth(10)
   },
